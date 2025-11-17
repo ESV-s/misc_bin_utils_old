@@ -1,0 +1,1506 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Файлы исходного кода">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Заголовочные файлы">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Файлы ресурсов">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Form Files">
+      <UniqueIdentifier>{99349809-55BA-4b9d-BF79-8FDBB0286EB3}</UniqueIdentifier>
+      <Extensions>ui</Extensions>
+      <ParseFiles>true</ParseFiles>
+    </Filter>
+    <Filter Include="Generated Files">
+      <UniqueIdentifier>{71ED8ED8-ACB9-4CE9-BBE1-E00B30144E11}</UniqueIdentifier>
+      <Extensions>moc;h;cpp</Extensions>
+      <ParseFiles>true</ParseFiles>
+    </Filter>
+    <Filter Include="Generated Files\Debug64">
+      <UniqueIdentifier>{2b1cc90c-9a1b-4425-af73-53f45fe4387a}</UniqueIdentifier>
+      <Extensions>cpp;moc</Extensions>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="Generated Files\Debug">
+      <UniqueIdentifier>{c5f8094e-d3ff-4f30-b3d8-a9e76bad6774}</UniqueIdentifier>
+      <Extensions>cpp;moc</Extensions>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="Generated Files\Release">
+      <UniqueIdentifier>{3c98a904-be94-42f6-b403-a61b3023f7ec}</UniqueIdentifier>
+      <Extensions>cpp;moc</Extensions>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="Generated Files\Release64">
+      <UniqueIdentifier>{58df8d23-9bed-4acd-b760-f69e48fb7408}</UniqueIdentifier>
+      <Extensions>cpp;moc</Extensions>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="Заголовочные файлы\ida_plugin">
+      <UniqueIdentifier>{93d6ae33-254a-40bc-a828-581a12b0a613}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы исходного кода\ida_plugin">
+      <UniqueIdentifier>{55009da5-02cc-481a-a983-3b8d82d4bc8c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Заголовочные файлы\Third_party">
+      <UniqueIdentifier>{32ad4eab-8655-4cdd-b9c4-9bbbf7f0b46f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы исходного кода\Third_party">
+      <UniqueIdentifier>{07f40c2f-9946-4b3f-94df-58bd498841a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Заголовочные файлы\BinExport_Ida">
+      <UniqueIdentifier>{5e599557-0263-4a90-956f-8271058399ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы исходного кода\BinExport_Ida">
+      <UniqueIdentifier>{d77273d7-9d1f-465a-b982-e756ef7e9379}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы исходного кода\BinExport">
+      <UniqueIdentifier>{c83316ae-4525-427f-9d89-690535b9acad}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="first_window.cpp">
+      <Filter>Form Files</Filter>
+    </ClCompile>
+    <ClCompile Include="tree_window.cpp">
+      <Filter>Form Files</Filter>
+    </ClCompile>
+    <ClCompile Include="start_window.cpp">
+      <Filter>Form Files</Filter>
+    </ClCompile>
+    <ClCompile Include="notepad_window.cpp">
+      <Filter>Form Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug64\moc_key_press_eater.cpp">
+      <Filter>Generated Files\Debug64</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_key_press_eater.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_key_press_eater.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release64\moc_key_press_eater.cpp">
+      <Filter>Generated Files\Release64</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug64\moc_notepad_window.cpp">
+      <Filter>Generated Files\Debug64</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_notepad_window.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_notepad_window.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release64\moc_notepad_window.cpp">
+      <Filter>Generated Files\Release64</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug64\moc_tree_window.cpp">
+      <Filter>Generated Files\Debug64</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_tree_window.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_tree_window.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release64\moc_tree_window.cpp">
+      <Filter>Generated Files\Release64</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug64\moc_db_connection.cpp">
+      <Filter>Generated Files\Debug64</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_db_connection.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_db_connection.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release64\moc_db_connection.cpp">
+      <Filter>Generated Files\Release64</Filter>
+    </ClCompile>
+    <ClCompile Include="arm.cc">
+      <Filter>Файлы исходного кода\BinExport_Ida</Filter>
+    </ClCompile>
+    <ClCompile Include="dalvik.cc">
+      <Filter>Файлы исходного кода\BinExport_Ida</Filter>
+    </ClCompile>
+    <ClCompile Include="digest.cc">
+      <Filter>Файлы исходного кода\BinExport_Ida</Filter>
+    </ClCompile>
+    <ClCompile Include="flow_analysis.cc">
+      <Filter>Файлы исходного кода\BinExport_Ida</Filter>
+    </ClCompile>
+    <ClCompile Include="log_sink.cc">
+      <Filter>Файлы исходного кода\BinExport_Ida</Filter>
+    </ClCompile>
+    <ClCompile Include="metapc.cc">
+      <Filter>Файлы исходного кода\BinExport_Ida</Filter>
+    </ClCompile>
+    <ClCompile Include="mips.cc">
+      <Filter>Файлы исходного кода\BinExport_Ida</Filter>
+    </ClCompile>
+    <ClCompile Include="names.cc">
+      <Filter>Файлы исходного кода\BinExport_Ida</Filter>
+    </ClCompile>
+    <ClCompile Include="ppc.cc">
+      <Filter>Файлы исходного кода\BinExport_Ida</Filter>
+    </ClCompile>
+    <ClCompile Include="types_container.cc">
+      <Filter>Файлы исходного кода\BinExport_Ida</Filter>
+    </ClCompile>
+    <ClCompile Include="ui.cc">
+      <Filter>Файлы исходного кода\BinExport_Ida</Filter>
+    </ClCompile>
+    <ClCompile Include="util.cc">
+      <Filter>Файлы исходного кода\BinExport_Ida</Filter>
+    </ClCompile>
+    <ClCompile Include="help_functions.cpp">
+      <Filter>Файлы исходного кода\ida_plugin</Filter>
+    </ClCompile>
+    <ClCompile Include="highlight.cpp">
+      <Filter>Файлы исходного кода\ida_plugin</Filter>
+    </ClCompile>
+    <ClCompile Include="key_press_eater.cpp">
+      <Filter>Файлы исходного кода\ida_plugin</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Файлы исходного кода\ida_plugin</Filter>
+    </ClCompile>
+    <ClCompile Include="pe_heders.cpp">
+      <Filter>Файлы исходного кода\ida_plugin</Filter>
+    </ClCompile>
+    <ClCompile Include="generic.cc">
+      <Filter>Файлы исходного кода\BinExport_Ida</Filter>
+    </ClCompile>
+    <ClCompile Include="third_party\absl\debugging\stacktrace.cc">
+      <Filter>Файлы исходного кода\Third_party</Filter>
+    </ClCompile>
+    <ClCompile Include="third_party\absl\debugging\symbolize.cc">
+      <Filter>Файлы исходного кода\Third_party</Filter>
+    </ClCompile>
+    <ClCompile Include="address_references.cc">
+      <Filter>Файлы исходного кода\BinExport</Filter>
+    </ClCompile>
+    <ClCompile Include="base_types.cc">
+      <Filter>Файлы исходного кода\BinExport</Filter>
+    </ClCompile>
+    <ClCompile Include="basic_block.cc">
+      <Filter>Файлы исходного кода\BinExport</Filter>
+    </ClCompile>
+    <ClCompile Include="binexport.cc">
+      <Filter>Файлы исходного кода\BinExport</Filter>
+    </ClCompile>
+    <ClCompile Include="binexport2.pb.cc">
+      <Filter>Файлы исходного кода\BinExport</Filter>
+    </ClCompile>
+    <ClCompile Include="binexport2_writer.cc">
+      <Filter>Файлы исходного кода\BinExport</Filter>
+    </ClCompile>
+    <ClCompile Include="call_graph.cc">
+      <Filter>Файлы исходного кода\BinExport</Filter>
+    </ClCompile>
+    <ClCompile Include="comment.cc">
+      <Filter>Файлы исходного кода\BinExport</Filter>
+    </ClCompile>
+    <ClCompile Include="dump_writer.cc">
+      <Filter>Файлы исходного кода\BinExport</Filter>
+    </ClCompile>
+    <ClCompile Include="edge.cc">
+      <Filter>Файлы исходного кода\BinExport</Filter>
+    </ClCompile>
+    <ClCompile Include="entry_point.cc">
+      <Filter>Файлы исходного кода\BinExport</Filter>
+    </ClCompile>
+    <ClCompile Include="expression.cc">
+      <Filter>Файлы исходного кода\BinExport</Filter>
+    </ClCompile>
+    <ClCompile Include="filesystem.cc">
+      <Filter>Файлы исходного кода\BinExport</Filter>
+    </ClCompile>
+    <ClCompile Include="flow_graph.cc">
+      <Filter>Файлы исходного кода\BinExport</Filter>
+    </ClCompile>
+    <ClCompile Include="format.cc">
+      <Filter>Файлы исходного кода\BinExport</Filter>
+    </ClCompile>
+    <ClCompile Include="function.cc">
+      <Filter>Файлы исходного кода\BinExport</Filter>
+    </ClCompile>
+    <ClCompile Include="hash.cc">
+      <Filter>Файлы исходного кода\BinExport</Filter>
+    </ClCompile>
+    <ClCompile Include="idb_export.cc">
+      <Filter>Файлы исходного кода\BinExport</Filter>
+    </ClCompile>
+    <ClCompile Include="library_manager.cc">
+      <Filter>Файлы исходного кода\BinExport</Filter>
+    </ClCompile>
+    <ClCompile Include="logging.cc">
+      <Filter>Файлы исходного кода\BinExport</Filter>
+    </ClCompile>
+    <ClCompile Include="operand.cc">
+      <Filter>Файлы исходного кода\BinExport</Filter>
+    </ClCompile>
+    <ClCompile Include="process.cc">
+      <Filter>Файлы исходного кода\BinExport</Filter>
+    </ClCompile>
+    <ClCompile Include="statistics_writer.cc">
+      <Filter>Файлы исходного кода\BinExport</Filter>
+    </ClCompile>
+    <ClCompile Include="testing.cc">
+      <Filter>Файлы исходного кода\BinExport</Filter>
+    </ClCompile>
+    <ClCompile Include="type_system.cc">
+      <Filter>Файлы исходного кода\BinExport</Filter>
+    </ClCompile>
+    <ClCompile Include="virtual_memory.cc">
+      <Filter>Файлы исходного кода\BinExport</Filter>
+    </ClCompile>
+    <ClCompile Include="x86_nop.cc">
+      <Filter>Файлы исходного кода\BinExport</Filter>
+    </ClCompile>
+    <ClCompile Include="third_party\zynamics\binexport\json\jsoncpp.cpp">
+      <Filter>Файлы исходного кода\BinExport</Filter>
+    </ClCompile>
+    <ClCompile Include="instruction.cc">
+      <Filter>Файлы исходного кода\BinExport</Filter>
+    </ClCompile>
+    <ClCompile Include="binexport_class.cpp">
+      <Filter>Form Files</Filter>
+    </ClCompile>
+    <ClCompile Include="db_connection.cpp">
+      <Filter>Form Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug64\moc_start_window.cpp">
+      <Filter>Generated Files\Debug64</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_start_window.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_start_window.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release64\moc_start_window.cpp">
+      <Filter>Generated Files\Release64</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug64\moc_binexport_class.cpp">
+      <Filter>Generated Files\Debug64</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_binexport_class.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_binexport_class.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release64\moc_binexport_class.cpp">
+      <Filter>Generated Files\Release64</Filter>
+    </ClCompile>
+    <ClCompile Include="exporter.cpp">
+      <Filter>Файлы исходного кода\ida_plugin</Filter>
+    </ClCompile>
+    <ClCompile Include="settings.cpp">
+      <Filter>Файлы исходного кода\ida_plugin</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug64\moc_first_window.cpp">
+      <Filter>Generated Files\Debug64</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_first_window.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_first_window.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release64\moc_first_window.cpp">
+      <Filter>Generated Files\Release64</Filter>
+    </ClCompile>
+    <ClCompile Include="key_press_cmdline.cpp">
+      <Filter>Файлы исходного кода\ida_plugin</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug64\moc_key_press_cmdline.cpp">
+      <Filter>Generated Files\Debug64</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_key_press_cmdline.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_key_press_cmdline.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release64\moc_key_press_cmdline.cpp">
+      <Filter>Generated Files\Release64</Filter>
+    </ClCompile>
+    <ClCompile Include="function_utils.cpp">
+      <Filter>Файлы исходного кода\ida_plugin</Filter>
+    </ClCompile>
+    <ClCompile Include="stack_utils.cpp">
+      <Filter>Файлы исходного кода\ida_plugin</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="start_window.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="first_window.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="tree_window.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="notepad_window.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="db_connection.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="db_connection.hpp">
+      <Filter>Заголовочные файлы\ida_plugin</Filter>
+    </CustomBuild>
+    <CustomBuild Include="first_window.hpp">
+      <Filter>Заголовочные файлы\ida_plugin</Filter>
+    </CustomBuild>
+    <CustomBuild Include="key_press_eater.hpp">
+      <Filter>Заголовочные файлы\ida_plugin</Filter>
+    </CustomBuild>
+    <CustomBuild Include="myactions.h">
+      <Filter>Заголовочные файлы\ida_plugin</Filter>
+    </CustomBuild>
+    <CustomBuild Include="notepad_window.hpp">
+      <Filter>Заголовочные файлы\ida_plugin</Filter>
+    </CustomBuild>
+    <CustomBuild Include="start_window.hpp">
+      <Filter>Заголовочные файлы\ida_plugin</Filter>
+    </CustomBuild>
+    <CustomBuild Include="tree_window.hpp">
+      <Filter>Заголовочные файлы\ida_plugin</Filter>
+    </CustomBuild>
+    <CustomBuild Include="binexport_class.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="binexport_class.hpp">
+      <Filter>Заголовочные файлы\ida_plugin</Filter>
+    </CustomBuild>
+    <CustomBuild Include="key_press_cmdline.h">
+      <Filter>Заголовочные файлы\ida_plugin</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="arm.h">
+      <Filter>Заголовочные файлы\BinExport_Ida</Filter>
+    </ClInclude>
+    <ClInclude Include="dalvik.h">
+      <Filter>Заголовочные файлы\BinExport_Ida</Filter>
+    </ClInclude>
+    <ClInclude Include="digest.h">
+      <Filter>Заголовочные файлы\BinExport_Ida</Filter>
+    </ClInclude>
+    <ClInclude Include="flow_analysis.h">
+      <Filter>Заголовочные файлы\BinExport_Ida</Filter>
+    </ClInclude>
+    <ClInclude Include="generic.h">
+      <Filter>Заголовочные файлы\BinExport_Ida</Filter>
+    </ClInclude>
+    <ClInclude Include="log_sink.h">
+      <Filter>Заголовочные файлы\BinExport_Ida</Filter>
+    </ClInclude>
+    <ClInclude Include="metapc.h">
+      <Filter>Заголовочные файлы\BinExport_Ida</Filter>
+    </ClInclude>
+    <ClInclude Include="mips.h">
+      <Filter>Заголовочные файлы\BinExport_Ida</Filter>
+    </ClInclude>
+    <ClInclude Include="names.h">
+      <Filter>Заголовочные файлы\BinExport_Ida</Filter>
+    </ClInclude>
+    <ClInclude Include="plugin.h">
+      <Filter>Заголовочные файлы\BinExport_Ida</Filter>
+    </ClInclude>
+    <ClInclude Include="ppc.h">
+      <Filter>Заголовочные файлы\BinExport_Ida</Filter>
+    </ClInclude>
+    <ClInclude Include="types_container.h">
+      <Filter>Заголовочные файлы\BinExport_Ida</Filter>
+    </ClInclude>
+    <ClInclude Include="ui.h">
+      <Filter>Заголовочные файлы\BinExport_Ida</Filter>
+    </ClInclude>
+    <ClInclude Include="util.h">
+      <Filter>Заголовочные файлы\BinExport_Ida</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\debugging\internal\address_is_readable.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\zynamics\binexport\address_references.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\algorithm\algorithm.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\types\any.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\zynamics\binexport\architectures.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\strings\internal\str_format\arg.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\strings\ascii.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\base\internal\atomic_hook.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\base\internal\atomic_hook_test_helper.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\base\attributes.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\types\bad_any_cast.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\types\bad_optional_access.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\types\bad_variant_access.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\synchronization\barrier.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\zynamics\binexport\base_types.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\zynamics\binexport\basic_block.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\random\bernoulli_distribution.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\random\beta_distribution.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\zynamics\binexport\binaryninjaapi.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\zynamics\binexport\binaryninjacore.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\strings\internal\str_format\bind.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\functional\bind_front.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\zynamics\binexport\binexport.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\zynamics\binexport\binexport2.pb.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\zynamics\binexport\binexport2_writer.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\random\bit_gen_ref.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\base\internal\bits.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\synchronization\blocking_counter.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\container\internal\btree.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\container\internal\btree_container.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\container\btree_map.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\container\btree_set.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\container\btree_test.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\zynamics\binexport\reader\call_graph.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\zynamics\binexport\call_graph.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\base\call_once.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\base\casts.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\strings\internal\char_map.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\strings\charconv.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\strings\internal\charconv_bigint.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\strings\internal\charconv_parse.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\strings\internal\str_format\checker.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\random\internal\chi_square.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\hash\internal\city.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\time\internal\cctz\include\cctz\civil_time.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\time\civil_time.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\time\internal\cctz\include\cctz\civil_time_detail.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\time\clock.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\flags\commandlineflag.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\flags\internal\commandlineflag.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\zynamics\binexport\comment.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\container\internal\common.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\types\compare.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\container\internal\compressed_tuple.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\flags\config.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\base\config.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\types\internal\conformance_aliases.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\types\internal\conformance_archetype.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\types\internal\conformance_profile.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\types\internal\conformance_testing.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\types\internal\conformance_testing_helpers.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\base\const_init.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\algorithm\container.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\container\internal\container_memory.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\strings\cord.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\strings\internal\cord_internal.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\strings\internal\cord_rep_flat.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\strings\cord_test_helpers.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\container\internal\counting_allocator.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\synchronization\internal\create_thread_identity.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\base\internal\cycleclock.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\flags\declare.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\debugging\internal\demangle.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\base\internal\direct_mmap.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\random\discrete_distribution.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\random\internal\distribution_caller.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\random\internal\distribution_test_util.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\random\distributions.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\zynamics\binexport\dump_writer.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\base\dynamic_annotations.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\base\internal\dynamic_annotations.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\zynamics\binexport\edge.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\debugging\internal\elf_mem_image.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\base\internal\endian.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\zynamics\binexport\entry_point.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\base\internal\errno_saver.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\strings\internal\escaping.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\strings\escaping.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\strings\internal\escaping_test_common.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\debugging\internal\examine_stack.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\base\internal\exception_safety_testing.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\base\internal\exception_testing.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\random\internal\explicit_seed_seq.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\base\internal\exponential_biased.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\random\exponential_distribution.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\zynamics\binexport\expression.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\strings\internal\str_format\extension.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\debugging\failure_signal_handler.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\base\internal\fast_type_id.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\random\internal\fast_uniform_bits.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\random\internal\fastmath.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\zynamics\binexport\util\filesystem.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\container\fixed_array.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\flags\internal\flag.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\flags\flag.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\container\flat_hash_map.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\container\flat_hash_set.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\strings\internal\str_format\float_conversion.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\zynamics\binexport\flow_analysis.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\zynamics\binexport\flow_graph.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\zynamics\binexport\reader\flow_graph.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\zynamics\binexport\util\format.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\functional\internal\front_binder.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\zynamics\binexport\function.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\functional\function_ref.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\functional\internal\function_ref.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\synchronization\internal\futex.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\random\gaussian_distribution.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\random\internal\generate_real.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\zynamics\binexport\reader\graph_utility.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\synchronization\internal\graphcycles.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\hash\internal\hash.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\hash\hash.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\zynamics\binexport\hash.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\container\internal\hash_function_defaults.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\container\internal\hash_generator_testing.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\container\internal\hash_policy_testing.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\container\internal\hash_policy_traits.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\hash\hash_testing.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\container\internal\hashtable_debug.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\container\internal\hashtable_debug_hooks.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\container\internal\hashtablez_sampler.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\container\internal\have_sse.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\base\internal\hide_ptr.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\zynamics\binexport\util\idb_export.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\base\internal\identity.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\base\internal\inline_variable.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\base\internal\inline_variable_testing.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\container\internal\inlined_vector.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\container\inlined_vector.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\zynamics\binexport\reader\instruction.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\zynamics\binexport\instruction.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\numeric\int128.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\base\internal\invoke.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\random\internal\iostream_state_saver.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\zynamics\binexport\json\json.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\zynamics\binexport\json\json-forwards.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\synchronization\internal\kernel_timeout.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\container\internal\layout.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\debugging\leak_check.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\zynamics\binexport\library_manager.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\base\log_severity.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\zynamics\binexport\binaryninja\log_sink.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\random\log_uniform_int_distribution.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\zynamics\binexport\util\logging.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\base\internal\low_level_alloc.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\base\internal\low_level_scheduling.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\base\macros.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\flags\marshalling.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\strings\match.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\memory\memory.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\strings\internal\memutil.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\random\mock_distributions.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\random\internal\mock_helpers.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\random\internal\mock_overload_set.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\random\mocking_bit_gen.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\synchronization\mutex.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\random\internal\nanobenchmark.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\zynamics\binexport\nested_iterator.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\container\node_hash_map.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\container\internal\node_hash_policy.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\container\node_hash_set.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\random\internal\nonsecure_base.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\synchronization\notification.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\strings\numbers.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\strings\internal\numbers_test_common.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\zynamics\binexport\operand.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\base\optimization.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\types\internal\optional.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\types\optional.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\base\options.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\strings\internal\ostringstream.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\strings\internal\str_format\output.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\types\internal\parentheses.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\flags\parse.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\flags\internal\parse.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\strings\internal\str_format\parser.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\flags\internal\path_util.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\random\internal\pcg_engine.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\synchronization\internal\per_thread_sem.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\base\internal\per_thread_tls.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\base\internal\periodic_sampler.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\random\internal\platform.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\random\poisson_distribution.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\base\policy_checks.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\random\internal\pool_urbg.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\base\port.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\strings\internal\pow10_helper.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\base\internal\pretty_function.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\flags\internal\private_handle_accessor.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\zynamics\binexport\util\process.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\flags\internal\program_name.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\random\internal\randen.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\random\internal\randen_detect.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\random\internal\randen_engine.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\random\internal\randen_hwaes.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\random\internal\randen_slow.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\random\internal\randen_traits.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\random\random.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\zynamics\binexport\range.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\container\internal\raw_hash_map.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\container\internal\raw_hash_set.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\base\internal\raw_logging.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\flags\reflection.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\flags\internal\registry.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\strings\internal\resize_uninitialized.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\random\internal\salted_seed_seq.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\base\internal\scheduling_mode.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\base\internal\scoped_set_env.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\random\seed_gen_exception.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\random\internal\seed_material.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\random\seed_sequences.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\random\internal\sequence_urbg.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\types\span.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\types\internal\span.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\base\internal\spinlock.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\base\internal\spinlock_wait.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\hash\internal\spy_hash_state.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\debugging\internal\stack_consumption.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\debugging\stacktrace.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\debugging\internal\stacktrace_config.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\zynamics\binexport\statistics_writer.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\status\status.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\status\internal\status_internal.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\zynamics\binexport\util\status_macros.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\zynamics\binexport\util\status_matchers.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\status\status_payload_printer.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\status\statusor.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\status\internal\statusor_internal.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\strings\internal\stl_type_traits.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\strings\str_cat.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\strings\str_format.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\strings\str_join.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\strings\internal\str_join_internal.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\strings\str_replace.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\strings\str_split.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\strings\internal\str_split_internal.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\base\internal\strerror.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\strings\internal\string_constant.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\strings\string_view.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\strings\strip.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\strings\substitute.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\debugging\internal\symbolize.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\debugging\symbolize.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\base\internal\sysinfo.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\container\internal\test_instance_tracker.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\time\internal\test_util.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\zynamics\binexport\testing.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\base\thread_annotations.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\base\internal\thread_annotations.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\base\internal\thread_identity.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\synchronization\internal\thread_pool.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\base\internal\throw_delegate.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\time\time.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\time\internal\cctz\include\cctz\time_zone.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\time\internal\cctz\src\time_zone_fixed.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\time\internal\cctz\src\time_zone_if.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\time\internal\cctz\src\time_zone_impl.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\time\internal\cctz\src\time_zone_info.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\time\internal\cctz\src\time_zone_libc.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\time\internal\cctz\src\time_zone_posix.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\zynamics\binexport\util\timer.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\container\internal\tracked.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\random\internal\traits.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\types\internal\transform_args.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\base\internal\tsan_mutex_interface.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\zynamics\binexport\type_system.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\meta\type_traits.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\zynamics\binexport\types.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\zynamics\binexport\types_container.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\time\internal\cctz\src\tzfile.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\base\internal\unaligned_access.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\random\internal\uniform_helper.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\random\uniform_int_distribution.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\random\uniform_real_distribution.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\container\internal\unordered_map_constructor_test.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\container\internal\unordered_map_lookup_test.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\container\internal\unordered_map_members_test.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\container\internal\unordered_map_modifiers_test.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\container\internal\unordered_set_constructor_test.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\container\internal\unordered_set_lookup_test.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\container\internal\unordered_set_members_test.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\container\internal\unordered_set_modifiers_test.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\base\internal\unscaledcycleclock.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\flags\internal\usage.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\flags\usage.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\flags\usage_config.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\strings\internal\utf8.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\utility\utility.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\types\internal\variant.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\types\variant.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\debugging\internal\vdso_support.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\zynamics\binexport\version.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\zynamics\binexport\virtual_memory.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\synchronization\internal\waiter.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\random\internal\wide_multiply.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\zynamics\binexport\writer.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\hash\internal\wyhash.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\zynamics\binexport\x86_nop.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\random\zipf_distribution.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\absl\time\internal\cctz\include\cctz\zone_info_source.h">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\zynamics\binexport\binaryninja\main_plugin.h">
+      <Filter>Заголовочные файлы\BinExport_Ida</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_binexport_class.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_db_connection.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_first_window.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_notepad_window.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_start_window.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_tree_window.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="pe_heders.h">
+      <Filter>Заголовочные файлы\ida_plugin</Filter>
+    </ClInclude>
+    <ClInclude Include="highlight.h">
+      <Filter>Заголовочные файлы\ida_plugin</Filter>
+    </ClInclude>
+    <ClInclude Include="help_functions.h">
+      <Filter>Заголовочные файлы\ida_plugin</Filter>
+    </ClInclude>
+    <ClInclude Include="all_include.h">
+      <Filter>Заголовочные файлы\ida_plugin</Filter>
+    </ClInclude>
+    <ClInclude Include="exporter.h">
+      <Filter>Заголовочные файлы\ida_plugin</Filter>
+    </ClInclude>
+    <ClInclude Include="settings.h">
+      <Filter>Заголовочные файлы\ida_plugin</Filter>
+    </ClInclude>
+    <ClInclude Include="function_utils.h">
+      <Filter>Заголовочные файлы\ida_plugin</Filter>
+    </ClInclude>
+    <ClInclude Include="stack_utils.h">
+      <Filter>Заголовочные файлы\ida_plugin</Filter>
+    </ClInclude>
+    <ClInclude Include="debug_log.h">
+      <Filter>Заголовочные файлы\ida_plugin</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="begin_idasdk.inc">
+      <Filter>Заголовочные файлы\BinExport_Ida</Filter>
+    </None>
+    <None Include="end_idasdk.inc">
+      <Filter>Заголовочные файлы\BinExport_Ida</Filter>
+    </None>
+    <None Include="third_party\absl\time\internal\get_current_time_chrono.inc">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </None>
+    <None Include="third_party\absl\time\internal\get_current_time_posix.inc">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </None>
+    <None Include="third_party\absl\numeric\int128_have_intrinsic.inc">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </None>
+    <None Include="third_party\absl\numeric\int128_no_intrinsic.inc">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </None>
+    <None Include="third_party\absl\base\internal\spinlock_akaros.inc">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </None>
+    <None Include="third_party\absl\base\internal\spinlock_linux.inc">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </None>
+    <None Include="third_party\absl\base\internal\spinlock_posix.inc">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </None>
+    <None Include="third_party\absl\base\internal\spinlock_win32.inc">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </None>
+    <None Include="third_party\absl\debugging\internal\stacktrace_aarch64-inl.inc">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </None>
+    <None Include="third_party\absl\debugging\internal\stacktrace_arm-inl.inc">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </None>
+    <None Include="third_party\absl\debugging\internal\stacktrace_generic-inl.inc">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </None>
+    <None Include="third_party\absl\debugging\internal\stacktrace_powerpc-inl.inc">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </None>
+    <None Include="third_party\absl\debugging\internal\stacktrace_unimplemented-inl.inc">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </None>
+    <None Include="third_party\absl\debugging\internal\stacktrace_win32-inl.inc">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </None>
+    <None Include="third_party\absl\debugging\internal\stacktrace_x86-inl.inc">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </None>
+    <None Include="third_party\absl\debugging\symbolize_darwin.inc">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </None>
+    <None Include="third_party\absl\debugging\symbolize_elf.inc">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </None>
+    <None Include="third_party\absl\debugging\symbolize_unimplemented.inc">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </None>
+    <None Include="third_party\absl\debugging\symbolize_win32.inc">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </None>
+    <None Include="third_party\absl\time\internal\zoneinfo.inc">
+      <Filter>Заголовочные файлы\Third_party</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="BinexportDebugLib.txt">
+      <Filter>Файлы ресурсов</Filter>
+    </Text>
+    <Text Include="BinexportReleaseLib.txt">
+      <Filter>Файлы ресурсов</Filter>
+    </Text>
+    <Text Include="BinexportBuildLib.txt">
+      <Filter>Файлы ресурсов</Filter>
+    </Text>
+    <Text Include="Где заголовки от этих файлов.txt">
+      <Filter>Файлы исходного кода\BinExport</Filter>
+    </Text>
+    <Text Include="stream_вывод_текстовик.txt">
+      <Filter>Файлы ресурсов</Filter>
+    </Text>
+    <Text Include="Порядок  writer_ida_db.txt">
+      <Filter>Файлы ресурсов</Filter>
+    </Text>
+  </ItemGroup>
+</Project>

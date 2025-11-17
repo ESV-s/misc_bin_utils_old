@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>DBConnection</class>
+ <widget class="QWidget" name="DBConnection">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>719</width>
+    <height>155</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>DBConnection</string>
+  </property>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>20</y>
+     <width>221</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>SQL instance name</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>50</y>
+     <width>291</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="toolTip">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The plugin uses the default connection &lt;br/&gt;Current Windows user (built-in security). &lt;br/&gt;All you need to do is specify the name of the SQL instance ...&lt;br/&gt;LOCALHOST will be added automatically...&lt;/p&gt;&lt;p&gt;Плагин использует соединение по умолчанию &lt;br/&gt;Текущий пользователь Windows (встроенная безопасность). &lt;br/&gt;Всё что нужно сделать - это указать имя экземпляра SQL ...&lt;br/&gt;LOCALHOST будет добавлено автоматически ...&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>90</y>
+     <width>121</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="toolTip">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If this doesn't work for you, check in the ODBC Custom DSN settings with the name &amp;quot;SQL Server&amp;quot;.&lt;br/&gt;&lt;br/&gt;Если у вас это не работает, проверьте в настройках ODBC Пользовательский DSN с именем &amp;quot;SQL Server&amp;quot;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+   <property name="text">
+    <string>DRIVER={SQL Server};</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_link">
+   <property name="geometry">
+    <rect>
+     <x>190</x>
+     <y>90</y>
+     <width>611</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="toolTipDuration">
+    <number>2</number>
+   </property>
+   <property name="text">
+    <string>About ODBC drivers</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton">
+   <property name="geometry">
+    <rect>
+     <x>570</x>
+     <y>110</y>
+     <width>75</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Ok</string>
+   </property>
+  </widget>
+  <widget class="QToolButton" name="toolButton_HelpShow">
+   <property name="geometry">
+    <rect>
+     <x>160</x>
+     <y>20</y>
+     <width>15</width>
+     <height>15</height>
+    </rect>
+   </property>
+   <property name="toolTip">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;justify&quot;&gt;Show Help about ODBC and SQL instance name ...&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+   <property name="text">
+    <string>?</string>
+   </property>
+  </widget>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>DBConnection</receiver>
+   <slot>AddSetting()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>501</x>
+     <y>131</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>603</x>
+     <y>125</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButton_HelpShow</sender>
+   <signal>clicked()</signal>
+   <receiver>DBConnection</receiver>
+   <slot>FormSetHelp()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>168</x>
+     <y>28</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>301</x>
+     <y>17</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>AddSetting()</slot>
+  <slot>FormSetHelp()</slot>
+ </slots>
+</ui>

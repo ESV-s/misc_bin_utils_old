@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ImportGroup Label="PropertySheets" />
+  <PropertyGroup Label="UserMacros">
+    <IDA76_DIR>F:\IDA_Pro_76\ida76sp1\</IDA76_DIR>
+    <!-- задаем макрос где IDA76_DIR  = F:\IDA_Pro_76\ida76sp1\ -->
+    <QT_IDA>D:\QT_IDA_76\</QT_IDA>
+    <!-- задаем макрос где QT_IDA 	  = D:\QT_IDA_76\           -->
+    <IDA_76_SDK>D:\idasdk76\</IDA_76_SDK>
+    <Qt_ANGLE>C:\Qt563\5.6.3\msvc2015_64\include\QtANGLE\</Qt_ANGLE>
+    <!-- задаем макрос где IDA_76_SDK = D:\idasdk76\            -->
+  </PropertyGroup>
+  <PropertyGroup />
+  <ItemDefinitionGroup />
+  <ItemGroup>
+    <!-- Теперь зададим как переменные записаны в файле конфигурации -->
+    <BuildMacro Include="IDA76_DIR">
+      <Value>$(IDA76_DIR)</Value>
+    </BuildMacro>
+    <BuildMacro Include="QT_IDA">
+      <Value>$(QT_IDA)</Value>
+    </BuildMacro>
+    <BuildMacro Include="IDA_76_SDK">
+      <Value>$(IDA_76_SDK)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Qt_ANGLE">
+      <Value>$(Qt_ANGLE)</Value>
+    </BuildMacro>
+    <!-- Конец как переменные записаны в файле конфигурации -->
+  </ItemGroup>
+</Project>

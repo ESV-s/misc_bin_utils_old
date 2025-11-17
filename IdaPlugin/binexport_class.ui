@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>BinExportClass</class>
+ <widget class="QWidget" name="BinExportClass">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>470</width>
+    <height>130</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>470</width>
+    <height>130</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>470</width>
+    <height>130</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>BinExport Realisation</string>
+  </property>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>10</y>
+     <width>581</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>This realization became possible thanks to the project google/binexport. 
+More details at https://github.com/google/binexport</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="button_bin_export">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>70</y>
+     <width>100</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Binary Export</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="button_text_export">
+   <property name="geometry">
+    <rect>
+     <x>140</x>
+     <y>70</y>
+     <width>100</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Text Export</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="button_statistic_export">
+   <property name="geometry">
+    <rect>
+     <x>260</x>
+     <y>70</y>
+     <width>100</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Statistics Export</string>
+   </property>
+  </widget>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>button_bin_export</sender>
+   <signal>clicked()</signal>
+   <receiver>BinExportClass</receiver>
+   <slot>binary_export()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>82</x>
+     <y>84</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>119</x>
+     <y>99</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>button_text_export</sender>
+   <signal>clicked()</signal>
+   <receiver>BinExportClass</receiver>
+   <slot>text_export()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>215</x>
+     <y>83</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>251</x>
+     <y>97</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>button_statistic_export</sender>
+   <signal>clicked()</signal>
+   <receiver>BinExportClass</receiver>
+   <slot>statistic_export()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>328</x>
+     <y>76</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>390</x>
+     <y>96</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>binary_export()</slot>
+  <slot>text_export()</slot>
+  <slot>statistic_export()</slot>
+  <slot>slot2()</slot>
+ </slots>
+</ui>

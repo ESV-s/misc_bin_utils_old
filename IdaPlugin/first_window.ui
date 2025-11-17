@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>FirstWindow</class>
+ <widget class="QWidget" name="FirstWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>703</width>
+    <height>459</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Setting Window</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QCheckBox::hover {
+	color: rgb(85, 0, 255);
+}
+</string>
+  </property>
+  <widget class="QCheckBox" name="checkBox_Scylla">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>30</y>
+     <width>141</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="toolTip">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;if you use ScyllaHide - install this checkbox and the plugin will know about Scylla ...&lt;br/&gt;&lt;br/&gt;если вы используете ScyllaHide - установите этот чек бокс &lt;br/&gt;и плагин будет знать о Scylla ...&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <property name="text">
+    <string>Using Scylla Hide</string>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="checkBox_MSSQL">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>60</y>
+     <width>141</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="toolTip">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;this checkbox will allow you to use a connection to a MSSQL database ...&lt;br/&gt;&lt;br/&gt;данный чек бокс позволит вам использовать соединение с базой данных MSSQL ...&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+   <property name="text">
+    <string>Using MSSQL db</string>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="checkBox_Start_after_debug">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>90</y>
+     <width>131</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="toolTip">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;automatic launch of the plug-in after debugging is completed ...&lt;br/&gt;&lt;br/&gt;автоматический запуск плагина после завершения отладки ...&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+   <property name="text">
+    <string>Start after debug</string>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="checkBox_coloring">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>120</y>
+     <width>141</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="toolTip">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;highlight functions by color based on data received from binexport ...&lt;br/&gt;&lt;br/&gt;выделить функции цветом на основании данных полученных от binexport ...&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+   <property name="text">
+    <string>Functions into color</string>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="checkBox_PrintInfo">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>150</y>
+     <width>111</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="toolTip">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;output information into window ...&lt;br/&gt;&lt;br/&gt;вывод информации в output окно  ...&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+   <property name="text">
+    <string>Print Info</string>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="checkBox_FunctionData">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>185</y>
+     <width>121</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="toolTip">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;output information about functions ...&lt;br/&gt;&lt;br/&gt;вывод информации о функциях ...&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+   <property name="text">
+    <string>Functions Data</string>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="checkBox_MangledName">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>200</y>
+     <width>121</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="toolTip">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;show mangled function name ...&lt;br/&gt;&lt;br/&gt;показывать искаженные имена функций ...&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+   <property name="text">
+    <string>Mangled Name</string>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="checkBox_OutputCleaning">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>215</y>
+     <width>121</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="toolTip">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;clean output window before start plugin ...&lt;br/&gt;&lt;br/&gt;очищать Output Window перед запуском плагина ...&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+   <property name="text">
+    <string>Output Cleaning</string>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="checkBox_FixedLocation">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>235</y>
+     <width>141</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="toolTip">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Plugin Window has fixed location ...&lt;br/&gt;&lt;br/&gt;Окно плагина имеет фиксированное расположение  ...&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+   <property name="text">
+    <string>Fixed Location View </string>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="checkBox_ContainerSize">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>170</y>
+     <width>121</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="toolTip">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;output information about container size ...&lt;br/&gt;&lt;br/&gt;вывод информации о размерах контеинеров данных ...&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+   <property name="text">
+    <string>Container size</string>
+   </property>
+  </widget>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>checkBox_Scylla</sender>
+   <signal>clicked()</signal>
+   <receiver>FirstWindow</receiver>
+   <slot>AddScylla()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>72</x>
+     <y>37</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>147</x>
+     <y>33</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBox_MSSQL</sender>
+   <signal>clicked()</signal>
+   <receiver>FirstWindow</receiver>
+   <slot>AddMSSQL()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>135</x>
+     <y>67</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>201</x>
+     <y>66</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBox_Start_after_debug</sender>
+   <signal>clicked()</signal>
+   <receiver>FirstWindow</receiver>
+   <slot>StartAfterDebug()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>71</x>
+     <y>101</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>202</x>
+     <y>111</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBox_coloring</sender>
+   <signal>clicked()</signal>
+   <receiver>FirstWindow</receiver>
+   <slot>ColorFunctions()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>94</x>
+     <y>129</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>240</x>
+     <y>134</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBox_PrintInfo</sender>
+   <signal>clicked()</signal>
+   <receiver>FirstWindow</receiver>
+   <slot>PrintInfo()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>59</x>
+     <y>158</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>203</x>
+     <y>171</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBox_FunctionData</sender>
+   <signal>clicked()</signal>
+   <receiver>FirstWindow</receiver>
+   <slot>PrintInfoFunctionData()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>135</x>
+     <y>196</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>305</x>
+     <y>177</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBox_MangledName</sender>
+   <signal>clicked()</signal>
+   <receiver>FirstWindow</receiver>
+   <slot>PrintInfoMangledName()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>164</x>
+     <y>211</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>271</x>
+     <y>193</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBox_OutputCleaning</sender>
+   <signal>clicked()</signal>
+   <receiver>FirstWindow</receiver>
+   <slot>PrintInfoOutputCleaning()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>170</x>
+     <y>227</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>324</x>
+     <y>212</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBox_FixedLocation</sender>
+   <signal>clicked()</signal>
+   <receiver>FirstWindow</receiver>
+   <slot>FixedLocation()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>163</x>
+     <y>249</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>216</x>
+     <y>230</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBox_ContainerSize</sender>
+   <signal>clicked()</signal>
+   <receiver>FirstWindow</receiver>
+   <slot>PrintInfoContainerSize()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>175</x>
+     <y>177</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>195</x>
+     <y>145</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>AddScylla()</slot>
+  <slot>AddMSSQL()</slot>
+  <slot>StartAfterDebug()</slot>
+  <slot>ColorFunctions()</slot>
+  <slot>PrintInfo()</slot>
+  <slot>PrintInfoFunctionData()</slot>
+  <slot>PrintInfoMangledName()</slot>
+  <slot>PrintInfoOutputCleaning()</slot>
+  <slot>FixedLocation()</slot>
+  <slot>PrintInfoContainerSize()</slot>
+ </slots>
+</ui>

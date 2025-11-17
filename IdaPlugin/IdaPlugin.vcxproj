@@ -1,0 +1,1116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!--список конфигураций проекта-->
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug64|x64">
+      <Configuration>Debug64</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release64|x64">
+      <Configuration>Release64</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{8C56E2ED-C5F7-4F7D-A0E9-5134A5EC7830}</ProjectGuid>
+    <RootNamespace>IdaPlugin</RootNamespace>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <keyword>Qt4VSv1.0</keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <!-- имя конфигурации -->
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <!--Тип конфигурации-->
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <!-- набор инструментов платформы -->
+    <PlatformToolset>v140</PlatformToolset>
+    <!-- Использовать многобайтовую кодировку -->
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release64|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="ProjectPropertySheet.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="ProjectPropertySheet.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="ProjectPropertySheet.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release64|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="ProjectPropertySheet.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <TargetExt>.dll</TargetExt>
+    <OutDir>$(IDA76_DIR)plugins\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">
+    <TargetExt>.dll</TargetExt>
+    <OutDir>$(IDA76_DIR)plugins\</OutDir>
+    <TargetName>$(ProjectName)64</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <TargetExt>.dll</TargetExt>
+    <OutDir>$(IDA76_DIR)plugins\</OutDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">
+    <TargetExt>.dll</TargetExt>
+    <OutDir>$(IDA76_DIR)plugins\</OutDir>
+    <TargetName>$(ProjectName)64</TargetName>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>
+      </SDLCheck>
+      <AdditionalIncludeDirectories>$(QT_IDA)include\;$(IDA_76_SDK)include\;.\GeneratedFiles;.\;$(QTDIR)\include\QtUiTools;$(QTDIR)\include\Qt3DCore;$(QTDIR)\include\QtGui;D:\binexport_sdk\;S(ProjectDir);D:\boost_1_77_0;%(AdditionalIncludeDirectories);$(Qt_ANGLE)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;__NT__;__X64__;__IDP__;USE_DANGEROUS_FUNCTIONS;USE_STANDARD_FILE_FUNCTIONS;_CRT_SECURE_NO_WARNINGS;_SILENCE_ALL_CXX17_DEPRECATION_WARNINGS;NOMINMAX;WIN32_LEAN_AND_MEAN;binexport12_ida_dll_EXPORTS;_DEBUG;_USRDLL;__QT__;QT_NAMESPACE=QT;QT_UITOOLS_LIB;__DEFINE_PH__;QT_DLL;QT_3DCORE_LIB;QT_GUI_LIB</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <AdditionalOptions>%(AdditionalOptions) -std:c++latest</AdditionalOptions>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <MinimalRebuild>false</MinimalRebuild>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <DisableSpecificWarnings>4018;4244;4267</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>$(QT_IDA)lib\;$(IDA_76_SDK)\lib\x64_win_vc_32;$(IDA_76_SDK)lib\x64_win_qt;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>$(IDA_76_SDK)lib\x64_win_vc_32\ida.lib;D:\binexport_sdk\lib\debug\binexport_plugin_shared_ea32.lib;D:\binexport_sdk\lib\debug\absl_bad_optional_access.lib;D:\binexport_sdk\lib\debug\absl_hash.lib;D:\binexport_sdk\lib\debug\absl_strings.lib;D:\binexport_sdk\lib\debug\absl_time.lib;D:\binexport_sdk\lib\debug\binexport_core.lib;crypt32.lib;secur32.lib;shlwapi.lib;ws2_32.lib;wldap32.lib;D:\binexport_sdk\lib\debug\binexport_shared.lib;D:\binexport_sdk\lib\debug\absl_city.lib;D:\binexport_sdk\lib\debug\absl_wyhash.lib;D:\binexport_sdk\lib\debug\absl_raw_hash_set.lib;D:\binexport_sdk\lib\debug\absl_hashtablez_sampler.lib;D:\binexport_sdk\lib\debug\absl_exponential_biased.lib;D:\binexport_sdk\lib\debug\absl_synchronization.lib;D:\binexport_sdk\lib\debug\absl_graphcycles_internal.lib;D:\binexport_sdk\lib\debug\absl_civil_time.lib;D:\binexport_sdk\lib\debug\absl_time_zone.lib;D:\binexport_sdk\lib\debug\libprotobufd.lib;D:\binexport_sdk\lib\debug\absl_statusor.lib;D:\binexport_sdk\lib\debug\absl_bad_variant_access.lib;D:\binexport_sdk\lib\debug\absl_status.lib;D:\binexport_sdk\lib\debug\absl_cord.lib;D:\binexport_sdk\lib\debug\absl_stacktrace.lib;D:\binexport_sdk\lib\debug\absl_symbolize.lib;D:\binexport_sdk\lib\debug\absl_malloc_internal.lib;D:\binexport_sdk\lib\debug\absl_debugging_internal.lib;D:\binexport_sdk\lib\debug\absl_demangle_internal.lib;D:\binexport_sdk\lib\debug\absl_str_format_internal.lib;D:\binexport_sdk\lib\debug\absl_strings_internal.lib;D:\binexport_sdk\lib\debug\absl_base.lib;D:\binexport_sdk\lib\debug\absl_spinlock_wait.lib;D:\binexport_sdk\lib\debug\absl_int128.lib;D:\binexport_sdk\lib\debug\absl_throw_delegate.lib;D:\binexport_sdk\lib\debug\absl_raw_logging_internal.lib;D:\binexport_sdk\lib\debug\absl_log_severity.lib;-ignore:4221;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;ida.lib;Qt5Core.lib;Qt5Gui.lib;Qt5Widgets.lib;Qt5UiToolsd.lib;Qt53DCored.lib;Qt5Guid.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>
+      </SDLCheck>
+      <AdditionalIncludeDirectories>$(IDA76_DIR)idc;$(QT_IDA)include\;$(IDA_76_SDK)include\;.\GeneratedFiles;.\;$(QTDIR)\include\QtUiTools;$(QTDIR)\include\Qt3DCore;$(QTDIR)\include\QtGui;D:\binexport_sdk\;S(ProjectDir);D:\boost_1_77_0;%(AdditionalIncludeDirectories);$(Qt_ANGLE)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;__EA64__;__NT__;__X64__;__IDP__;USE_DANGEROUS_FUNCTIONS;USE_STANDARD_FILE_FUNCTIONS;_CRT_SECURE_NO_WARNINGS;_SILENCE_ALL_CXX17_DEPRECATION_WARNINGS;NOMINMAX;WIN32_LEAN_AND_MEAN;binexport_ida64_dll_EXPORTS;_DEBUG;_USRDLL;__QT__;QT_NAMESPACE=QT;QT_UITOOLS_LIB;__DEFINE_PH__;QT_DLL;QT_3DCORE_LIB;QT_GUI_LIB</PreprocessorDefinitions>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <MinimalRebuild>false</MinimalRebuild>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <DisableSpecificWarnings>4018;4244;4267</DisableSpecificWarnings>
+      <AdditionalOptions>%(AdditionalOptions) -std:c++latest</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>$(QT_IDA)lib\;$(IDA_76_SDK)\lib\x64_win_vc_64;$(IDA_76_SDK)lib\x64_win_qt;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>$(IDA_76_SDK)lib\x64_win_vc_64\ida.lib;D:\binexport_sdk\lib\debug\*.lib;crypt32.lib;secur32.lib;shlwapi.lib;ws2_32.lib;wldap32.lib;-ignore:4221;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;ida.lib;Qt5Core.lib;Qt5Gui.lib;Qt5Widgets.lib;Qt5UiToolsd.lib;Qt53DCored.lib;Qt5Guid.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ProgramDatabaseFile>$(OutDir)$(TargetName).pdb</ProgramDatabaseFile>
+      <FullProgramDatabaseFile>true</FullProgramDatabaseFile>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>
+      </FunctionLevelLinking>
+      <IntrinsicFunctions>false</IntrinsicFunctions>
+      <SDLCheck>
+      </SDLCheck>
+      <AdditionalIncludeDirectories>$(QT_IDA)include\;$(IDA_76_SDK)include\;.\GeneratedFiles;.\;$(QTDIR)\include\QtUiTools;$(QTDIR)\include\Qt3DCore;$(QTDIR)\include\QtGui;D:\binexport_sdk\;S(ProjectDir);D:\boost_1_77_0;%(AdditionalIncludeDirectories);$(Qt_ANGLE)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;__NT__;__X64__;__IDP__;USE_DANGEROUS_FUNCTIONS;USE_STANDARD_FILE_FUNCTIONS;_CRT_SECURE_NO_WARNINGS;_SILENCE_ALL_CXX17_DEPRECATION_WARNINGS;NOMINMAX;WIN32_LEAN_AND_MEAN;binexport12_ida_dll_EXPORTS;_USRDLL;__QT__;QT_NAMESPACE=QT;QT_UITOOLS_LIB;__DEFINE_PH__;QT_DLL;QT_3DCORE_LIB;QT_GUI_LIB</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <AdditionalOptions>%(AdditionalOptions) -std:c++latest</AdditionalOptions>
+      <DebugInformationFormat />
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <DisableSpecificWarnings>4018;4244;4267</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>
+      </EnableCOMDATFolding>
+      <OptimizeReferences>
+      </OptimizeReferences>
+      <AdditionalLibraryDirectories>$(QT_IDA)lib\;$(IDA_76_SDK)\lib\x64_win_vc_32;$(IDA_76_SDK)lib\x64_win_qt;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>ida.lib;Qt5Core.lib;Qt5Gui.lib;Qt5Widgets.lib;Qt5UiToolsd.lib;Qt53DCored.lib;Qt5Guid.lib;\;$(INHERIT)\;$(IDA_76_SDK)lib\x64_win_vc_32\ida.lib;D:\binexport_sdk\lib\release\binexport_plugin_shared_ea32.lib;D:\binexport_sdk\lib\release\absl_bad_optional_access.lib;D:\binexport_sdk\lib\release\absl_hash.lib;D:\binexport_sdk\lib\release\absl_strings.lib;D:\binexport_sdk\lib\release\absl_time.lib;D:\binexport_sdk\lib\release\binexport_core.lib;crypt32.lib;secur32.lib;shlwapi.lib;ws2_32.lib;wldap32.lib;D:\binexport_sdk\lib\release\binexport_shared.lib;D:\binexport_sdk\lib\release\absl_city.lib;D:\binexport_sdk\lib\release\absl_wyhash.lib;D:\binexport_sdk\lib\release\absl_raw_hash_set.lib;D:\binexport_sdk\lib\release\absl_hashtablez_sampler.lib;D:\binexport_sdk\lib\release\absl_exponential_biased.lib;D:\binexport_sdk\lib\release\absl_synchronization.lib;D:\binexport_sdk\lib\release\absl_graphcycles_internal.lib;D:\binexport_sdk\lib\release\absl_civil_time.lib;D:\binexport_sdk\lib\release\absl_time_zone.lib;D:\binexport_sdk\lib\release\libprotobuf.lib;D:\binexport_sdk\lib\release\absl_statusor.lib;D:\binexport_sdk\lib\release\absl_bad_variant_access.lib;D:\binexport_sdk\lib\release\absl_status.lib;D:\binexport_sdk\lib\release\absl_cord.lib;D:\binexport_sdk\lib\release\absl_stacktrace.lib;D:\binexport_sdk\lib\release\absl_symbolize.lib;D:\binexport_sdk\lib\release\absl_malloc_internal.lib;D:\binexport_sdk\lib\release\absl_debugging_internal.lib;D:\binexport_sdk\lib\release\absl_demangle_internal.lib;D:\binexport_sdk\lib\release\absl_str_format_internal.lib;D:\binexport_sdk\lib\release\absl_strings_internal.lib;D:\binexport_sdk\lib\release\absl_base.lib;D:\binexport_sdk\lib\release\absl_spinlock_wait.lib;D:\binexport_sdk\lib\release\absl_int128.lib;D:\binexport_sdk\lib\release\absl_throw_delegate.lib;D:\binexport_sdk\lib\release\absl_raw_logging_internal.lib;D:\binexport_sdk\lib\release\absl_log_severity.lib;-ignore:4221;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>
+      </FunctionLevelLinking>
+      <IntrinsicFunctions>false</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>$(QT_IDA)include\;$(IDA_76_SDK)include\;.\GeneratedFiles;.\;$(QTDIR)\include\QtUiTools;$(QTDIR)\include\Qt3DCore;$(QTDIR)\include\QtGui;D:\binexport_sdk\;S(ProjectDir);D:\boost_1_77_0;$(IDA76_DIR)idc;%(AdditionalIncludeDirectories);$(Qt_ANGLE)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;__EA64__;__NT__;__X64__;__IDP__;USE_DANGEROUS_FUNCTIONS;USE_STANDARD_FILE_FUNCTIONS;_CRT_SECURE_NO_WARNINGS;_SILENCE_ALL_CXX17_DEPRECATION_WARNINGS;NOMINMAX;WIN32_LEAN_AND_MEAN;binexport_ida64_dll_EXPORTS;_USRDLL;__QT__;QT_NAMESPACE=QT;QT_UITOOLS_LIB;__DEFINE_PH__;QT_DLL;QT_3DCORE_LIB;QT_GUI_LIB</PreprocessorDefinitions>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <DisableSpecificWarnings>4018;4244;4267</DisableSpecificWarnings>
+      <AdditionalOptions>%(AdditionalOptions) -std:c++latest</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>
+      </EnableCOMDATFolding>
+      <OptimizeReferences>
+      </OptimizeReferences>
+      <AdditionalLibraryDirectories>$(QT_IDA)lib\;$(IDA_76_SDK)\lib\x64_win_vc_64;$(IDA_76_SDK)lib\x64_win_qt;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>$(IDA_76_SDK)lib\x64_win_vc_64\ida.lib;D:\binexport_sdk\lib\release\*.lib;crypt32.lib;secur32.lib;shlwapi.lib;ws2_32.lib;wldap32.lib;-ignore:4221;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;ida.lib;Qt5Core.lib;Qt5Gui.lib;Qt5Widgets.lib;Qt5UiToolsd.lib;Qt53DCored.lib;Qt5Guid.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="address_references.cc" />
+    <ClCompile Include="arm.cc" />
+    <ClCompile Include="base_types.cc" />
+    <ClCompile Include="basic_block.cc" />
+    <ClCompile Include="binexport.cc" />
+    <ClCompile Include="binexport2.pb.cc" />
+    <ClCompile Include="binexport2_writer.cc" />
+    <ClCompile Include="binexport_class.cpp" />
+    <ClCompile Include="call_graph.cc" />
+    <ClCompile Include="comment.cc" />
+    <ClCompile Include="dalvik.cc" />
+    <ClCompile Include="db_connection.cpp" />
+    <ClCompile Include="digest.cc" />
+    <ClCompile Include="dump_writer.cc" />
+    <ClCompile Include="edge.cc" />
+    <ClCompile Include="entry_point.cc" />
+    <ClCompile Include="exporter.cpp" />
+    <ClCompile Include="expression.cc" />
+    <ClCompile Include="filesystem.cc" />
+    <ClCompile Include="first_window.cpp" />
+    <ClCompile Include="flow_analysis.cc" />
+    <ClCompile Include="flow_graph.cc" />
+    <ClCompile Include="format.cc" />
+    <ClCompile Include="function.cc" />
+    <ClCompile Include="function_utils.cpp" />
+    <ClCompile Include="GeneratedFiles\Debug64\moc_binexport_class.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug64\moc_db_connection.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug64\moc_first_window.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug64\moc_key_press_cmdline.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug64\moc_key_press_eater.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug64\moc_notepad_window.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug64\moc_start_window.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug64\moc_tree_window.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_binexport_class.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_db_connection.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_first_window.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_key_press_cmdline.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_key_press_eater.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_notepad_window.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_start_window.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_tree_window.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release64\moc_binexport_class.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release64\moc_db_connection.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release64\moc_first_window.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release64\moc_key_press_cmdline.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release64\moc_key_press_eater.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release64\moc_notepad_window.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release64\moc_start_window.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release64\moc_tree_window.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_binexport_class.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_db_connection.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_first_window.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_key_press_cmdline.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_key_press_eater.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_notepad_window.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_start_window.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_tree_window.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="generic.cc" />
+    <ClCompile Include="hash.cc" />
+    <ClCompile Include="help_functions.cpp" />
+    <ClCompile Include="highlight.cpp" />
+    <ClCompile Include="idb_export.cc" />
+    <ClCompile Include="instruction.cc" />
+    <ClCompile Include="key_press_cmdline.cpp" />
+    <ClCompile Include="key_press_eater.cpp" />
+    <ClCompile Include="library_manager.cc" />
+    <ClCompile Include="logging.cc" />
+    <ClCompile Include="log_sink.cc" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="metapc.cc" />
+    <ClCompile Include="mips.cc" />
+    <ClCompile Include="names.cc" />
+    <ClCompile Include="notepad_window.cpp" />
+    <ClCompile Include="operand.cc" />
+    <ClCompile Include="pe_heders.cpp" />
+    <ClCompile Include="ppc.cc" />
+    <ClCompile Include="process.cc" />
+    <ClCompile Include="settings.cpp" />
+    <ClCompile Include="stack_utils.cpp" />
+    <ClCompile Include="start_window.cpp" />
+    <ClCompile Include="statistics_writer.cc" />
+    <ClCompile Include="testing.cc" />
+    <ClCompile Include="third_party\absl\debugging\stacktrace.cc" />
+    <ClCompile Include="third_party\absl\debugging\symbolize.cc" />
+    <ClCompile Include="third_party\zynamics\binexport\json\jsoncpp.cpp" />
+    <ClCompile Include="tree_window.cpp" />
+    <ClCompile Include="types_container.cc" />
+    <ClCompile Include="type_system.cc" />
+    <ClCompile Include="ui.cc" />
+    <ClCompile Include="util.cc" />
+    <ClCompile Include="virtual_memory.cc" />
+    <ClCompile Include="x86_nop.cc" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="myactions.h">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">Moc%27ing myactions.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  "-D\"$(INHERIT)\"" -DWIN32 -D_WINDOWS -D__EA64__ -D__NT__ -D__X64__ -D__IDP__ -DUSE_DANGEROUS_FUNCTIONS -DUSE_STANDARD_FILE_FUNCTIONS -D_CRT_SECURE_NO_WARNINGS -D_SILENCE_ALL_CXX17_DEPRECATION_WARNINGS -DNOMINMAX -DWIN32_LEAN_AND_MEAN -Dbinexport_ida64_dll_EXPORTS -D_DEBUG -D_USRDLL -D__QT__ -DQT_NAMESPACE=QT -DQT_UITOOLS_LIB -D__DEFINE_PH__ -DQT_DLL -DQT_3DCORE_LIB -DQT_GUI_LIB -D_WINDLL -D_MBCS  "-I$(IDA76_DIR)idc" "-I$(QT_IDA)include" "-I$(IDA_76_SDK)include" "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include\QtUiTools" "-I$(QTDIR)\include\Qt3DCore" "-I$(QTDIR)\include\QtGui" "-ID:\binexport_sdk" "-I.\S(ProjectDir)\." "-ID:\boost_1_77_0" "-I\$(INHERIT)\." "-I$(Qt_ANGLE)\."</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing myactions.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  "-D\"$(INHERIT)\"" -DWIN32 -D_WINDOWS -D__NT__ -D__X64__ -D__IDP__ -DUSE_DANGEROUS_FUNCTIONS -DUSE_STANDARD_FILE_FUNCTIONS -D_CRT_SECURE_NO_WARNINGS -D_SILENCE_ALL_CXX17_DEPRECATION_WARNINGS -DNOMINMAX -DWIN32_LEAN_AND_MEAN -Dbinexport12_ida_dll_EXPORTS -D_DEBUG -D_USRDLL -D__QT__ -DQT_NAMESPACE=QT -DQT_UITOOLS_LIB -D__DEFINE_PH__ -DQT_DLL -DQT_3DCORE_LIB -DQT_GUI_LIB -D_WINDLL -D_MBCS  "-I$(QT_IDA)include" "-I$(IDA_76_SDK)include" "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include\QtUiTools" "-I$(QTDIR)\include\Qt3DCore" "-I$(QTDIR)\include\QtGui" "-ID:\binexport_sdk" "-I.\S(ProjectDir)\." "-ID:\boost_1_77_0" "-I\$(INHERIT)\." "-I$(Qt_ANGLE)\."</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Moc%27ing myactions.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  "-D\"$(INHERIT)\"" -DWIN32 -D_WINDOWS -DNDEBUG -D__NT__ -D__X64__ -D__IDP__ -DUSE_DANGEROUS_FUNCTIONS -DUSE_STANDARD_FILE_FUNCTIONS -D_CRT_SECURE_NO_WARNINGS -D_SILENCE_ALL_CXX17_DEPRECATION_WARNINGS -DNOMINMAX -DWIN32_LEAN_AND_MEAN -Dbinexport12_ida_dll_EXPORTS -D_USRDLL -D__QT__ -DQT_NAMESPACE=QT -DQT_UITOOLS_LIB -D__DEFINE_PH__ -DQT_DLL -DQT_3DCORE_LIB -DQT_GUI_LIB -D_WINDLL -D_MBCS  "-I$(QT_IDA)include" "-I$(IDA_76_SDK)include" "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include\QtUiTools" "-I$(QTDIR)\include\Qt3DCore" "-I$(QTDIR)\include\QtGui" "-ID:\binexport_sdk" "-I.\S(ProjectDir)\." "-ID:\boost_1_77_0" "-I\$(INHERIT)\." "-I$(Qt_ANGLE)\."</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">Moc%27ing myactions.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  "-D\"$(INHERIT)\"" -DWIN32 -D_WINDOWS -DNDEBUG -D__EA64__ -D__NT__ -D__X64__ -D__IDP__ -DUSE_DANGEROUS_FUNCTIONS -DUSE_STANDARD_FILE_FUNCTIONS -D_CRT_SECURE_NO_WARNINGS -D_SILENCE_ALL_CXX17_DEPRECATION_WARNINGS -DNOMINMAX -DWIN32_LEAN_AND_MEAN -Dbinexport_ida64_dll_EXPORTS -D_USRDLL -D__QT__ -DQT_NAMESPACE=QT -DQT_UITOOLS_LIB -D__DEFINE_PH__ -DQT_DLL -DQT_3DCORE_LIB -DQT_GUI_LIB -D_WINDLL -D_MBCS  "-I$(QT_IDA)include" "-I$(IDA_76_SDK)include" "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include\QtUiTools" "-I$(QTDIR)\include\Qt3DCore" "-I$(QTDIR)\include\QtGui" "-ID:\binexport_sdk" "-I.\S(ProjectDir)\." "-ID:\boost_1_77_0" "-I$(IDA76_DIR)idc" "-I\$(INHERIT)\." "-I$(Qt_ANGLE)\."</Command>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="start_window.hpp">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">Moc%27ing start_window.hpp...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  "-D\"$(INHERIT)\"" -DWIN32 -D_WINDOWS -D__EA64__ -D__NT__ -D__X64__ -D__IDP__ -DUSE_DANGEROUS_FUNCTIONS -DUSE_STANDARD_FILE_FUNCTIONS -D_CRT_SECURE_NO_WARNINGS -D_SILENCE_ALL_CXX17_DEPRECATION_WARNINGS -DNOMINMAX -DWIN32_LEAN_AND_MEAN -Dbinexport_ida64_dll_EXPORTS -D_DEBUG -D_USRDLL -D__QT__ -DQT_NAMESPACE=QT -DQT_UITOOLS_LIB -D__DEFINE_PH__ -DQT_DLL -DQT_3DCORE_LIB -DQT_GUI_LIB -D_WINDLL -D_MBCS  "-I$(IDA76_DIR)idc" "-I$(QT_IDA)include" "-I$(IDA_76_SDK)include" "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include\QtUiTools" "-I$(QTDIR)\include\Qt3DCore" "-I$(QTDIR)\include\QtGui" "-ID:\binexport_sdk" "-I.\S(ProjectDir)\." "-ID:\boost_1_77_0" "-I\$(INHERIT)\." "-I$(Qt_ANGLE)\."</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing start_window.hpp...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  "-D\"$(INHERIT)\"" -DWIN32 -D_WINDOWS -D__NT__ -D__X64__ -D__IDP__ -DUSE_DANGEROUS_FUNCTIONS -DUSE_STANDARD_FILE_FUNCTIONS -D_CRT_SECURE_NO_WARNINGS -D_SILENCE_ALL_CXX17_DEPRECATION_WARNINGS -DNOMINMAX -DWIN32_LEAN_AND_MEAN -Dbinexport12_ida_dll_EXPORTS -D_DEBUG -D_USRDLL -D__QT__ -DQT_NAMESPACE=QT -DQT_UITOOLS_LIB -D__DEFINE_PH__ -DQT_DLL -DQT_3DCORE_LIB -DQT_GUI_LIB -D_WINDLL -D_MBCS  "-I$(QT_IDA)include" "-I$(IDA_76_SDK)include" "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include\QtUiTools" "-I$(QTDIR)\include\Qt3DCore" "-I$(QTDIR)\include\QtGui" "-ID:\binexport_sdk" "-I.\S(ProjectDir)\." "-ID:\boost_1_77_0" "-I\$(INHERIT)\." "-I$(Qt_ANGLE)\."</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Moc%27ing start_window.hpp...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  "-D\"$(INHERIT)\"" -DWIN32 -D_WINDOWS -DNDEBUG -D__NT__ -D__X64__ -D__IDP__ -DUSE_DANGEROUS_FUNCTIONS -DUSE_STANDARD_FILE_FUNCTIONS -D_CRT_SECURE_NO_WARNINGS -D_SILENCE_ALL_CXX17_DEPRECATION_WARNINGS -DNOMINMAX -DWIN32_LEAN_AND_MEAN -Dbinexport12_ida_dll_EXPORTS -D_USRDLL -D__QT__ -DQT_NAMESPACE=QT -DQT_UITOOLS_LIB -D__DEFINE_PH__ -DQT_DLL -DQT_3DCORE_LIB -DQT_GUI_LIB -D_WINDLL -D_MBCS  "-I$(QT_IDA)include" "-I$(IDA_76_SDK)include" "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include\QtUiTools" "-I$(QTDIR)\include\Qt3DCore" "-I$(QTDIR)\include\QtGui" "-ID:\binexport_sdk" "-I.\S(ProjectDir)\." "-ID:\boost_1_77_0" "-I\$(INHERIT)\." "-I$(Qt_ANGLE)\."</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">Moc%27ing start_window.hpp...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  "-D\"$(INHERIT)\"" -DWIN32 -D_WINDOWS -DNDEBUG -D__EA64__ -D__NT__ -D__X64__ -D__IDP__ -DUSE_DANGEROUS_FUNCTIONS -DUSE_STANDARD_FILE_FUNCTIONS -D_CRT_SECURE_NO_WARNINGS -D_SILENCE_ALL_CXX17_DEPRECATION_WARNINGS -DNOMINMAX -DWIN32_LEAN_AND_MEAN -Dbinexport_ida64_dll_EXPORTS -D_USRDLL -D__QT__ -DQT_NAMESPACE=QT -DQT_UITOOLS_LIB -D__DEFINE_PH__ -DQT_DLL -DQT_3DCORE_LIB -DQT_GUI_LIB -D_WINDLL -D_MBCS  "-I$(QT_IDA)include" "-I$(IDA_76_SDK)include" "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include\QtUiTools" "-I$(QTDIR)\include\Qt3DCore" "-I$(QTDIR)\include\QtGui" "-ID:\binexport_sdk" "-I.\S(ProjectDir)\." "-ID:\boost_1_77_0" "-I$(IDA76_DIR)idc" "-I\$(INHERIT)\." "-I$(Qt_ANGLE)\."</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="start_window.ui">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">$(QTDIR)\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">Uic%27ing %(Identity)...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">.\GeneratedFiles\ui_%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">"$(QTDIR)\bin\uic.exe" -o ".\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Uic%27ing %(Identity)...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\ui_%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QTDIR)\bin\uic.exe" -o ".\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Uic%27ing %(Identity)...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\ui_%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\uic.exe" -o ".\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">$(QTDIR)\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">Uic%27ing %(Identity)...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">.\GeneratedFiles\ui_%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">"$(QTDIR)\bin\uic.exe" -o ".\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="all_include.h" />
+    <CustomBuild Include="binexport_class.hpp">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">Moc%27ing binexport_class.hpp...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  "-D\"$(INHERIT)\"" -DWIN32 -D_WINDOWS -D__EA64__ -D__NT__ -D__X64__ -D__IDP__ -DUSE_DANGEROUS_FUNCTIONS -DUSE_STANDARD_FILE_FUNCTIONS -D_CRT_SECURE_NO_WARNINGS -D_SILENCE_ALL_CXX17_DEPRECATION_WARNINGS -DNOMINMAX -DWIN32_LEAN_AND_MEAN -Dbinexport_ida64_dll_EXPORTS -D_DEBUG -D_USRDLL -D__QT__ -DQT_NAMESPACE=QT -DQT_UITOOLS_LIB -D__DEFINE_PH__ -DQT_DLL -DQT_3DCORE_LIB -DQT_GUI_LIB -D_WINDLL -D_MBCS  "-I$(IDA76_DIR)idc" "-I$(QT_IDA)include" "-I$(IDA_76_SDK)include" "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include\QtUiTools" "-I$(QTDIR)\include\Qt3DCore" "-I$(QTDIR)\include\QtGui" "-ID:\binexport_sdk" "-I.\S(ProjectDir)\." "-ID:\boost_1_77_0" "-I\$(INHERIT)\." "-I$(Qt_ANGLE)\."</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing binexport_class.hpp...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  "-D\"$(INHERIT)\"" -DWIN32 -D_WINDOWS -D__NT__ -D__X64__ -D__IDP__ -DUSE_DANGEROUS_FUNCTIONS -DUSE_STANDARD_FILE_FUNCTIONS -D_CRT_SECURE_NO_WARNINGS -D_SILENCE_ALL_CXX17_DEPRECATION_WARNINGS -DNOMINMAX -DWIN32_LEAN_AND_MEAN -Dbinexport12_ida_dll_EXPORTS -D_DEBUG -D_USRDLL -D__QT__ -DQT_NAMESPACE=QT -DQT_UITOOLS_LIB -D__DEFINE_PH__ -DQT_DLL -DQT_3DCORE_LIB -DQT_GUI_LIB -D_WINDLL -D_MBCS  "-I$(QT_IDA)include" "-I$(IDA_76_SDK)include" "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include\QtUiTools" "-I$(QTDIR)\include\Qt3DCore" "-I$(QTDIR)\include\QtGui" "-ID:\binexport_sdk" "-I.\S(ProjectDir)\." "-ID:\boost_1_77_0" "-I\$(INHERIT)\." "-I$(Qt_ANGLE)\."</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Moc%27ing binexport_class.hpp...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  "-D\"$(INHERIT)\"" -DWIN32 -D_WINDOWS -DNDEBUG -D__NT__ -D__X64__ -D__IDP__ -DUSE_DANGEROUS_FUNCTIONS -DUSE_STANDARD_FILE_FUNCTIONS -D_CRT_SECURE_NO_WARNINGS -D_SILENCE_ALL_CXX17_DEPRECATION_WARNINGS -DNOMINMAX -DWIN32_LEAN_AND_MEAN -Dbinexport12_ida_dll_EXPORTS -D_USRDLL -D__QT__ -DQT_NAMESPACE=QT -DQT_UITOOLS_LIB -D__DEFINE_PH__ -DQT_DLL -DQT_3DCORE_LIB -DQT_GUI_LIB -D_WINDLL -D_MBCS  "-I$(QT_IDA)include" "-I$(IDA_76_SDK)include" "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include\QtUiTools" "-I$(QTDIR)\include\Qt3DCore" "-I$(QTDIR)\include\QtGui" "-ID:\binexport_sdk" "-I.\S(ProjectDir)\." "-ID:\boost_1_77_0" "-I\$(INHERIT)\." "-I$(Qt_ANGLE)\."</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">Moc%27ing binexport_class.hpp...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  "-D\"$(INHERIT)\"" -DWIN32 -D_WINDOWS -DNDEBUG -D__EA64__ -D__NT__ -D__X64__ -D__IDP__ -DUSE_DANGEROUS_FUNCTIONS -DUSE_STANDARD_FILE_FUNCTIONS -D_CRT_SECURE_NO_WARNINGS -D_SILENCE_ALL_CXX17_DEPRECATION_WARNINGS -DNOMINMAX -DWIN32_LEAN_AND_MEAN -Dbinexport_ida64_dll_EXPORTS -D_USRDLL -D__QT__ -DQT_NAMESPACE=QT -DQT_UITOOLS_LIB -D__DEFINE_PH__ -DQT_DLL -DQT_3DCORE_LIB -DQT_GUI_LIB -D_WINDLL -D_MBCS  "-I$(QT_IDA)include" "-I$(IDA_76_SDK)include" "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include\QtUiTools" "-I$(QTDIR)\include\Qt3DCore" "-I$(QTDIR)\include\QtGui" "-ID:\binexport_sdk" "-I.\S(ProjectDir)\." "-ID:\boost_1_77_0" "-I$(IDA76_DIR)idc" "-I\$(INHERIT)\." "-I$(Qt_ANGLE)\."</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+    </CustomBuild>
+    <ClInclude Include="debug_log.h" />
+    <ClInclude Include="exporter.h" />
+    <ClInclude Include="function_utils.h" />
+    <ClInclude Include="GeneratedFiles\ui_binexport_class.h" />
+    <ClInclude Include="GeneratedFiles\ui_db_connection.h" />
+    <ClInclude Include="GeneratedFiles\ui_first_window.h" />
+    <ClInclude Include="GeneratedFiles\ui_notepad_window.h" />
+    <ClInclude Include="GeneratedFiles\ui_start_window.h" />
+    <ClInclude Include="GeneratedFiles\ui_tree_window.h" />
+    <CustomBuild Include="key_press_cmdline.h">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">Moc%27ing key_press_cmdline.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  "-D\"$(INHERIT)\"" -DWIN32 -D_WINDOWS -D__EA64__ -D__NT__ -D__X64__ -D__IDP__ -DUSE_DANGEROUS_FUNCTIONS -DUSE_STANDARD_FILE_FUNCTIONS -D_CRT_SECURE_NO_WARNINGS -D_SILENCE_ALL_CXX17_DEPRECATION_WARNINGS -DNOMINMAX -DWIN32_LEAN_AND_MEAN -Dbinexport_ida64_dll_EXPORTS -D_DEBUG -D_USRDLL -D__QT__ -DQT_NAMESPACE=QT -DQT_UITOOLS_LIB -D__DEFINE_PH__ -DQT_DLL -DQT_3DCORE_LIB -DQT_GUI_LIB -D_WINDLL -D_MBCS  "-I$(IDA76_DIR)idc" "-I$(QT_IDA)include" "-I$(IDA_76_SDK)include" "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include\QtUiTools" "-I$(QTDIR)\include\Qt3DCore" "-I$(QTDIR)\include\QtGui" "-ID:\binexport_sdk" "-I.\S(ProjectDir)\." "-ID:\boost_1_77_0" "-I\$(INHERIT)\." "-I$(Qt_ANGLE)\."</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing key_press_cmdline.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  "-D\"$(INHERIT)\"" -DWIN32 -D_WINDOWS -D__NT__ -D__X64__ -D__IDP__ -DUSE_DANGEROUS_FUNCTIONS -DUSE_STANDARD_FILE_FUNCTIONS -D_CRT_SECURE_NO_WARNINGS -D_SILENCE_ALL_CXX17_DEPRECATION_WARNINGS -DNOMINMAX -DWIN32_LEAN_AND_MEAN -Dbinexport12_ida_dll_EXPORTS -D_DEBUG -D_USRDLL -D__QT__ -DQT_NAMESPACE=QT -DQT_UITOOLS_LIB -D__DEFINE_PH__ -DQT_DLL -DQT_3DCORE_LIB -DQT_GUI_LIB -D_WINDLL -D_MBCS  "-I$(QT_IDA)include" "-I$(IDA_76_SDK)include" "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include\QtUiTools" "-I$(QTDIR)\include\Qt3DCore" "-I$(QTDIR)\include\QtGui" "-ID:\binexport_sdk" "-I.\S(ProjectDir)\." "-ID:\boost_1_77_0" "-I\$(INHERIT)\." "-I$(Qt_ANGLE)\."</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Moc%27ing key_press_cmdline.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  "-D\"$(INHERIT)\"" -DWIN32 -D_WINDOWS -DNDEBUG -D__NT__ -D__X64__ -D__IDP__ -DUSE_DANGEROUS_FUNCTIONS -DUSE_STANDARD_FILE_FUNCTIONS -D_CRT_SECURE_NO_WARNINGS -D_SILENCE_ALL_CXX17_DEPRECATION_WARNINGS -DNOMINMAX -DWIN32_LEAN_AND_MEAN -Dbinexport12_ida_dll_EXPORTS -D_USRDLL -D__QT__ -DQT_NAMESPACE=QT -DQT_UITOOLS_LIB -D__DEFINE_PH__ -DQT_DLL -DQT_3DCORE_LIB -DQT_GUI_LIB -D_WINDLL -D_MBCS  "-I$(QT_IDA)include" "-I$(IDA_76_SDK)include" "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include\QtUiTools" "-I$(QTDIR)\include\Qt3DCore" "-I$(QTDIR)\include\QtGui" "-ID:\binexport_sdk" "-I.\S(ProjectDir)\." "-ID:\boost_1_77_0" "-I\$(INHERIT)\." "-I$(Qt_ANGLE)\."</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">Moc%27ing key_press_cmdline.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  "-D\"$(INHERIT)\"" -DWIN32 -D_WINDOWS -DNDEBUG -D__EA64__ -D__NT__ -D__X64__ -D__IDP__ -DUSE_DANGEROUS_FUNCTIONS -DUSE_STANDARD_FILE_FUNCTIONS -D_CRT_SECURE_NO_WARNINGS -D_SILENCE_ALL_CXX17_DEPRECATION_WARNINGS -DNOMINMAX -DWIN32_LEAN_AND_MEAN -Dbinexport_ida64_dll_EXPORTS -D_USRDLL -D__QT__ -DQT_NAMESPACE=QT -DQT_UITOOLS_LIB -D__DEFINE_PH__ -DQT_DLL -DQT_3DCORE_LIB -DQT_GUI_LIB -D_WINDLL -D_MBCS  "-I$(QT_IDA)include" "-I$(IDA_76_SDK)include" "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include\QtUiTools" "-I$(QTDIR)\include\Qt3DCore" "-I$(QTDIR)\include\QtGui" "-ID:\binexport_sdk" "-I.\S(ProjectDir)\." "-ID:\boost_1_77_0" "-I$(IDA76_DIR)idc" "-I\$(INHERIT)\." "-I$(Qt_ANGLE)\."</Command>
+    </CustomBuild>
+    <ClInclude Include="plugin.h" />
+    <ClInclude Include="ppc.h" />
+    <ClInclude Include="settings.h" />
+    <ClInclude Include="stack_utils.h" />
+    <ClInclude Include="third_party\absl\algorithm\algorithm.h" />
+    <ClInclude Include="third_party\absl\algorithm\container.h" />
+    <ClInclude Include="third_party\absl\base\attributes.h" />
+    <ClInclude Include="third_party\absl\base\call_once.h" />
+    <ClInclude Include="third_party\absl\base\casts.h" />
+    <ClInclude Include="third_party\absl\base\config.h" />
+    <ClInclude Include="third_party\absl\base\const_init.h" />
+    <ClInclude Include="third_party\absl\base\dynamic_annotations.h" />
+    <ClInclude Include="third_party\absl\base\internal\atomic_hook.h" />
+    <ClInclude Include="third_party\absl\base\internal\atomic_hook_test_helper.h" />
+    <ClInclude Include="third_party\absl\base\internal\bits.h" />
+    <ClInclude Include="third_party\absl\base\internal\cycleclock.h" />
+    <ClInclude Include="third_party\absl\base\internal\direct_mmap.h" />
+    <ClInclude Include="third_party\absl\base\internal\dynamic_annotations.h" />
+    <ClInclude Include="third_party\absl\base\internal\endian.h" />
+    <ClInclude Include="third_party\absl\base\internal\errno_saver.h" />
+    <ClInclude Include="third_party\absl\base\internal\exception_safety_testing.h" />
+    <ClInclude Include="third_party\absl\base\internal\exception_testing.h" />
+    <ClInclude Include="third_party\absl\base\internal\exponential_biased.h" />
+    <ClInclude Include="third_party\absl\base\internal\fast_type_id.h" />
+    <ClInclude Include="third_party\absl\base\internal\hide_ptr.h" />
+    <ClInclude Include="third_party\absl\base\internal\identity.h" />
+    <ClInclude Include="third_party\absl\base\internal\inline_variable.h" />
+    <ClInclude Include="third_party\absl\base\internal\inline_variable_testing.h" />
+    <ClInclude Include="third_party\absl\base\internal\invoke.h" />
+    <ClInclude Include="third_party\absl\base\internal\low_level_alloc.h" />
+    <ClInclude Include="third_party\absl\base\internal\low_level_scheduling.h" />
+    <ClInclude Include="third_party\absl\base\internal\periodic_sampler.h" />
+    <ClInclude Include="third_party\absl\base\internal\per_thread_tls.h" />
+    <ClInclude Include="third_party\absl\base\internal\pretty_function.h" />
+    <ClInclude Include="third_party\absl\base\internal\raw_logging.h" />
+    <ClInclude Include="third_party\absl\base\internal\scheduling_mode.h" />
+    <ClInclude Include="third_party\absl\base\internal\scoped_set_env.h" />
+    <ClInclude Include="third_party\absl\base\internal\spinlock.h" />
+    <ClInclude Include="third_party\absl\base\internal\spinlock_wait.h" />
+    <ClInclude Include="third_party\absl\base\internal\strerror.h" />
+    <ClInclude Include="third_party\absl\base\internal\sysinfo.h" />
+    <ClInclude Include="third_party\absl\base\internal\thread_annotations.h" />
+    <ClInclude Include="third_party\absl\base\internal\thread_identity.h" />
+    <ClInclude Include="third_party\absl\base\internal\throw_delegate.h" />
+    <ClInclude Include="third_party\absl\base\internal\tsan_mutex_interface.h" />
+    <ClInclude Include="third_party\absl\base\internal\unaligned_access.h" />
+    <ClInclude Include="third_party\absl\base\internal\unscaledcycleclock.h" />
+    <ClInclude Include="third_party\absl\base\log_severity.h" />
+    <ClInclude Include="third_party\absl\base\macros.h" />
+    <ClInclude Include="third_party\absl\base\optimization.h" />
+    <ClInclude Include="third_party\absl\base\options.h" />
+    <ClInclude Include="third_party\absl\base\policy_checks.h" />
+    <ClInclude Include="third_party\absl\base\port.h" />
+    <ClInclude Include="third_party\absl\base\thread_annotations.h" />
+    <ClInclude Include="third_party\absl\container\btree_map.h" />
+    <ClInclude Include="third_party\absl\container\btree_set.h" />
+    <ClInclude Include="third_party\absl\container\btree_test.h" />
+    <ClInclude Include="third_party\absl\container\fixed_array.h" />
+    <ClInclude Include="third_party\absl\container\flat_hash_map.h" />
+    <ClInclude Include="third_party\absl\container\flat_hash_set.h" />
+    <ClInclude Include="third_party\absl\container\inlined_vector.h" />
+    <ClInclude Include="third_party\absl\container\internal\btree.h" />
+    <ClInclude Include="third_party\absl\container\internal\btree_container.h" />
+    <ClInclude Include="third_party\absl\container\internal\common.h" />
+    <ClInclude Include="third_party\absl\container\internal\compressed_tuple.h" />
+    <ClInclude Include="third_party\absl\container\internal\container_memory.h" />
+    <ClInclude Include="third_party\absl\container\internal\counting_allocator.h" />
+    <ClInclude Include="third_party\absl\container\internal\hashtablez_sampler.h" />
+    <ClInclude Include="third_party\absl\container\internal\hashtable_debug.h" />
+    <ClInclude Include="third_party\absl\container\internal\hashtable_debug_hooks.h" />
+    <ClInclude Include="third_party\absl\container\internal\hash_function_defaults.h" />
+    <ClInclude Include="third_party\absl\container\internal\hash_generator_testing.h" />
+    <ClInclude Include="third_party\absl\container\internal\hash_policy_testing.h" />
+    <ClInclude Include="third_party\absl\container\internal\hash_policy_traits.h" />
+    <ClInclude Include="third_party\absl\container\internal\have_sse.h" />
+    <ClInclude Include="third_party\absl\container\internal\inlined_vector.h" />
+    <ClInclude Include="third_party\absl\container\internal\layout.h" />
+    <ClInclude Include="third_party\absl\container\internal\node_hash_policy.h" />
+    <ClInclude Include="third_party\absl\container\internal\raw_hash_map.h" />
+    <ClInclude Include="third_party\absl\container\internal\raw_hash_set.h" />
+    <ClInclude Include="third_party\absl\container\internal\test_instance_tracker.h" />
+    <ClInclude Include="third_party\absl\container\internal\tracked.h" />
+    <ClInclude Include="third_party\absl\container\internal\unordered_map_constructor_test.h" />
+    <ClInclude Include="third_party\absl\container\internal\unordered_map_lookup_test.h" />
+    <ClInclude Include="third_party\absl\container\internal\unordered_map_members_test.h" />
+    <ClInclude Include="third_party\absl\container\internal\unordered_map_modifiers_test.h" />
+    <ClInclude Include="third_party\absl\container\internal\unordered_set_constructor_test.h" />
+    <ClInclude Include="third_party\absl\container\internal\unordered_set_lookup_test.h" />
+    <ClInclude Include="third_party\absl\container\internal\unordered_set_members_test.h" />
+    <ClInclude Include="third_party\absl\container\internal\unordered_set_modifiers_test.h" />
+    <ClInclude Include="third_party\absl\container\node_hash_map.h" />
+    <ClInclude Include="third_party\absl\container\node_hash_set.h" />
+    <ClInclude Include="third_party\absl\debugging\failure_signal_handler.h" />
+    <ClInclude Include="third_party\absl\debugging\internal\address_is_readable.h" />
+    <ClInclude Include="third_party\absl\debugging\internal\demangle.h" />
+    <ClInclude Include="third_party\absl\debugging\internal\elf_mem_image.h" />
+    <ClInclude Include="third_party\absl\debugging\internal\examine_stack.h" />
+    <ClInclude Include="third_party\absl\debugging\internal\stacktrace_config.h" />
+    <ClInclude Include="third_party\absl\debugging\internal\stack_consumption.h" />
+    <ClInclude Include="third_party\absl\debugging\internal\symbolize.h" />
+    <ClInclude Include="third_party\absl\debugging\internal\vdso_support.h" />
+    <ClInclude Include="third_party\absl\debugging\leak_check.h" />
+    <ClInclude Include="third_party\absl\debugging\stacktrace.h" />
+    <ClInclude Include="third_party\absl\debugging\symbolize.h" />
+    <ClInclude Include="third_party\absl\flags\commandlineflag.h" />
+    <ClInclude Include="third_party\absl\flags\config.h" />
+    <ClInclude Include="third_party\absl\flags\declare.h" />
+    <ClInclude Include="third_party\absl\flags\flag.h" />
+    <ClInclude Include="third_party\absl\flags\internal\commandlineflag.h" />
+    <ClInclude Include="third_party\absl\flags\internal\flag.h" />
+    <ClInclude Include="third_party\absl\flags\internal\parse.h" />
+    <ClInclude Include="third_party\absl\flags\internal\path_util.h" />
+    <ClInclude Include="third_party\absl\flags\internal\private_handle_accessor.h" />
+    <ClInclude Include="third_party\absl\flags\internal\program_name.h" />
+    <ClInclude Include="third_party\absl\flags\internal\registry.h" />
+    <ClInclude Include="third_party\absl\flags\internal\usage.h" />
+    <ClInclude Include="third_party\absl\flags\marshalling.h" />
+    <ClInclude Include="third_party\absl\flags\parse.h" />
+    <ClInclude Include="third_party\absl\flags\reflection.h" />
+    <ClInclude Include="third_party\absl\flags\usage.h" />
+    <ClInclude Include="third_party\absl\flags\usage_config.h" />
+    <ClInclude Include="third_party\absl\functional\bind_front.h" />
+    <ClInclude Include="third_party\absl\functional\function_ref.h" />
+    <ClInclude Include="third_party\absl\functional\internal\front_binder.h" />
+    <ClInclude Include="third_party\absl\functional\internal\function_ref.h" />
+    <ClInclude Include="third_party\absl\hash\hash.h" />
+    <ClInclude Include="third_party\absl\hash\hash_testing.h" />
+    <ClInclude Include="third_party\absl\hash\internal\city.h" />
+    <ClInclude Include="third_party\absl\hash\internal\hash.h" />
+    <ClInclude Include="third_party\absl\hash\internal\spy_hash_state.h" />
+    <ClInclude Include="third_party\absl\hash\internal\wyhash.h" />
+    <ClInclude Include="third_party\absl\memory\memory.h" />
+    <ClInclude Include="third_party\absl\meta\type_traits.h" />
+    <ClInclude Include="third_party\absl\numeric\int128.h" />
+    <ClInclude Include="third_party\absl\random\bernoulli_distribution.h" />
+    <ClInclude Include="third_party\absl\random\beta_distribution.h" />
+    <ClInclude Include="third_party\absl\random\bit_gen_ref.h" />
+    <ClInclude Include="third_party\absl\random\discrete_distribution.h" />
+    <ClInclude Include="third_party\absl\random\distributions.h" />
+    <ClInclude Include="third_party\absl\random\exponential_distribution.h" />
+    <ClInclude Include="third_party\absl\random\gaussian_distribution.h" />
+    <ClInclude Include="third_party\absl\random\internal\chi_square.h" />
+    <ClInclude Include="third_party\absl\random\internal\distribution_caller.h" />
+    <ClInclude Include="third_party\absl\random\internal\distribution_test_util.h" />
+    <ClInclude Include="third_party\absl\random\internal\explicit_seed_seq.h" />
+    <ClInclude Include="third_party\absl\random\internal\fastmath.h" />
+    <ClInclude Include="third_party\absl\random\internal\fast_uniform_bits.h" />
+    <ClInclude Include="third_party\absl\random\internal\generate_real.h" />
+    <ClInclude Include="third_party\absl\random\internal\iostream_state_saver.h" />
+    <ClInclude Include="third_party\absl\random\internal\mock_helpers.h" />
+    <ClInclude Include="third_party\absl\random\internal\mock_overload_set.h" />
+    <ClInclude Include="third_party\absl\random\internal\nanobenchmark.h" />
+    <ClInclude Include="third_party\absl\random\internal\nonsecure_base.h" />
+    <ClInclude Include="third_party\absl\random\internal\pcg_engine.h" />
+    <ClInclude Include="third_party\absl\random\internal\platform.h" />
+    <ClInclude Include="third_party\absl\random\internal\pool_urbg.h" />
+    <ClInclude Include="third_party\absl\random\internal\randen.h" />
+    <ClInclude Include="third_party\absl\random\internal\randen_detect.h" />
+    <ClInclude Include="third_party\absl\random\internal\randen_engine.h" />
+    <ClInclude Include="third_party\absl\random\internal\randen_hwaes.h" />
+    <ClInclude Include="third_party\absl\random\internal\randen_slow.h" />
+    <ClInclude Include="third_party\absl\random\internal\randen_traits.h" />
+    <ClInclude Include="third_party\absl\random\internal\salted_seed_seq.h" />
+    <ClInclude Include="third_party\absl\random\internal\seed_material.h" />
+    <ClInclude Include="third_party\absl\random\internal\sequence_urbg.h" />
+    <ClInclude Include="third_party\absl\random\internal\traits.h" />
+    <ClInclude Include="third_party\absl\random\internal\uniform_helper.h" />
+    <ClInclude Include="third_party\absl\random\internal\wide_multiply.h" />
+    <ClInclude Include="third_party\absl\random\log_uniform_int_distribution.h" />
+    <ClInclude Include="third_party\absl\random\mocking_bit_gen.h" />
+    <ClInclude Include="third_party\absl\random\mock_distributions.h" />
+    <ClInclude Include="third_party\absl\random\poisson_distribution.h" />
+    <ClInclude Include="third_party\absl\random\random.h" />
+    <ClInclude Include="third_party\absl\random\seed_gen_exception.h" />
+    <ClInclude Include="third_party\absl\random\seed_sequences.h" />
+    <ClInclude Include="third_party\absl\random\uniform_int_distribution.h" />
+    <ClInclude Include="third_party\absl\random\uniform_real_distribution.h" />
+    <ClInclude Include="third_party\absl\random\zipf_distribution.h" />
+    <ClInclude Include="third_party\absl\status\internal\statusor_internal.h" />
+    <ClInclude Include="third_party\absl\status\internal\status_internal.h" />
+    <ClInclude Include="third_party\absl\status\status.h" />
+    <ClInclude Include="third_party\absl\status\statusor.h" />
+    <ClInclude Include="third_party\absl\status\status_payload_printer.h" />
+    <ClInclude Include="third_party\absl\strings\ascii.h" />
+    <ClInclude Include="third_party\absl\strings\charconv.h" />
+    <ClInclude Include="third_party\absl\strings\cord.h" />
+    <ClInclude Include="third_party\absl\strings\cord_test_helpers.h" />
+    <ClInclude Include="third_party\absl\strings\escaping.h" />
+    <ClInclude Include="third_party\absl\strings\internal\charconv_bigint.h" />
+    <ClInclude Include="third_party\absl\strings\internal\charconv_parse.h" />
+    <ClInclude Include="third_party\absl\strings\internal\char_map.h" />
+    <ClInclude Include="third_party\absl\strings\internal\cord_internal.h" />
+    <ClInclude Include="third_party\absl\strings\internal\cord_rep_flat.h" />
+    <ClInclude Include="third_party\absl\strings\internal\escaping.h" />
+    <ClInclude Include="third_party\absl\strings\internal\escaping_test_common.h" />
+    <ClInclude Include="third_party\absl\strings\internal\memutil.h" />
+    <ClInclude Include="third_party\absl\strings\internal\numbers_test_common.h" />
+    <ClInclude Include="third_party\absl\strings\internal\ostringstream.h" />
+    <ClInclude Include="third_party\absl\strings\internal\pow10_helper.h" />
+    <ClInclude Include="third_party\absl\strings\internal\resize_uninitialized.h" />
+    <ClInclude Include="third_party\absl\strings\internal\stl_type_traits.h" />
+    <ClInclude Include="third_party\absl\strings\internal\string_constant.h" />
+    <ClInclude Include="third_party\absl\strings\internal\str_format\arg.h" />
+    <ClInclude Include="third_party\absl\strings\internal\str_format\bind.h" />
+    <ClInclude Include="third_party\absl\strings\internal\str_format\checker.h" />
+    <ClInclude Include="third_party\absl\strings\internal\str_format\extension.h" />
+    <ClInclude Include="third_party\absl\strings\internal\str_format\float_conversion.h" />
+    <ClInclude Include="third_party\absl\strings\internal\str_format\output.h" />
+    <ClInclude Include="third_party\absl\strings\internal\str_format\parser.h" />
+    <ClInclude Include="third_party\absl\strings\internal\str_join_internal.h" />
+    <ClInclude Include="third_party\absl\strings\internal\str_split_internal.h" />
+    <ClInclude Include="third_party\absl\strings\internal\utf8.h" />
+    <ClInclude Include="third_party\absl\strings\match.h" />
+    <ClInclude Include="third_party\absl\strings\numbers.h" />
+    <ClInclude Include="third_party\absl\strings\string_view.h" />
+    <ClInclude Include="third_party\absl\strings\strip.h" />
+    <ClInclude Include="third_party\absl\strings\str_cat.h" />
+    <ClInclude Include="third_party\absl\strings\str_format.h" />
+    <ClInclude Include="third_party\absl\strings\str_join.h" />
+    <ClInclude Include="third_party\absl\strings\str_replace.h" />
+    <ClInclude Include="third_party\absl\strings\str_split.h" />
+    <ClInclude Include="third_party\absl\strings\substitute.h" />
+    <ClInclude Include="third_party\absl\synchronization\barrier.h" />
+    <ClInclude Include="third_party\absl\synchronization\blocking_counter.h" />
+    <ClInclude Include="third_party\absl\synchronization\internal\create_thread_identity.h" />
+    <ClInclude Include="third_party\absl\synchronization\internal\futex.h" />
+    <ClInclude Include="third_party\absl\synchronization\internal\graphcycles.h" />
+    <ClInclude Include="third_party\absl\synchronization\internal\kernel_timeout.h" />
+    <ClInclude Include="third_party\absl\synchronization\internal\per_thread_sem.h" />
+    <ClInclude Include="third_party\absl\synchronization\internal\thread_pool.h" />
+    <ClInclude Include="third_party\absl\synchronization\internal\waiter.h" />
+    <ClInclude Include="third_party\absl\synchronization\mutex.h" />
+    <ClInclude Include="third_party\absl\synchronization\notification.h" />
+    <ClInclude Include="third_party\absl\time\civil_time.h" />
+    <ClInclude Include="third_party\absl\time\clock.h" />
+    <ClInclude Include="third_party\absl\time\internal\cctz\include\cctz\civil_time.h" />
+    <ClInclude Include="third_party\absl\time\internal\cctz\include\cctz\civil_time_detail.h" />
+    <ClInclude Include="third_party\absl\time\internal\cctz\include\cctz\time_zone.h" />
+    <ClInclude Include="third_party\absl\time\internal\cctz\include\cctz\zone_info_source.h" />
+    <ClInclude Include="third_party\absl\time\internal\cctz\src\time_zone_fixed.h" />
+    <ClInclude Include="third_party\absl\time\internal\cctz\src\time_zone_if.h" />
+    <ClInclude Include="third_party\absl\time\internal\cctz\src\time_zone_impl.h" />
+    <ClInclude Include="third_party\absl\time\internal\cctz\src\time_zone_info.h" />
+    <ClInclude Include="third_party\absl\time\internal\cctz\src\time_zone_libc.h" />
+    <ClInclude Include="third_party\absl\time\internal\cctz\src\time_zone_posix.h" />
+    <ClInclude Include="third_party\absl\time\internal\cctz\src\tzfile.h" />
+    <ClInclude Include="third_party\absl\time\internal\test_util.h" />
+    <ClInclude Include="third_party\absl\time\time.h" />
+    <ClInclude Include="third_party\absl\types\any.h" />
+    <ClInclude Include="third_party\absl\types\bad_any_cast.h" />
+    <ClInclude Include="third_party\absl\types\bad_optional_access.h" />
+    <ClInclude Include="third_party\absl\types\bad_variant_access.h" />
+    <ClInclude Include="third_party\absl\types\compare.h" />
+    <ClInclude Include="third_party\absl\types\internal\conformance_aliases.h" />
+    <ClInclude Include="third_party\absl\types\internal\conformance_archetype.h" />
+    <ClInclude Include="third_party\absl\types\internal\conformance_profile.h" />
+    <ClInclude Include="third_party\absl\types\internal\conformance_testing.h" />
+    <ClInclude Include="third_party\absl\types\internal\conformance_testing_helpers.h" />
+    <ClInclude Include="third_party\absl\types\internal\optional.h" />
+    <ClInclude Include="third_party\absl\types\internal\parentheses.h" />
+    <ClInclude Include="third_party\absl\types\internal\span.h" />
+    <ClInclude Include="third_party\absl\types\internal\transform_args.h" />
+    <ClInclude Include="third_party\absl\types\internal\variant.h" />
+    <ClInclude Include="third_party\absl\types\optional.h" />
+    <ClInclude Include="third_party\absl\types\span.h" />
+    <ClInclude Include="third_party\absl\types\variant.h" />
+    <ClInclude Include="third_party\absl\utility\utility.h" />
+    <ClInclude Include="third_party\zynamics\binexport\address_references.h" />
+    <ClInclude Include="third_party\zynamics\binexport\architectures.h" />
+    <ClInclude Include="third_party\zynamics\binexport\base_types.h" />
+    <ClInclude Include="third_party\zynamics\binexport\basic_block.h" />
+    <ClInclude Include="third_party\zynamics\binexport\binaryninjaapi.h" />
+    <ClInclude Include="third_party\zynamics\binexport\binaryninjacore.h" />
+    <ClInclude Include="third_party\zynamics\binexport\binaryninja\log_sink.h" />
+    <ClInclude Include="third_party\zynamics\binexport\binaryninja\main_plugin.h" />
+    <ClInclude Include="third_party\zynamics\binexport\binexport.h" />
+    <ClInclude Include="third_party\zynamics\binexport\binexport2.pb.h" />
+    <ClInclude Include="third_party\zynamics\binexport\binexport2_writer.h" />
+    <ClInclude Include="third_party\zynamics\binexport\call_graph.h" />
+    <ClInclude Include="third_party\zynamics\binexport\comment.h" />
+    <ClInclude Include="third_party\zynamics\binexport\dump_writer.h" />
+    <ClInclude Include="third_party\zynamics\binexport\edge.h" />
+    <ClInclude Include="third_party\zynamics\binexport\entry_point.h" />
+    <ClInclude Include="third_party\zynamics\binexport\expression.h" />
+    <ClInclude Include="third_party\zynamics\binexport\flow_analysis.h" />
+    <ClInclude Include="third_party\zynamics\binexport\flow_graph.h" />
+    <ClInclude Include="third_party\zynamics\binexport\function.h" />
+    <ClInclude Include="third_party\zynamics\binexport\hash.h" />
+    <ClInclude Include="third_party\zynamics\binexport\instruction.h" />
+    <ClInclude Include="third_party\zynamics\binexport\json\json-forwards.h" />
+    <ClInclude Include="third_party\zynamics\binexport\json\json.h" />
+    <ClInclude Include="third_party\zynamics\binexport\library_manager.h" />
+    <ClInclude Include="third_party\zynamics\binexport\nested_iterator.h" />
+    <ClInclude Include="third_party\zynamics\binexport\operand.h" />
+    <ClInclude Include="third_party\zynamics\binexport\range.h" />
+    <ClInclude Include="third_party\zynamics\binexport\reader\call_graph.h" />
+    <ClInclude Include="third_party\zynamics\binexport\reader\flow_graph.h" />
+    <ClInclude Include="third_party\zynamics\binexport\reader\graph_utility.h" />
+    <ClInclude Include="third_party\zynamics\binexport\reader\instruction.h" />
+    <ClInclude Include="third_party\zynamics\binexport\statistics_writer.h" />
+    <ClInclude Include="third_party\zynamics\binexport\testing.h" />
+    <ClInclude Include="third_party\zynamics\binexport\types.h" />
+    <ClInclude Include="third_party\zynamics\binexport\types_container.h" />
+    <ClInclude Include="third_party\zynamics\binexport\type_system.h" />
+    <ClInclude Include="third_party\zynamics\binexport\util\filesystem.h" />
+    <ClInclude Include="third_party\zynamics\binexport\util\format.h" />
+    <ClInclude Include="third_party\zynamics\binexport\util\idb_export.h" />
+    <ClInclude Include="third_party\zynamics\binexport\util\logging.h" />
+    <ClInclude Include="third_party\zynamics\binexport\util\process.h" />
+    <ClInclude Include="third_party\zynamics\binexport\util\status_macros.h" />
+    <ClInclude Include="third_party\zynamics\binexport\util\status_matchers.h" />
+    <ClInclude Include="third_party\zynamics\binexport\util\timer.h" />
+    <ClInclude Include="third_party\zynamics\binexport\version.h" />
+    <ClInclude Include="third_party\zynamics\binexport\virtual_memory.h" />
+    <ClInclude Include="third_party\zynamics\binexport\writer.h" />
+    <ClInclude Include="third_party\zynamics\binexport\x86_nop.h" />
+    <ClInclude Include="types_container.h" />
+    <ClInclude Include="ui.h" />
+    <ClInclude Include="util.h" />
+    <CustomBuild Include="db_connection.hpp">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">Moc%27ing db_connection.hpp...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  "-D\"$(INHERIT)\"" -DWIN32 -D_WINDOWS -D__EA64__ -D__NT__ -D__X64__ -D__IDP__ -DUSE_DANGEROUS_FUNCTIONS -DUSE_STANDARD_FILE_FUNCTIONS -D_CRT_SECURE_NO_WARNINGS -D_SILENCE_ALL_CXX17_DEPRECATION_WARNINGS -DNOMINMAX -DWIN32_LEAN_AND_MEAN -Dbinexport_ida64_dll_EXPORTS -D_DEBUG -D_USRDLL -D__QT__ -DQT_NAMESPACE=QT -DQT_UITOOLS_LIB -D__DEFINE_PH__ -DQT_DLL -DQT_3DCORE_LIB -DQT_GUI_LIB -D_WINDLL -D_MBCS  "-I$(IDA76_DIR)idc" "-I$(QT_IDA)include" "-I$(IDA_76_SDK)include" "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include\QtUiTools" "-I$(QTDIR)\include\Qt3DCore" "-I$(QTDIR)\include\QtGui" "-ID:\binexport_sdk" "-I.\S(ProjectDir)\." "-ID:\boost_1_77_0" "-I\$(INHERIT)\." "-I$(Qt_ANGLE)\."</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing db_connection.hpp...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  "-D\"$(INHERIT)\"" -DWIN32 -D_WINDOWS -D__NT__ -D__X64__ -D__IDP__ -DUSE_DANGEROUS_FUNCTIONS -DUSE_STANDARD_FILE_FUNCTIONS -D_CRT_SECURE_NO_WARNINGS -D_SILENCE_ALL_CXX17_DEPRECATION_WARNINGS -DNOMINMAX -DWIN32_LEAN_AND_MEAN -Dbinexport12_ida_dll_EXPORTS -D_DEBUG -D_USRDLL -D__QT__ -DQT_NAMESPACE=QT -DQT_UITOOLS_LIB -D__DEFINE_PH__ -DQT_DLL -DQT_3DCORE_LIB -DQT_GUI_LIB -D_WINDLL -D_MBCS  "-I$(QT_IDA)include" "-I$(IDA_76_SDK)include" "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include\QtUiTools" "-I$(QTDIR)\include\Qt3DCore" "-I$(QTDIR)\include\QtGui" "-ID:\binexport_sdk" "-I.\S(ProjectDir)\." "-ID:\boost_1_77_0" "-I\$(INHERIT)\." "-I$(Qt_ANGLE)\."</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Moc%27ing db_connection.hpp...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  "-D\"$(INHERIT)\"" -DWIN32 -D_WINDOWS -DNDEBUG -D__NT__ -D__X64__ -D__IDP__ -DUSE_DANGEROUS_FUNCTIONS -DUSE_STANDARD_FILE_FUNCTIONS -D_CRT_SECURE_NO_WARNINGS -D_SILENCE_ALL_CXX17_DEPRECATION_WARNINGS -DNOMINMAX -DWIN32_LEAN_AND_MEAN -Dbinexport12_ida_dll_EXPORTS -D_USRDLL -D__QT__ -DQT_NAMESPACE=QT -DQT_UITOOLS_LIB -D__DEFINE_PH__ -DQT_DLL -DQT_3DCORE_LIB -DQT_GUI_LIB -D_WINDLL -D_MBCS  "-I$(QT_IDA)include" "-I$(IDA_76_SDK)include" "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include\QtUiTools" "-I$(QTDIR)\include\Qt3DCore" "-I$(QTDIR)\include\QtGui" "-ID:\binexport_sdk" "-I.\S(ProjectDir)\." "-ID:\boost_1_77_0" "-I\$(INHERIT)\." "-I$(Qt_ANGLE)\."</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">Moc%27ing db_connection.hpp...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  "-D\"$(INHERIT)\"" -DWIN32 -D_WINDOWS -DNDEBUG -D__EA64__ -D__NT__ -D__X64__ -D__IDP__ -DUSE_DANGEROUS_FUNCTIONS -DUSE_STANDARD_FILE_FUNCTIONS -D_CRT_SECURE_NO_WARNINGS -D_SILENCE_ALL_CXX17_DEPRECATION_WARNINGS -DNOMINMAX -DWIN32_LEAN_AND_MEAN -Dbinexport_ida64_dll_EXPORTS -D_USRDLL -D__QT__ -DQT_NAMESPACE=QT -DQT_UITOOLS_LIB -D__DEFINE_PH__ -DQT_DLL -DQT_3DCORE_LIB -DQT_GUI_LIB -D_WINDLL -D_MBCS  "-I$(QT_IDA)include" "-I$(IDA_76_SDK)include" "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include\QtUiTools" "-I$(QTDIR)\include\Qt3DCore" "-I$(QTDIR)\include\QtGui" "-ID:\binexport_sdk" "-I.\S(ProjectDir)\." "-ID:\boost_1_77_0" "-I$(IDA76_DIR)idc" "-I\$(INHERIT)\." "-I$(Qt_ANGLE)\."</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+    </CustomBuild>
+    <ClInclude Include="arm.h" />
+    <ClInclude Include="dalvik.h" />
+    <ClInclude Include="digest.h" />
+    <ClInclude Include="flow_analysis.h" />
+    <ClInclude Include="generic.h" />
+    <ClInclude Include="help_functions.h" />
+    <ClInclude Include="highlight.h" />
+    <ClInclude Include="log_sink.h" />
+    <ClInclude Include="metapc.h" />
+    <ClInclude Include="mips.h" />
+    <ClInclude Include="names.h" />
+    <ClInclude Include="pe_heders.h" />
+    <CustomBuild Include="key_press_eater.hpp">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">Moc%27ing key_press_eater.hpp...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  "-D\"$(INHERIT)\"" -DWIN32 -D_WINDOWS -D__EA64__ -D__NT__ -D__X64__ -D__IDP__ -DUSE_DANGEROUS_FUNCTIONS -DUSE_STANDARD_FILE_FUNCTIONS -D_CRT_SECURE_NO_WARNINGS -D_SILENCE_ALL_CXX17_DEPRECATION_WARNINGS -DNOMINMAX -DWIN32_LEAN_AND_MEAN -Dbinexport_ida64_dll_EXPORTS -D_DEBUG -D_USRDLL -D__QT__ -DQT_NAMESPACE=QT -DQT_UITOOLS_LIB -D__DEFINE_PH__ -DQT_DLL -DQT_3DCORE_LIB -DQT_GUI_LIB -D_WINDLL -D_MBCS  "-I$(IDA76_DIR)idc" "-I$(QT_IDA)include" "-I$(IDA_76_SDK)include" "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include\QtUiTools" "-I$(QTDIR)\include\Qt3DCore" "-I$(QTDIR)\include\QtGui" "-ID:\binexport_sdk" "-I.\S(ProjectDir)\." "-ID:\boost_1_77_0" "-I\$(INHERIT)\." "-I$(Qt_ANGLE)\."</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing key_press_eater.hpp...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  "-D\"$(INHERIT)\"" -DWIN32 -D_WINDOWS -D__NT__ -D__X64__ -D__IDP__ -DUSE_DANGEROUS_FUNCTIONS -DUSE_STANDARD_FILE_FUNCTIONS -D_CRT_SECURE_NO_WARNINGS -D_SILENCE_ALL_CXX17_DEPRECATION_WARNINGS -DNOMINMAX -DWIN32_LEAN_AND_MEAN -Dbinexport12_ida_dll_EXPORTS -D_DEBUG -D_USRDLL -D__QT__ -DQT_NAMESPACE=QT -DQT_UITOOLS_LIB -D__DEFINE_PH__ -DQT_DLL -DQT_3DCORE_LIB -DQT_GUI_LIB -D_WINDLL -D_MBCS  "-I$(QT_IDA)include" "-I$(IDA_76_SDK)include" "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include\QtUiTools" "-I$(QTDIR)\include\Qt3DCore" "-I$(QTDIR)\include\QtGui" "-ID:\binexport_sdk" "-I.\S(ProjectDir)\." "-ID:\boost_1_77_0" "-I\$(INHERIT)\." "-I$(Qt_ANGLE)\."</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Moc%27ing key_press_eater.hpp...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  "-D\"$(INHERIT)\"" -DWIN32 -D_WINDOWS -DNDEBUG -D__NT__ -D__X64__ -D__IDP__ -DUSE_DANGEROUS_FUNCTIONS -DUSE_STANDARD_FILE_FUNCTIONS -D_CRT_SECURE_NO_WARNINGS -D_SILENCE_ALL_CXX17_DEPRECATION_WARNINGS -DNOMINMAX -DWIN32_LEAN_AND_MEAN -Dbinexport12_ida_dll_EXPORTS -D_USRDLL -D__QT__ -DQT_NAMESPACE=QT -DQT_UITOOLS_LIB -D__DEFINE_PH__ -DQT_DLL -DQT_3DCORE_LIB -DQT_GUI_LIB -D_WINDLL -D_MBCS  "-I$(QT_IDA)include" "-I$(IDA_76_SDK)include" "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include\QtUiTools" "-I$(QTDIR)\include\Qt3DCore" "-I$(QTDIR)\include\QtGui" "-ID:\binexport_sdk" "-I.\S(ProjectDir)\." "-ID:\boost_1_77_0" "-I\$(INHERIT)\." "-I$(Qt_ANGLE)\."</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">Moc%27ing key_press_eater.hpp...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  "-D\"$(INHERIT)\"" -DWIN32 -D_WINDOWS -DNDEBUG -D__EA64__ -D__NT__ -D__X64__ -D__IDP__ -DUSE_DANGEROUS_FUNCTIONS -DUSE_STANDARD_FILE_FUNCTIONS -D_CRT_SECURE_NO_WARNINGS -D_SILENCE_ALL_CXX17_DEPRECATION_WARNINGS -DNOMINMAX -DWIN32_LEAN_AND_MEAN -Dbinexport_ida64_dll_EXPORTS -D_USRDLL -D__QT__ -DQT_NAMESPACE=QT -DQT_UITOOLS_LIB -D__DEFINE_PH__ -DQT_DLL -DQT_3DCORE_LIB -DQT_GUI_LIB -D_WINDLL -D_MBCS  "-I$(QT_IDA)include" "-I$(IDA_76_SDK)include" "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include\QtUiTools" "-I$(QTDIR)\include\Qt3DCore" "-I$(QTDIR)\include\QtGui" "-ID:\binexport_sdk" "-I.\S(ProjectDir)\." "-ID:\boost_1_77_0" "-I$(IDA76_DIR)idc" "-I\$(INHERIT)\." "-I$(Qt_ANGLE)\."</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+    </CustomBuild>
+    <CustomBuild Include="notepad_window.hpp">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">Moc%27ing notepad_window.hpp...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  "-D\"$(INHERIT)\"" -DWIN32 -D_WINDOWS -D__EA64__ -D__NT__ -D__X64__ -D__IDP__ -DUSE_DANGEROUS_FUNCTIONS -DUSE_STANDARD_FILE_FUNCTIONS -D_CRT_SECURE_NO_WARNINGS -D_SILENCE_ALL_CXX17_DEPRECATION_WARNINGS -DNOMINMAX -DWIN32_LEAN_AND_MEAN -Dbinexport_ida64_dll_EXPORTS -D_DEBUG -D_USRDLL -D__QT__ -DQT_NAMESPACE=QT -DQT_UITOOLS_LIB -D__DEFINE_PH__ -DQT_DLL -DQT_3DCORE_LIB -DQT_GUI_LIB -D_WINDLL -D_MBCS  "-I$(IDA76_DIR)idc" "-I$(QT_IDA)include" "-I$(IDA_76_SDK)include" "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include\QtUiTools" "-I$(QTDIR)\include\Qt3DCore" "-I$(QTDIR)\include\QtGui" "-ID:\binexport_sdk" "-I.\S(ProjectDir)\." "-ID:\boost_1_77_0" "-I\$(INHERIT)\." "-I$(Qt_ANGLE)\."</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing notepad_window.hpp...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  "-D\"$(INHERIT)\"" -DWIN32 -D_WINDOWS -D__NT__ -D__X64__ -D__IDP__ -DUSE_DANGEROUS_FUNCTIONS -DUSE_STANDARD_FILE_FUNCTIONS -D_CRT_SECURE_NO_WARNINGS -D_SILENCE_ALL_CXX17_DEPRECATION_WARNINGS -DNOMINMAX -DWIN32_LEAN_AND_MEAN -Dbinexport12_ida_dll_EXPORTS -D_DEBUG -D_USRDLL -D__QT__ -DQT_NAMESPACE=QT -DQT_UITOOLS_LIB -D__DEFINE_PH__ -DQT_DLL -DQT_3DCORE_LIB -DQT_GUI_LIB -D_WINDLL -D_MBCS  "-I$(QT_IDA)include" "-I$(IDA_76_SDK)include" "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include\QtUiTools" "-I$(QTDIR)\include\Qt3DCore" "-I$(QTDIR)\include\QtGui" "-ID:\binexport_sdk" "-I.\S(ProjectDir)\." "-ID:\boost_1_77_0" "-I\$(INHERIT)\." "-I$(Qt_ANGLE)\."</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Moc%27ing notepad_window.hpp...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  "-D\"$(INHERIT)\"" -DWIN32 -D_WINDOWS -DNDEBUG -D__NT__ -D__X64__ -D__IDP__ -DUSE_DANGEROUS_FUNCTIONS -DUSE_STANDARD_FILE_FUNCTIONS -D_CRT_SECURE_NO_WARNINGS -D_SILENCE_ALL_CXX17_DEPRECATION_WARNINGS -DNOMINMAX -DWIN32_LEAN_AND_MEAN -Dbinexport12_ida_dll_EXPORTS -D_USRDLL -D__QT__ -DQT_NAMESPACE=QT -DQT_UITOOLS_LIB -D__DEFINE_PH__ -DQT_DLL -DQT_3DCORE_LIB -DQT_GUI_LIB -D_WINDLL -D_MBCS  "-I$(QT_IDA)include" "-I$(IDA_76_SDK)include" "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include\QtUiTools" "-I$(QTDIR)\include\Qt3DCore" "-I$(QTDIR)\include\QtGui" "-ID:\binexport_sdk" "-I.\S(ProjectDir)\." "-ID:\boost_1_77_0" "-I\$(INHERIT)\." "-I$(Qt_ANGLE)\."</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">Moc%27ing notepad_window.hpp...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  "-D\"$(INHERIT)\"" -DWIN32 -D_WINDOWS -DNDEBUG -D__EA64__ -D__NT__ -D__X64__ -D__IDP__ -DUSE_DANGEROUS_FUNCTIONS -DUSE_STANDARD_FILE_FUNCTIONS -D_CRT_SECURE_NO_WARNINGS -D_SILENCE_ALL_CXX17_DEPRECATION_WARNINGS -DNOMINMAX -DWIN32_LEAN_AND_MEAN -Dbinexport_ida64_dll_EXPORTS -D_USRDLL -D__QT__ -DQT_NAMESPACE=QT -DQT_UITOOLS_LIB -D__DEFINE_PH__ -DQT_DLL -DQT_3DCORE_LIB -DQT_GUI_LIB -D_WINDLL -D_MBCS  "-I$(QT_IDA)include" "-I$(IDA_76_SDK)include" "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include\QtUiTools" "-I$(QTDIR)\include\Qt3DCore" "-I$(QTDIR)\include\QtGui" "-ID:\binexport_sdk" "-I.\S(ProjectDir)\." "-ID:\boost_1_77_0" "-I$(IDA76_DIR)idc" "-I\$(INHERIT)\." "-I$(Qt_ANGLE)\."</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+    </CustomBuild>
+    <CustomBuild Include="tree_window.hpp">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">Moc%27ing tree_window.hpp...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  "-D\"$(INHERIT)\"" -DWIN32 -D_WINDOWS -D__EA64__ -D__NT__ -D__X64__ -D__IDP__ -DUSE_DANGEROUS_FUNCTIONS -DUSE_STANDARD_FILE_FUNCTIONS -D_CRT_SECURE_NO_WARNINGS -D_SILENCE_ALL_CXX17_DEPRECATION_WARNINGS -DNOMINMAX -DWIN32_LEAN_AND_MEAN -Dbinexport_ida64_dll_EXPORTS -D_DEBUG -D_USRDLL -D__QT__ -DQT_NAMESPACE=QT -DQT_UITOOLS_LIB -D__DEFINE_PH__ -DQT_DLL -DQT_3DCORE_LIB -DQT_GUI_LIB -D_WINDLL -D_MBCS  "-I$(IDA76_DIR)idc" "-I$(QT_IDA)include" "-I$(IDA_76_SDK)include" "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include\QtUiTools" "-I$(QTDIR)\include\Qt3DCore" "-I$(QTDIR)\include\QtGui" "-ID:\binexport_sdk" "-I.\S(ProjectDir)\." "-ID:\boost_1_77_0" "-I\$(INHERIT)\." "-I$(Qt_ANGLE)\."</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing tree_window.hpp...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  "-D\"$(INHERIT)\"" -DWIN32 -D_WINDOWS -D__NT__ -D__X64__ -D__IDP__ -DUSE_DANGEROUS_FUNCTIONS -DUSE_STANDARD_FILE_FUNCTIONS -D_CRT_SECURE_NO_WARNINGS -D_SILENCE_ALL_CXX17_DEPRECATION_WARNINGS -DNOMINMAX -DWIN32_LEAN_AND_MEAN -Dbinexport12_ida_dll_EXPORTS -D_DEBUG -D_USRDLL -D__QT__ -DQT_NAMESPACE=QT -DQT_UITOOLS_LIB -D__DEFINE_PH__ -DQT_DLL -DQT_3DCORE_LIB -DQT_GUI_LIB -D_WINDLL -D_MBCS  "-I$(QT_IDA)include" "-I$(IDA_76_SDK)include" "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include\QtUiTools" "-I$(QTDIR)\include\Qt3DCore" "-I$(QTDIR)\include\QtGui" "-ID:\binexport_sdk" "-I.\S(ProjectDir)\." "-ID:\boost_1_77_0" "-I\$(INHERIT)\." "-I$(Qt_ANGLE)\."</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Moc%27ing tree_window.hpp...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  "-D\"$(INHERIT)\"" -DWIN32 -D_WINDOWS -DNDEBUG -D__NT__ -D__X64__ -D__IDP__ -DUSE_DANGEROUS_FUNCTIONS -DUSE_STANDARD_FILE_FUNCTIONS -D_CRT_SECURE_NO_WARNINGS -D_SILENCE_ALL_CXX17_DEPRECATION_WARNINGS -DNOMINMAX -DWIN32_LEAN_AND_MEAN -Dbinexport12_ida_dll_EXPORTS -D_USRDLL -D__QT__ -DQT_NAMESPACE=QT -DQT_UITOOLS_LIB -D__DEFINE_PH__ -DQT_DLL -DQT_3DCORE_LIB -DQT_GUI_LIB -D_WINDLL -D_MBCS  "-I$(QT_IDA)include" "-I$(IDA_76_SDK)include" "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include\QtUiTools" "-I$(QTDIR)\include\Qt3DCore" "-I$(QTDIR)\include\QtGui" "-ID:\binexport_sdk" "-I.\S(ProjectDir)\." "-ID:\boost_1_77_0" "-I\$(INHERIT)\." "-I$(Qt_ANGLE)\."</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">Moc%27ing tree_window.hpp...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  "-D\"$(INHERIT)\"" -DWIN32 -D_WINDOWS -DNDEBUG -D__EA64__ -D__NT__ -D__X64__ -D__IDP__ -DUSE_DANGEROUS_FUNCTIONS -DUSE_STANDARD_FILE_FUNCTIONS -D_CRT_SECURE_NO_WARNINGS -D_SILENCE_ALL_CXX17_DEPRECATION_WARNINGS -DNOMINMAX -DWIN32_LEAN_AND_MEAN -Dbinexport_ida64_dll_EXPORTS -D_USRDLL -D__QT__ -DQT_NAMESPACE=QT -DQT_UITOOLS_LIB -D__DEFINE_PH__ -DQT_DLL -DQT_3DCORE_LIB -DQT_GUI_LIB -D_WINDLL -D_MBCS  "-I$(QT_IDA)include" "-I$(IDA_76_SDK)include" "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include\QtUiTools" "-I$(QTDIR)\include\Qt3DCore" "-I$(QTDIR)\include\QtGui" "-ID:\binexport_sdk" "-I.\S(ProjectDir)\." "-ID:\boost_1_77_0" "-I$(IDA76_DIR)idc" "-I\$(INHERIT)\." "-I$(Qt_ANGLE)\."</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+    </CustomBuild>
+    <CustomBuild Include="first_window.hpp">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">Moc%27ing first_window.hpp...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  "-D\"$(INHERIT)\"" -DWIN32 -D_WINDOWS -D__EA64__ -D__NT__ -D__X64__ -D__IDP__ -DUSE_DANGEROUS_FUNCTIONS -DUSE_STANDARD_FILE_FUNCTIONS -D_CRT_SECURE_NO_WARNINGS -D_SILENCE_ALL_CXX17_DEPRECATION_WARNINGS -DNOMINMAX -DWIN32_LEAN_AND_MEAN -Dbinexport_ida64_dll_EXPORTS -D_DEBUG -D_USRDLL -D__QT__ -DQT_NAMESPACE=QT -DQT_UITOOLS_LIB -D__DEFINE_PH__ -DQT_DLL -DQT_3DCORE_LIB -DQT_GUI_LIB -D_WINDLL -D_MBCS  "-I$(IDA76_DIR)idc" "-I$(QT_IDA)include" "-I$(IDA_76_SDK)include" "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include\QtUiTools" "-I$(QTDIR)\include\Qt3DCore" "-I$(QTDIR)\include\QtGui" "-ID:\binexport_sdk" "-I.\S(ProjectDir)\." "-ID:\boost_1_77_0" "-I\$(INHERIT)\." "-I$(Qt_ANGLE)\."</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing first_window.hpp...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  "-D\"$(INHERIT)\"" -DWIN32 -D_WINDOWS -D__NT__ -D__X64__ -D__IDP__ -DUSE_DANGEROUS_FUNCTIONS -DUSE_STANDARD_FILE_FUNCTIONS -D_CRT_SECURE_NO_WARNINGS -D_SILENCE_ALL_CXX17_DEPRECATION_WARNINGS -DNOMINMAX -DWIN32_LEAN_AND_MEAN -Dbinexport12_ida_dll_EXPORTS -D_DEBUG -D_USRDLL -D__QT__ -DQT_NAMESPACE=QT -DQT_UITOOLS_LIB -D__DEFINE_PH__ -DQT_DLL -DQT_3DCORE_LIB -DQT_GUI_LIB -D_WINDLL -D_MBCS  "-I$(QT_IDA)include" "-I$(IDA_76_SDK)include" "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include\QtUiTools" "-I$(QTDIR)\include\Qt3DCore" "-I$(QTDIR)\include\QtGui" "-ID:\binexport_sdk" "-I.\S(ProjectDir)\." "-ID:\boost_1_77_0" "-I\$(INHERIT)\." "-I$(Qt_ANGLE)\."</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Moc%27ing first_window.hpp...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  "-D\"$(INHERIT)\"" -DWIN32 -D_WINDOWS -DNDEBUG -D__NT__ -D__X64__ -D__IDP__ -DUSE_DANGEROUS_FUNCTIONS -DUSE_STANDARD_FILE_FUNCTIONS -D_CRT_SECURE_NO_WARNINGS -D_SILENCE_ALL_CXX17_DEPRECATION_WARNINGS -DNOMINMAX -DWIN32_LEAN_AND_MEAN -Dbinexport12_ida_dll_EXPORTS -D_USRDLL -D__QT__ -DQT_NAMESPACE=QT -DQT_UITOOLS_LIB -D__DEFINE_PH__ -DQT_DLL -DQT_3DCORE_LIB -DQT_GUI_LIB -D_WINDLL -D_MBCS  "-I$(QT_IDA)include" "-I$(IDA_76_SDK)include" "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include\QtUiTools" "-I$(QTDIR)\include\Qt3DCore" "-I$(QTDIR)\include\QtGui" "-ID:\binexport_sdk" "-I.\S(ProjectDir)\." "-ID:\boost_1_77_0" "-I\$(INHERIT)\." "-I$(Qt_ANGLE)\."</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">Moc%27ing first_window.hpp...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  "-D\"$(INHERIT)\"" -DWIN32 -D_WINDOWS -DNDEBUG -D__EA64__ -D__NT__ -D__X64__ -D__IDP__ -DUSE_DANGEROUS_FUNCTIONS -DUSE_STANDARD_FILE_FUNCTIONS -D_CRT_SECURE_NO_WARNINGS -D_SILENCE_ALL_CXX17_DEPRECATION_WARNINGS -DNOMINMAX -DWIN32_LEAN_AND_MEAN -Dbinexport_ida64_dll_EXPORTS -D_USRDLL -D__QT__ -DQT_NAMESPACE=QT -DQT_UITOOLS_LIB -D__DEFINE_PH__ -DQT_DLL -DQT_3DCORE_LIB -DQT_GUI_LIB -D_WINDLL -D_MBCS  "-I$(QT_IDA)include" "-I$(IDA_76_SDK)include" "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include\QtUiTools" "-I$(QTDIR)\include\Qt3DCore" "-I$(QTDIR)\include\QtGui" "-ID:\binexport_sdk" "-I.\S(ProjectDir)\." "-ID:\boost_1_77_0" "-I$(IDA76_DIR)idc" "-I\$(INHERIT)\." "-I$(Qt_ANGLE)\."</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="first_window.ui">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">$(QTDIR)\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">Uic%27ing %(Identity)...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">.\GeneratedFiles\ui_%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">"$(QTDIR)\bin\uic.exe" -o ".\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Uic%27ing %(Identity)...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\ui_%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QTDIR)\bin\uic.exe" -o ".\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Uic%27ing %(Identity)...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\ui_%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\uic.exe" -o ".\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">$(QTDIR)\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">Uic%27ing %(Identity)...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">.\GeneratedFiles\ui_%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">"$(QTDIR)\bin\uic.exe" -o ".\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="tree_window.ui">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">$(QTDIR)\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">Uic%27ing %(Identity)...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">.\GeneratedFiles\ui_%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">"$(QTDIR)\bin\uic.exe" -o ".\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Uic%27ing %(Identity)...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\ui_%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QTDIR)\bin\uic.exe" -o ".\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Uic%27ing %(Identity)...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\ui_%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\uic.exe" -o ".\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">$(QTDIR)\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">Uic%27ing %(Identity)...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">.\GeneratedFiles\ui_%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">"$(QTDIR)\bin\uic.exe" -o ".\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="notepad_window.ui">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">$(QTDIR)\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">Uic%27ing %(Identity)...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">.\GeneratedFiles\ui_%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">"$(QTDIR)\bin\uic.exe" -o ".\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Uic%27ing %(Identity)...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\ui_%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QTDIR)\bin\uic.exe" -o ".\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Uic%27ing %(Identity)...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\ui_%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\uic.exe" -o ".\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">$(QTDIR)\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">Uic%27ing %(Identity)...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">.\GeneratedFiles\ui_%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">"$(QTDIR)\bin\uic.exe" -o ".\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="db_connection.ui">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">$(QTDIR)\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">Uic%27ing %(Identity)...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">.\GeneratedFiles\ui_%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">"$(QTDIR)\bin\uic.exe" -o ".\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Uic%27ing %(Identity)...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\ui_%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QTDIR)\bin\uic.exe" -o ".\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Uic%27ing %(Identity)...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\ui_%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\uic.exe" -o ".\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">$(QTDIR)\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">Uic%27ing %(Identity)...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">.\GeneratedFiles\ui_%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">"$(QTDIR)\bin\uic.exe" -o ".\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="begin_idasdk.inc" />
+    <CustomBuild Include="binexport_class.ui">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">$(QTDIR)\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">Uic%27ing %(Identity)...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">.\GeneratedFiles\ui_%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">"$(QTDIR)\bin\uic.exe" -o ".\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Uic%27ing %(Identity)...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\ui_%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QTDIR)\bin\uic.exe" -o ".\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Uic%27ing %(Identity)...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\ui_%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\uic.exe" -o ".\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">$(QTDIR)\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">Uic%27ing %(Identity)...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">.\GeneratedFiles\ui_%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">"$(QTDIR)\bin\uic.exe" -o ".\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
+    </CustomBuild>
+    <None Include="end_idasdk.inc" />
+    <None Include="third_party\absl\base\internal\spinlock_akaros.inc" />
+    <None Include="third_party\absl\base\internal\spinlock_linux.inc" />
+    <None Include="third_party\absl\base\internal\spinlock_posix.inc" />
+    <None Include="third_party\absl\base\internal\spinlock_win32.inc" />
+    <None Include="third_party\absl\debugging\internal\stacktrace_aarch64-inl.inc" />
+    <None Include="third_party\absl\debugging\internal\stacktrace_arm-inl.inc" />
+    <None Include="third_party\absl\debugging\internal\stacktrace_generic-inl.inc" />
+    <None Include="third_party\absl\debugging\internal\stacktrace_powerpc-inl.inc" />
+    <None Include="third_party\absl\debugging\internal\stacktrace_unimplemented-inl.inc" />
+    <None Include="third_party\absl\debugging\internal\stacktrace_win32-inl.inc" />
+    <None Include="third_party\absl\debugging\internal\stacktrace_x86-inl.inc" />
+    <None Include="third_party\absl\debugging\symbolize_darwin.inc" />
+    <None Include="third_party\absl\debugging\symbolize_elf.inc" />
+    <None Include="third_party\absl\debugging\symbolize_unimplemented.inc" />
+    <None Include="third_party\absl\debugging\symbolize_win32.inc" />
+    <None Include="third_party\absl\numeric\int128_have_intrinsic.inc" />
+    <None Include="third_party\absl\numeric\int128_no_intrinsic.inc" />
+    <None Include="third_party\absl\time\internal\get_current_time_chrono.inc" />
+    <None Include="third_party\absl\time\internal\get_current_time_posix.inc" />
+    <None Include="third_party\absl\time\internal\zoneinfo.inc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="BinexportDebugLib.txt" />
+    <Text Include="BinexportBuildLib.txt" />
+    <Text Include="BinexportReleaseLib.txt" />
+    <Text Include="stream_вывод_текстовик.txt" />
+    <Text Include="Где заголовки от этих файлов.txt" />
+    <Text Include="Порядок  writer_ida_db.txt" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties Qt5Version_x0020_x64="MSVC2015_64" />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>
