@@ -1,3 +1,30 @@
+# Служебное Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Конфиги под конкретную машину
+*.vcxproj.user
+
+# Билдовые папки
+Debug/
+Release/
+x64/
+GeneratedFiles/
+
+# Объектные и прочие временные файлы
+*.obj
+*.pdb
+*.idb
+*.tlog
+*.ipch
+*.pch
+*.log
+*.tmp
+
+
 *.zip
 *.7z
 *.rar
@@ -9,3 +36,4 @@
 *.xlsm
 *.xlsx
 *.png
+Example_Function.cpp
