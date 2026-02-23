@@ -229,7 +229,7 @@ namespace {
 							if (Instruction::IsNegativeValue(
 								(*j)->expression->GetImmediate()) &&
 								(*j)->expression->GetSymbol().empty()) {
-								// Íè÷åãî íå âûâîäèòü, èíà÷å ïîëó÷èì: eax+-12
+								// ÐŒÐ¸Ñ‡ÐµÐ³Ð¾ Ð½Ðµ Ð²Ñ‹Ð²Ð¾Ð´Ð¸Ñ‚ÑŒ, Ð¸Ð½Ð°Ñ‡Ðµ Ð¿Ð¾Ð»ÑƒÑ‡Ð¸Ð¼: eax+-12
 							}
 							else if ((*j)->expression->GetImmediate() == 0) {
 								// Skip "+0".
@@ -238,7 +238,7 @@ namespace {
 							}
 							else {
 #ifdef _DEBUG
-								*stream << " MO ";   // ìàòåìàòè÷åñêèé îïåðàòîð
+								*stream << " MO ";   // Ð¼Ð°Ñ‚ÐµÐ¼Ð°Ñ‚Ð¸Ñ‡ÐµÑÐºÐ¸Ð¹ Ð¾Ð¿ÐµÑ€Ð°Ñ‚Ð¾Ñ€
 #endif
 								*stream << expression_symbol;
 							}
@@ -313,7 +313,7 @@ namespace {
 				}
 			}
 			else {
-				// Âûâîä ïîäñòàíîâî÷íîãî âûðàæåíèÿ âìåñòî ôàêòè÷åñêîãî çíà÷åíèÿ.
+				// Â¬Ñ‹Ð²Ð¾Ð´ Ð¿Ð¾Ð´ÑÑ‚Ð°Ð½Ð¾Ð²Ð¾Ñ‡Ð½Ð¾Ð³Ð¾ Ð²Ñ‹Ñ€Ð°Ð¶ÐµÐ½Ð¸Â¤ Ð²Ð¼ÐµÑÑ‚Ð¾ Ñ„Ð°ÐºÑ‚Ð¸Ñ‡ÐµÑÐºÐ¾Ð³Ð¾ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Â¤.
 #ifdef _DEBUG
 				*stream << " VAR ";
 #endif
@@ -434,7 +434,7 @@ std::string RenderOperandsAdditional(const Instruction& instruction,
 	}
 
 	Tree tree;
-	// std::stringstream stream; // ðàíåå stream áûë îïðåäåëåí çäåñü 
+	// std::stringstream stream; // Ñ€Ð°Ð½ÐµÐµ stream Ð±Ñ‹Ð» Ð¾Ð¿Ñ€ÐµÐ´ÐµÐ»ÐµÐ½ Ð·Ð´ÐµÑÑŒ 
 	int operand_index = 0;
 	for (const auto* operand : instruction) {
 #ifdef _DEBUG
@@ -457,7 +457,7 @@ std::string RenderOperandsAdditional(const Instruction& instruction,
 			subst_it =
 				GetSubstitution(instruction.GetAddress(), operand_index, subst_it,
 					subst_end, &substitution, &expression_id);
-			// çäåñü ðåíäåðèì îïåðàíä 'operand_index' èíñòðóêöèè 
+			// Ð·Ð´ÐµÑÑŒ Ñ€ÐµÐ½Ð´ÐµÑ€Ð¸Ð¼ Ð¾Ð¿ÐµÑ€Ð°Ð½Ð´ 'operand_index' Ð¸Ð½ÑÑ‚Ñ€ÑƒÐºÑ†Ð¸Ð¸ 
 			RenderExpressionAdditional(&stream, **tree.begin(), expression_id, substitution, exporter);
 		}
 		tree.clear();
@@ -607,11 +607,11 @@ void Instruction::RenderAdditional(std::ostream* stream,
 	const FlowGraph& flow_graph,
 	Exporter& exporter) const {
 #ifdef _DEBUG
-	// ïîëó÷àåì ìíåìîíèêó èíñòðóêöèè 
+	// Ð¿Ð¾Ð»ÑƒÑ‡Ð°ÐµÐ¼ Ð¼Ð½ÐµÐ¼Ð¾Ð½Ð¸ÐºÑƒ Ð¸Ð½ÑÑ‚Ñ€ÑƒÐºÑ†Ð¸Ð¸ 
 	*stream << "MNEM ";
 #endif
 	*stream << GetMnemonic() << " ";
-	// èäåì ðåíäåðèòü îïåðàíäû èíñòðóêöèè ...
+	// Ð¸Ð´ÐµÐ¼ Ñ€ÐµÐ½Ð´ÐµÑ€Ð¸Ñ‚ÑŒ Ð¾Ð¿ÐµÑ€Ð°Ð½Ð´Ñ‹ Ð¸Ð½ÑÑ‚Ñ€ÑƒÐºÑ†Ð¸Ð¸ ...
 	*stream << RenderOperandsAdditional(*this, flow_graph, exporter);
 }
 

@@ -214,15 +214,13 @@ void get_current_plugin_directory();
 void get_collection_api_files(const std::string& path);
 
 // [STACK] --- begin ---
-/**
-* \brief Получить OptionalHeader.SizeOfStackReserve из уже разобранного PE.
-* \return Значение в байтах; 0 если заголовок ещё не разобран/нет данных.
-*/
+
+/// \brief \n Получить OptionalHeader.SizeOfStackReserve из уже разобранного PE. \n
+/// \return Значение в байтах; 0 если заголовок ещё не разобран/нет данных.
 DWORD GetPeSizeOfStackReserve();
 
-/**
-* \brief Получить OptionalHeader.SizeOfStackCommit из уже разобранного PE.
-* \return Значение в байтах; 0 если заголовок ещё не разобран/нет данных.
-*/
+
+/// \brief \n Получить OptionalHeader.SizeOfStackCommit из уже разобранного PE. \n
+/// \return Значение в байтах; 0 если заголовок ещё не разобран/нет данных.
 DWORD GetPeSizeOfStackCommit();
 // [STACK] --- end ---

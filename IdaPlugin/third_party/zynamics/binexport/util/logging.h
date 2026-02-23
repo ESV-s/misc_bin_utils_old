@@ -61,7 +61,7 @@ class LogEntry {
   absl::Time timestamp_;
   uint32_t tid_ = 0;
   absl::string_view text_message_ = "";
-  mutable std::string formatted_message_;  ///<\n Кэшированный результат работы ToString()
+  mutable std::string formatted_message_;  ///<\n В СЌС€РёСЂРѕРІР°РЅРЅС‹Р№ СЂРµР·СѓР»СЊС‚Р°С‚ СЂР°Р±РѕС‚С‹ ToString()
 };
 
 class LogSink {
@@ -92,12 +92,12 @@ struct LoggingOptions {
 };
 
 		///\n
-/// Инициализирует ведение журнала с указанными параметрами и приемником журнала по умолчанию.
+/// В»РЅРёС†РёР°Р»РёР·РёСЂСѓРµС‚ РІРµРґРµРЅРёРµ Р¶СѓСЂРЅР°Р»Р° СЃ СѓРєР°Р·Р°РЅРЅС‹РјРё РїР°СЂР°РјРµС‚СЂР°РјРё Рё РїСЂРёРµРјРЅРёРєРѕРј Р¶СѓСЂРЅР°Р»Р° РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ.
 absl::Status InitLogging(const LoggingOptions& options,
                          std::unique_ptr<not_absl::LogSink> log_sink);
 
 		///\n
-/// Отключает ведение журнала, закрывая все файлы журнала.
+/// СњС‚РєР»СЋС‡Р°РµС‚ РІРµРґРµРЅРёРµ Р¶СѓСЂРЅР°Р»Р°, Р·Р°РєСЂС‹РІР°В¤ РІСЃРµ С„Р°Р№Р»С‹ Р¶СѓСЂРЅР°Р»Р°.
 void ShutdownLogging();
 
 }  // namespace security::binexport

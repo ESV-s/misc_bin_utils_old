@@ -125,26 +125,26 @@ namespace security::binexport {
 				segment == SEG_DATA));
 	}
 
-	/**
-	 * \brief \n Мы разрешаем функции, о которых IDA не знает, но только в сегментах кода.\n
-	 * \param address Address address
-	 * \param modules ModuleMap& modules
-	 * \return bool
-	 * \n\n
-	 */
+
+/// \brief \n Мы разрешаем функции, о которых IDA не знает, но только в сегментах кода.\n
+/// \n
+/// \param address Address address
+/// \param modules ModuleMap& modules
+/// \return bool
+/// \n\n
 	bool IsPossibleFunction(Address address, const ModuleMap& modules) {
 		return IsCode(address) || get_func(address) != 0 ||
 			modules.find(address) != modules.end();
 	}
 
-	/**
-	 * \brief \n Возвращает, является ли указанная инструкция безусловным переходом.\n
-	 * Переход является безусловным, если существует ровно одна ссылка\n (либо на код, либо на данные (для импортируемых функций)).\n
-	 *  В частности, заметим, что может не быть потоковой ссылки на следующую инструкцию.\n
-	 * \param instruction insn_t& instruction
-	 * \return true/false
-	 * \n\n
-	 */
+
+/// \brief \n Возвращает, является ли указанная инструкция безусловным переходом.\n
+/// Переход является безусловным, если существует ровно одна ссылка\n (либо на код, либо на данные (для импортируемых функций)).\n
+///  В частности, заметим, что может не быть потоковой ссылки на следующую инструкцию.\n
+/// \n
+/// \param instruction insn_t& instruction
+/// \return true/false
+/// \n\n
 	bool IsUnconditionalJump(const insn_t& instruction) {
 		if (is_indirect_jump_insn(instruction) && GetArchitecture() == kX86) {
 			return true;
@@ -734,7 +734,7 @@ namespace security::binexport {
 				// https://www.geeksforgeeks.org/how-to-find-index-of-a-given-element-in-a-vector-in-cpp/
 				if (!exporter->SearchFunctionAddress(entry_point.address_))
 				{
-					msg("Ida unknow about it function %llx \n", entry_point.address_);
+					msg("Ida unknown about it function %llx \n", entry_point.address_);
 				}
 
 			}
@@ -865,7 +865,8 @@ namespace security::binexport {
 
 		}
 
-
+		// СОЗДАНО GPT
+/* НАЧАЛО СОЗДАНО GPT можно пока закомментить 
 		// [HEAP] --- begin additions ---
 		// Требуется: #include <unordered_map>
 		static const int HEAP_TOUCH_WINDOW = 16;     ///< ждём разыменование RAX/EAX
@@ -880,14 +881,17 @@ namespace security::binexport {
 
 		// [HEAP] --- end additions ---
 
-
+*/ // КОНЕЦ СОЗДАНО GPT
 		
 		for (const auto& item : *instructions)
 		{
 			auto adr = item.GetAddress();
 			exporter->pe_instruction.address = adr;
 			exporter->pe_instruction.func_address = (get_func(adr))->start_ea;
-
+			
+			// СОЗДАНО GPT
+/* НАЧАЛО СОЗДАНО GPT можно пока закомментить
+			
 			// --- [INSTR FLAGS] begin ---
 			insn_t insn;
 			bool decoded = decode_insn(&insn, adr) > 0;
@@ -915,7 +919,8 @@ namespace security::binexport {
 					const op_t &op = insn.ops[op_idx];
 					if (op.type == o_displ || op.type == o_phrase) {
 						const char* rn = ph.reg_names[op.reg];
-						if (rn && (*rn == 's' || *rn == 'e' || *rn == 'r')) { /* быстрый фильтр sp/bp/rsp/rbp */
+						// быстрый фильтр sp/bp/rsp/rbp 
+						if (rn && (*rn == 's' || *rn == 'e' || *rn == 'r')) { 
 							if (strstr(rn, "sp") || strstr(rn, "bp")) {
 								if (is_write) writes_stack = true; else reads_stack = true;
 							}
@@ -1580,7 +1585,8 @@ namespace security::binexport {
 					const op_t &src = insn.ops[1];
 
 					// mov reg, rax/eax
-					if (insn.itype != 0 /* быстрый гард */ &&
+					// быстрый гард 
+					if (insn.itype != 0  &&
 						dst.type == o_reg && is_retreg(src.type == o_reg ? src.reg : -1))
 					{
 						aliases[dst.reg] = HEAP_ALIAS_WINDOW;
@@ -1653,7 +1659,7 @@ namespace security::binexport {
 				// --- [OUT-PARAM STORE] begin ---
 
 
-				// \brief true, если инструкция сохраняет heap-указатель из RAX/EAX в ячейку, адрес которой строится от регистров-параметров.
+				// \brief \n true, если инструкция сохраняет heap-указатель из RAX/EAX в ячейку, адрес которой строится от регистров-параметров. \n
 				auto store_heap_to_param_slot = [&](const insn_t &ins)->bool {
 					// ожидаем минимум два операнда: dst, src
 					const op_t &dst = ins.ops[0];
@@ -1728,6 +1734,8 @@ namespace security::binexport {
 				if (exporter->pe_instruction.sp_delta > fx.sp_delta_max) fx.sp_delta_max = exporter->pe_instruction.sp_delta;
 			}
 			// [EFFECTS] --- end ---
+
+*/ // КОНЕЦ СОЗДАНО GPT
 
 			exporter->vector_pe_instructions.emplace_back(exporter->pe_instruction);
 		}

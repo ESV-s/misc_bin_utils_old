@@ -15,7 +15,7 @@
 #include "third_party/zynamics/binexport/hash.h"
 
 		///\n
-/// Адаптировано из оптимизированной версии на сайте\n http://www.cse.yorku.ca/~oz/hash.html
+/// РђРґР°РїС‚РёСЂРѕРІР°РЅРѕ РёР· РѕРїС‚РёРјРёР·РёСЂРѕРІР°РЅРЅРѕР№ РІРµСЂСЃРёРё РЅР° СЃР°Р№С‚Рµ\n http://www.cse.yorku.ca/~oz/hash.html
 uint32_t GetSdbmHash(const std::string& data) {
 	uint32_t hash = 0;
 	for (size_t i = 0; i < data.size(); ++i) {

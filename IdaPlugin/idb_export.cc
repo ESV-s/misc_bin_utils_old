@@ -54,7 +54,7 @@ namespace security::binexport {
 	absl::Status ExportDatabase(const std::string& idb_path,
 		const IdbExporter::Options& options) {
 		const bool is_64bit = absl::EndsWithIgnoreCase(idb_path, kIdbExtension64);
-		// Чтобы избежать ненужного запуска IDA, сначала проверьте наличие.
+		// вЂћС‚РѕР±С‹ РёР·Р±РµР¶Р°С‚СЊ РЅРµРЅСѓР¶РЅРѕРіРѕ Р·Р°РїСѓСЃРєР° IDA, СЃРЅР°С‡Р°Р»Р° РїСЂРѕРІРµСЂСЊС‚Рµ РЅР°Р»РёС‡РёРµ.
 		if (!FileExists(idb_path)) {
 			return absl::NotFoundError(absl::StrCat("File not found: " + idb_path));
 		}
@@ -70,8 +70,8 @@ namespace security::binexport {
 		args.push_back("-OBinExportAutoAction:BinExportBinary");
 		args.push_back(absl::StrCat(
 			"-OBinExportModule:",
-			// Сделать имя вывода детерминированным. При указании только каталога,
-			// BinExport будет использовать в качестве базового имени исходное имя исполняемого файла IDB.
+			// вЂ”РґРµР»Р°С‚СЊ РёРјВ¤ РІС‹РІРѕРґР° РґРµС‚РµСЂРјРёРЅРёСЂРѕРІР°РЅРЅС‹Рј. С•СЂРё СѓРєР°Р·Р°РЅРёРё С‚РѕР»СЊРєРѕ РєР°С‚Р°Р»РѕРіР°,
+			// BinExport Р±СѓРґРµС‚ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ РІ РєР°С‡РµСЃС‚РІРµ Р±Р°Р·РѕРІРѕРіРѕ РёРјРµРЅРё РёСЃС…РѕРґРЅРѕРµ РёРјВ¤ РёСЃРїРѕР»РЅВ¤РµРјРѕРіРѕ С„Р°Р№Р»Р° IDB.
 			JoinPath(options.export_dir,
 				ReplaceFileExtension(Basename(idb_path), kBinExportExtension))));
 		args.push_back(absl::StrCat("-OBinExportAlsoLogToStdErr:",

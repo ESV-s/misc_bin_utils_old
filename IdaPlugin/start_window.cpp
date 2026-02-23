@@ -17,7 +17,7 @@
 #include "ui.h"
 // Определения для использования функций binexport конец
 
-#include <filesystem> 
+#include <filesystem>
 #include <name.hpp>
 #include <entry.hpp>
 #include "exporter.h"
@@ -39,53 +39,49 @@ namespace fs = std::filesystem;
 #endif
 
 
-
 // Использовать ли эвристику, специфичную для X86, для определения функций,
 // которые не имеют возврата (no return).
 // Подробнее см. в разделе FlowGraph::FindBasicBlockBreaks().
 bool noreturn_heuristic_ = false; // x86_noreturn_heuristic_
 
 
-								  /**
-								  * \brief \n Получает и выводит информацию о использовании приложением памяти \n
-								  * \return Количество используемой памяти в килобайтах
-								  */
-size_t print_memory_usage() {
+
+/// \brief \n Получает и выводит информацию о использовании приложением памяти \n
+/// \return Количество используемой памяти в килобайтах
+size_t print_memory_usage()
+{
 	TRACE_FN();
-	size_t result = 0;
+	size_t                  result = 0;
 	PROCESS_MEMORY_COUNTERS info;
 	GetProcessMemoryInfo(GetCurrentProcess(), &info, sizeof(info));
 	result = info.WorkingSetSize;
 
-	msg("\nmemory usage = %d kb\n", result / 1024);  // в килобайтах !!!
-	return result;  // в байтах !!!
+	msg("\nmemory usage = %d kb\n", result / 1024); // в килобайтах !!!
+	return result;                                  // в байтах !!!
 }
-
-
-
 
 
 void ExportIdbAdditional(SB::DumpWriter* writer) // ИЗМЕНЕНО было SB::Writer* writer
 {
 	TRACE_FN();
 	msg("\n    ***    \n%s : starting export\n", SB::GetModuleName().c_str());
-	WaitBox wait_box("Exporting database...");
-	Timer<> timer;
-	qstring name{};
+	WaitBox     wait_box("Exporting database...");
+	Timer<>     timer;
+	qstring     name{};
 	std::string naming{};
-	std::string type_func{};  // тип функции  - локальная или экспортируемая ...
-	auto modules_size = exporter.modules_size;
-	auto vector_need_size = exporter.vector_need_size;
+	std::string type_func{}; // тип функции  - локальная или экспортируемая ...
+	auto        modules_size = exporter.modules_size;
+	auto        vector_need_size = exporter.vector_need_size;
 
-	const auto modules = SB::InitModuleMap();  // инициализируем чтобы получить размер
+	const auto modules = SB::InitModuleMap(); // инициализируем чтобы получить размер
 
 	modules_size = modules.size();
 	exporter.modules_size = modules_size;
 
-	auto func_chunk_size = get_fchunk_qty();			// получим размер - количество элементов ...
+	auto func_chunk_size = get_fchunk_qty(); // получим размер - количество элементов ...
 
-														// теперь рассчитаем какого размера нам нужен вектор ,
-														// чтобы проинициализировать его добавлять в него элементы по индексу !!!
+	// теперь рассчитаем какого размера нам нужен вектор ,
+	// чтобы проинициализировать его добавлять в него элементы по индексу !!!
 	vector_need_size = static_cast<size_t>(modules_size) + func_chunk_size;
 	exporter.vector_need_size = vector_need_size;
 
@@ -93,9 +89,8 @@ void ExportIdbAdditional(SB::DumpWriter* writer) // ИЗМЕНЕНО было SB
 	exporter.function_data.reserve(vector_need_size + 100);
 
 
-
 	// [STACK] --- begin ---
-	// \brief Однократно разбираем PE-файл с диска, чтобы заполнить pe_image_optional_header.
+	// \brief \n Однократно разбираем PE-файл с диска, чтобы заполнить pe_image_optional_header. \n
 	(void)AddDataPEHeaders();
 
 	// синхронизируем кэш Exporter с уже разобранными полями OptionalHeader
@@ -103,9 +98,6 @@ void ExportIdbAdditional(SB::DumpWriter* writer) // ИЗМЕНЕНО было SB
 
 	// [STACK] --- end ---
 
-
-
-	
 
 	// [PATCH] Перед началом прохода по функциям — сбрасываем статистику.
 	exporter.ResetStats();
@@ -131,7 +123,6 @@ void ExportIdbAdditional(SB::DumpWriter* writer) // ИЗМЕНЕНО было SB
 
 			// добавим экспортируемые функции в мапу
 			exporter.export_func_address[addr] = ord;
-
 		}
 	}
 
@@ -143,14 +134,16 @@ void ExportIdbAdditional(SB::DumpWriter* writer) // ИЗМЕНЕНО было SB
 		EntryPointManager entry_point_adder(&entry_points, "function chunks");
 
 		// теперь бежим по всем функциям что есть в файле ...
-		for (size_t i = 0; i < func_chunk_size; ++i) {
-			if (const func_t* ida_func = getn_fchunk(i)) {
-
+		for (size_t i = 0; i < func_chunk_size; ++i)
+		{
+			if (const func_t* ida_func = getn_fchunk(i))
+			{
 				// [PATCH] Классифицируем адрес чанка: это может быть head, tail-chunk или thunk.
 				const FuncClassify fc = ClassifyFunction(ida_func->start_ea);
 
 				// [if] Если IDA не распознала функцию — пропускаем элемент.
-				if (!fc.this_chunk) {
+				if (!fc.this_chunk)
+				{
 					msg("    [SKIP] no function at %llx\n", ida_func->start_ea);
 					continue;
 				}
@@ -164,10 +157,10 @@ void ExportIdbAdditional(SB::DumpWriter* writer) // ИЗМЕНЕНО было SB
 
 				// Оригинальная логика добавления источника EntryPoint оставляем без изменений:
 				entry_point_adder.Add(
-					ida_func->start_ea,
-					(ida_func->flags & FUNC_TAIL)
-					? EntryPoint::Source::FUNCTION_CHUNK
-					: EntryPoint::Source::FUNCTION_PROLOGUE);
+				                      ida_func->start_ea,
+				                      (ida_func->flags & FUNC_TAIL)
+					                      ? EntryPoint::Source::FUNCTION_CHUNK
+					                      : EntryPoint::Source::FUNCTION_PROLOGUE);
 
 				msg("    func %llx \n", ida_func->start_ea);
 
@@ -245,7 +238,6 @@ void ExportIdbAdditional(SB::DumpWriter* writer) // ИЗМЕНЕНО было SB
 
 				// так как структуру сохранили - очистим ее экземпляр (инициализируем по новой) 
 				exporter.pe_func = {};
-
 			}
 			// сохраним индекс для последующего использования далее 
 			index = i + 1;
@@ -260,7 +252,8 @@ void ExportIdbAdditional(SB::DumpWriter* writer) // ИЗМЕНЕНО было SB
 
 		// Добавьте импортированные функции (чтобы мы не пропустили импортированные,
 		// но на которые нет ссылок).
-		for (const auto& module : modules) {
+		for (const auto& module : modules)
+		{
 			const auto address = module.first;
 			get_ea_name(&name, address);
 			naming = static_cast<std::string>(name.c_str());
@@ -282,20 +275,15 @@ void ExportIdbAdditional(SB::DumpWriter* writer) // ИЗМЕНЕНО было SB
 
 			index++;
 		}
-
 	}
-
 
 
 	// контейнеры и классы для хранения данных начало **********************
 	Instructions instructions;
-	FlowGraph flow_graph;
-	CallGraph call_graph;
+	FlowGraph    flow_graph;
+	CallGraph    call_graph;
 
 	// контейнеры и классы для хранения данных конец **********************
-
-
-
 
 
 	// начинаем анализ !!! здесь изменил AnalyzeFlowIda на AnalyzeFlowIdaAdditional=========================================
@@ -305,41 +293,34 @@ void ExportIdbAdditional(SB::DumpWriter* writer) // ИЗМЕНЕНО было SB
 	// ************************ ЗДЕСЬ В ЭТОЙ ФУНКЦИИ (и ее переходах к другим функциям) ВЫПОЛНЯЕТСЯ ВЕСЬ АНАЛИЗ ************
 
 
-
 	AnalyzeFlowIdaAdditional(&entry_points, modules, writer, &instructions, &flow_graph,
-		&call_graph,
-		noreturn_heuristic_
-		? FlowGraph::NoReturnHeuristic::kNopsAfterCall
-		: FlowGraph::NoReturnHeuristic::kNone,
-		&exporter);
-
+	                         &call_graph,
+	                         noreturn_heuristic_
+		                         ? FlowGraph::NoReturnHeuristic::kNopsAfterCall
+		                         : FlowGraph::NoReturnHeuristic::kNone,
+	                         &exporter);
 
 
 	//BM->	закончили анализ !!!
 	// закончили анализ !!!==================================================================================================
 
 
-
-
 	exporter.flow_graph_func_count = flow_graph.GetFunctions().size();
 	msg("%s : exported %d  functions with %d  instructions in %s \n",
-		SB::GetModuleName().c_str(),
-		exporter.flow_graph_func_count,  /* было ранее flow_graph.GetFunctions().size() , заменено мною на func_count */
-		instructions.size(),
-		SB::HumanReadableDuration(timer.elapsed()).c_str());
+	    SB::GetModuleName().c_str(),
+	    exporter.flow_graph_func_count, /* было ранее flow_graph.GetFunctions().size() , заменено мною на func_count */
+	    instructions.size(),
+	    SB::HumanReadableDuration(timer.elapsed()).c_str());
 
 	// выведем сообщения  - если установлен флаг PRINT_INFO
-	exporter.FinalizeFunctionEffects();   // ← финализация после всех проходов анализа
+	exporter.FinalizeFunctionEffects(); // ← финализация после всех проходов анализа
 	exporter.PrintInformation();
-
 }
 
 
 
-/**
-* \brief \n Начинаем чтение данных из ida DB открытого PE файла ...\n
-* \return eOk
-*/
+/// \brief \n Начинаем чтение данных из ida DB открытого PE файла ...\n
+/// \return eOk
 int StartWindow::ReadIdaDB()
 {
 	TRACE_FN();
@@ -354,12 +335,14 @@ int StartWindow::ReadIdaDB()
 	const char* filename = temporary_file.c_str();  // C:\Temp\dumptxt.log
 #endif
 
-	try {
-		std::ofstream file(filename);
-		SB::DumpWriter writer{ file };
+	try
+	{
+		std::ofstream  file(filename);
+		SB::DumpWriter writer{file};
 		ExportIdbAdditional(&writer);
 	}
-	catch (const std::exception& error) {
+	catch (const std::exception& error)
+	{
 		LOG(INFO) << "    Error exporting: " << error.what();
 		warning("    Error exporting: %s\n", error.what());
 		return 666;
@@ -372,8 +355,9 @@ int StartWindow::ReadIdaDB()
 	return eOk;
 }
 
-StartWindow::StartWindow(QWidget * parent) : QWidget(parent) {
-
+StartWindow::StartWindow(QWidget* parent)
+	: QWidget(parent)
+{
 	TRACE_FN();
 	ui.setupUi(this);
 
@@ -382,10 +366,9 @@ StartWindow::StartWindow(QWidget * parent) : QWidget(parent) {
 	connect(ui.binexport_button, SIGNAL(clicked()), SLOT(binexport_form_show()));
 
 
-
 	// секция для регулярки lineEdit_CMDLine начало http://blog.kislenko.net/show.php?id=1692#8530
 	const QRegExp RegExp("^[a-zA-Z0-9 (\s)]+$");
-	QValidator* Validator = new QRegExpValidator(RegExp, this);
+	QValidator*   Validator = new QRegExpValidator(RegExp, this);
 	// секция для регулярки lineEdit_CMDLine конец
 
 
@@ -397,7 +380,6 @@ StartWindow::StartWindow(QWidget * parent) : QWidget(parent) {
 	ui.lineEdit_CMDLine->installEventFilter(keyPressCMDLine);
 
 
-
 	if (mdbg) // в режиме отладки ввод символов в поле CMD вызывает падение IDA ...
 	{
 		// ui.lineEdit_CMDLine->setEnabled(false);
@@ -405,8 +387,7 @@ StartWindow::StartWindow(QWidget * parent) : QWidget(parent) {
 	}
 
 	// секция для регулярки lineEdit_CMDLine конец 
-	ReadIdaDB();  // выполняем при открытии формы ...
-
+	ReadIdaDB(); // выполняем при открытии формы ...
 }
 
 void ClearDataConteiners()
@@ -424,12 +405,12 @@ void ClearDataConteiners()
 	exporter.function_naming.clear();
 	exporter.function_data.clear();
 	exporter.segments_data.clear();
-
 }
 
-StartWindow::~StartWindow() {
+StartWindow::~StartWindow()
+{
 	if (notepad_form.isVisible()) { notepad_form.close(); } // иначе будет сохранять даже если окно закрыто
-															// и текст будет все время обнуляться, тк нет открытого едита и текст = ""
+	// и текст будет все время обнуляться, тк нет открытого едита и текст = ""
 	ClearDataConteiners();
 
 
@@ -446,7 +427,6 @@ StartWindow::~StartWindow() {
 		msg("\nvector segments_data       will be clear, now its size = %d ", exporter.segments_data.size());
 		msg("\n\n\n");
 	}
-
 }
 
 ///**
@@ -474,12 +454,10 @@ StartWindow::~StartWindow() {
 //}
 
 
-
 void StartWindow::notepad_form_show()
 {
 	TRACE_FN();
 	notepad_form.show();
-
 }
 
 void StartWindow::binexport_form_show()
@@ -496,12 +474,10 @@ void StartWindow::PressEnter()
 
 	if (!cmd_command.empty())
 	{
-
 		//msg("        Text fo parsing = %s \n", cmd_command.c_str());
 		// ui.lineEdit_CMDLine->clear();
 		ui.lineEdit_CMDLine->clear();
 		exporter.ParseCMD(cmd_command);
-
 	}
 }
 
@@ -510,5 +486,4 @@ void StartWindow::setting_form_show()
 {
 	TRACE_FN();
 	setting_form.show();
-
 }

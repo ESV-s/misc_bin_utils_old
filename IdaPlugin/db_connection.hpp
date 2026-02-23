@@ -25,7 +25,7 @@ class DBConnection : public QWidget {
 	Q_OBJECT
 
 public:
-	/// \brief Публичная проверка соединения, обёртка вокруг приватного CheckSQLConnection().
+	/// \brief \n Публичная проверка соединения, обёртка вокруг приватного CheckSQLConnection(). \n
 	/// \param instance Имя экземпляра MSSQL.
 	/// \return true при успешном соединении, иначе false.
 	static bool TryConnect(const QString& instance);

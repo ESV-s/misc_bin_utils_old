@@ -67,7 +67,7 @@ std::string EntryPoint::SourceToString() {
 		return "MSIL_EXCEPTION_RECORD";
 	default:
 		CHECK(false);
-		return "";  // Не достигнуто
+		return "";  // РќРµ РґРѕСЃС‚РёРіРЅСѓС‚Рѕ
 	}
 }
 

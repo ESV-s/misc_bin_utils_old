@@ -1,4 +1,15 @@
-﻿#pragma once
+﻿/*! \file start_window.hpp
+ *
+ * \brief \n Фаил содержит описание стартового окна плагина ,  при запуске плагина в IDA ... \n
+ *
+ *	Описывает класс StartWindow
+ *	в этом классе содержатся формы для работы с
+ *	- setting_form		см \ref StartWindow::setting_form 
+ *	- notepad_form		см \ref StartWindow::notepad_form 
+ *	- binexport_form	см \ref StartWindow::binexport_form  
+ */
+
+#pragma once
 #include <QtWidgets/QtWidgets>
 
 
@@ -16,11 +27,18 @@ class QLineEdit;
 QT_END_NAMESPACE
 
 
-/**
- * \brief \n 
- * Класс главного (стартового ) окна плагина \n
- * Отображается при запуске, выполняет функции ReadIdaDB()...
- */
+
+/// \brief \n
+/// Класс главного (__стартового__) окна плагина \n
+/// Отображается при запуске, выполняет функции \ref ReadIdaDB...
+///
+/// в этом классе содержатся формы для работы с
+/// - setting_form  см \ref StartWindow::setting_form
+/// - notepad_form  см \ref StartWindow::notepad_form
+/// - binexport_form см \ref StartWindow::binexport_form
+///
+/// \n\n
+/// \ingroup VIEW_W UI_W
 class StartWindow : public QWidget {
 	Q_OBJECT
 

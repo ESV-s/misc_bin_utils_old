@@ -1502,5 +1502,8 @@
     <Text Include="Порядок  writer_ida_db.txt">
       <Filter>Файлы ресурсов</Filter>
     </Text>
+    <Text Include="Документирование кода.txt">
+      <Filter>Файлы ресурсов</Filter>
+    </Text>
   </ItemGroup>
 </Project>

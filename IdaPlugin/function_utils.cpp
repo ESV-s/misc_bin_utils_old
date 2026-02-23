@@ -1,21 +1,20 @@
-/**
-* \file function_utils.cpp
-* \brief Реализация утилит для работы с функциями IDA (классификация, чанки, thunk-цели).
-*/
+
+/// \file function_utils.cpp
+/// \brief \n Реализация утилит для работы с функциями IDA (классификация, чанки, thunk-цели). \n
 
 #include "function_utils.h"
 #include <name.hpp>     ///< Чтобы получить имя по адресу (get_ea_name), если нужно.
 
-/**
-* \brief Внутренняя функция: получить владельца (head) для tail-чанка.
-* \param f Указатель на func_t (может быть head или tail).
-* \return Если f - tail, вернётся владелец (head). Если f - head, вернётся f. Если nullptr - nullptr.
-*
-* \par Условия
-* - \b if: f == nullptr → возвращаем nullptr.
-* - \b else-if: !(f->flags & FUNC_TAIL) → это не хвост, возвращаем f как голову.
-* - \b else: перебираем все head-функции и их хвосты; если диапазон tail совпал — это и есть владелец.
-*/
+
+/// \brief \n Внутренняя функция: получить владельца (head) для tail-чанка. \n
+/// \n
+/// \param f Указатель на func_t (может быть head или tail).
+/// \return Если f - tail, вернётся владелец (head). Если f - head, вернётся f. Если nullptr - nullptr.
+///
+/// \par Условия
+/// - \b if: f == nullptr → возвращаем nullptr.
+/// - \b else-if: !(f->flags & FUNC_TAIL) → это не хвост, возвращаем f как голову.
+/// - \b else: перебираем все head-функции и их хвосты; если диапазон tail совпал — это и есть владелец.
 static func_t* ResolveHead(func_t* f)
 {
 	if (!f) {                          ///< [if] Нет входной функции — вернуть nullptr.
@@ -43,9 +42,8 @@ static func_t* ResolveHead(func_t* f)
 	return nullptr;                                ///< Владелец не найден (маловероятно) — вернуть nullptr.
 }
 
-/**
-* \copydoc ClassifyFunction
-*/
+
+/// \copydoc ClassifyFunction
 FuncClassify ClassifyFunction(ea_t ea)
 {
 	FuncClassify out{};                            ///< Результат по умолчанию: kind=None, указатели = nullptr.
@@ -70,9 +68,8 @@ FuncClassify ClassifyFunction(ea_t ea)
 	return out;                                    ///< Возвращаем заполненный результат.
 }
 
-/**
-* \copydoc CollectAllChunks
-*/
+
+/// \copydoc CollectAllChunks
 std::vector<range_t> CollectAllChunks(const func_t* head)
 {
 	std::vector<range_t> chunks;                   ///< Контейнер STL для хранения диапазонов (head + tails).
@@ -87,9 +84,8 @@ std::vector<range_t> CollectAllChunks(const func_t* head)
 	return chunks;                                      ///< Возвращаем собранные диапазоны.
 }
 
-/**
-* \copydoc ResolveThunkTarget
-*/
+
+/// \copydoc ResolveThunkTarget
 ea_t ResolveThunkTarget(func_t* f)
 {
 	if (!f || (f->flags & FUNC_THUNK) == 0) {      ///< [if] Нет функции ИЛИ это не thunk — вернуть BADADDR.

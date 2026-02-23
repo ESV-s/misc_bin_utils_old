@@ -26,8 +26,8 @@
 #if defined(ABSL_INTERNAL_HAVE_ELF_SYMBOLIZE)
 #include "third_party/absl/debugging/symbolize_elf.inc"
 #elif defined(ABSL_INTERNAL_HAVE_SYMBOLIZE_WIN32)
-// Символизатор Windows работает только в том случае, если PDB-файлы,
-// содержащие отладочную информацию, доступны программе во время выполнения.
+// вЂ”РёРјРІРѕР»РёР·Р°С‚РѕСЂ Windows СЂР°Р±РѕС‚Р°РµС‚ С‚РѕР»СЊРєРѕ РІ С‚РѕРј СЃР»СѓС‡Р°Рµ, РµСЃР»Рё PDB-С„Р°Р№Р»С‹,
+// СЃРѕРґРµСЂР¶Р°С‰РёРµ РѕС‚Р»Р°РґРѕС‡РЅСѓСЋ РёРЅС„РѕСЂРјР°С†РёСЋ, РґРѕСЃС‚СѓРїРЅС‹ РїСЂРѕРіСЂР°РјРјРµ РІРѕ РІСЂРµРјВ¤ РІС‹РїРѕР»РЅРµРЅРёВ¤.
 #include "third_party/absl/debugging/symbolize_win32.inc"
 #elif defined(__APPLE__)
 #include "third_party/absl/debugging/symbolize_darwin.inc"

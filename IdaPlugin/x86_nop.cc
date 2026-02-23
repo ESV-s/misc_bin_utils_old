@@ -20,11 +20,11 @@ bool IsNopX86(absl::string_view bytes) {
 	auto* m = reinterpret_cast<const uint8_t*>(bytes.data());
 	size_t size = bytes.size();
 
-	// Ïîòðåáëÿåò äî øåñòè áàéò ïðåôèêñà:
+	// ÐŸÐ¾Ñ‚Ñ€ÐµÐ±Ð»ÑÐµÑ‚ Ð´Ð¾ ÑˆÐµÑÑ‚Ð¸ Ð±Ð°Ð¹Ñ‚ Ð¿Ñ€ÐµÑ„Ð¸ÐºÑÐ°:
 	for (int i = 6; i > 0 && size > 0 && m[0] == 0x66; --i, --size, ++m) {
 	}
 
-	// Ðó÷íàÿ ñõåìà, ïîñòðîåííàÿ ïî øàáëîíàì NOP:
+	// Ð ÑƒÑ‡Ð½Ð°Ñ ÑÑ…ÐµÐ¼Ð°, Ð¿Ð¾ÑÑ‚Ñ€Ð¾ÐµÐ½Ð½Ð°Ñ Ð¿Ð¾ ÑˆÐ°Ð±Ð»Ð¾Ð½Ð°Ð¼ NOP:
 	if (size >= 3 && m[0] == 0x0f && m[1] == 0x1f) {
 		if (m[2] == 0x00) {
 			return true;  // 0f 1f 00 nop [eax]

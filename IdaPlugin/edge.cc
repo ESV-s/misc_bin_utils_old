@@ -32,10 +32,9 @@ FlowGraphEdge::FlowGraphEdge(Address source, Address target, Type type)
 	: source(source), target(target), type(type) {}
 
 
-/**
- * \brief \n Получить тип FlowGraphEdge\n
- * \return true\n false\n unconditional\n default ""
- */
+
+/// \brief \n С•РѕР»СѓС‡РёС‚СЊ С‚РёРї FlowGraphEdge\n
+/// \return true\n false\n unconditional\n default ""
 const char* FlowGraphEdge::GetTypeName() const {
 	switch (type) {
 	case TYPE_TRUE:
@@ -52,12 +51,12 @@ const char* FlowGraphEdge::GetTypeName() const {
 	}
 }
 
-/**
- * \brief \n сравнить два FlowGraphEdg на равенство
- * \param lhs const FlowGraphEdge&
- * \param rhs const FlowGraphEdge&
- * \return 
- */
+
+/// \brief \n СЃСЂР°РІРЅРёС‚СЊ РґРІР° FlowGraphEdg РЅР° СЂР°РІРµРЅСЃС‚РІРѕ
+/// \n
+/// \param lhs const FlowGraphEdge&
+/// \param rhs const FlowGraphEdge&
+/// \return
 bool operator==(const FlowGraphEdge& lhs, const FlowGraphEdge& rhs) {
 	return (lhs.source == rhs.source) && (lhs.target == rhs.target) &&
 		(lhs.type == rhs.type);

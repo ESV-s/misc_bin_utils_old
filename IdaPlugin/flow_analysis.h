@@ -34,11 +34,10 @@ namespace security::binexport {
 using ModuleMap = absl::btree_map<Address, std::string>;
 
 
-/**
- * \brief \n Creates a map "function address" -> "module name"\n
- * \return ModuleMap modules;
- * \n\n
- */
+
+/// \brief \n Creates a map "function address" -> "module name"\n
+/// \return ModuleMap modules;
+/// \n\n
 ModuleMap InitModuleMap();
 
 void AnalyzeFlowIda(EntryPoints* entry_points, const ModuleMap& modules,
@@ -50,7 +49,7 @@ void AnalyzeFlowIdaAdditional(EntryPoints* entry_points, const ModuleMap& module
 	DumpWriter* writer, detego::Instructions* instructions,
 	FlowGraph* flow_graph, CallGraph* call_graph,
 	FlowGraph::NoReturnHeuristic noreturn_heuristic,
-	Exporter* exporter);  // ÈÇÌÅÍÅÍÎ áûëî Writer* writer ñòàëî DumpWriter* writer
+	Exporter* exporter);  // Â»Â«Ñ›â‰ˆĞŒâ‰ˆĞŒÑœ Ğ±Ñ‹Ğ»Ğ¾ Writer* writer ÑÑ‚Ğ°Ğ»Ğ¾ DumpWriter* writer
 
 }  // namespace security::binexport
 

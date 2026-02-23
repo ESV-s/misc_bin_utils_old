@@ -68,8 +68,8 @@ namespace security::binexport {
 
 	bool SetEnvironmentVariable(const std::string& name, const std::string& value) {
 #ifdef _WIN32
-		// Вызов безопасной функции CRT вместо ::SetEnvironmentVariable(),
-		// поскольку последняя больше не удаляет переменные окружения, если их содержимое пусто.
+		// Р’С‹Р·РѕРІ Р±РµР·РѕРїР°СЃРЅРѕР№ С„СѓРЅРєС†РёРё CRT РІРјРµСЃС‚Рѕ ::SetEnvironmentVariable(),
+		// РїРѕСЃРєРѕР»СЊРєСѓ РїРѕСЃР»РµРґРЅСЏСЏ Р±РѕР»СЊС€Рµ РЅРµ СѓРґР°Р»СЏРµС‚ РїРµСЂРµРјРµРЅРЅС‹Рµ РѕРєСЂСѓР¶РµРЅРёСЏ, РµСЃР»Рё РёС… СЃРѕРґРµСЂР¶РёРјРѕРµ РїСѓСЃС‚Рѕ.
 		return _putenv_s(name.c_str(), value.c_str());
 #else
 		if (value.empty()) {
@@ -132,10 +132,10 @@ namespace security::binexport {
 #else
 			
 		///\n
-			/// Построение командной строки.
+			/// РџРѕСЃС‚СЂРѕРµРЅРёРµ РєРѕРјР°РЅРґРЅРѕР№ СЃС‚СЂРѕРєРё.
 			std::string cmdline = absl::StrCat("\"", argv[0], "\"");
 			for (int i = 1; i < argv.size(); ++i) {
-				// Скопировать аргумент, вывести все кавычки и заключить результат в кавычки.
+				// РЎРєРѕРїРёСЂРѕРІР°С‚СЊ Р°СЂРіСѓРјРµРЅС‚, РІС‹РІРµСЃС‚Рё РІСЃРµ РєР°РІС‹С‡РєРё Рё Р·Р°РєР»СЋС‡РёС‚СЊ СЂРµР·СѓР»СЊС‚Р°С‚ РІ РєР°РІС‹С‡РєРё.
 				absl::StrAppend(&cmdline, " \"",
 					absl::StrReplaceAll(argv[i], { { "\"", "\\\"" } }), "\"");
 			}
@@ -169,8 +169,8 @@ namespace security::binexport {
 			}
 
 			// http://msdn.microsoft.com/en-us/library/ms682425.aspx:
-			// "Обработки в PROCESS_INFORMATION должны быть закрыты 
-			// с помощью CloseHandle, когда они больше не нужны".
+			// "РћР±СЂР°Р±РѕС‚РєРё РІ PROCESS_INFORMATION РґРѕР»Р¶РЅС‹ Р±С‹С‚СЊ Р·Р°РєСЂС‹С‚С‹ 
+			// СЃ РїРѕРјРѕС‰СЊСЋ CloseHandle, РєРѕРіРґР° РѕРЅРё Р±РѕР»СЊС€Рµ РЅРµ РЅСѓР¶РЅС‹".
 			CloseHandle(pi.hProcess);
 			CloseHandle(pi.hThread);
 #endif

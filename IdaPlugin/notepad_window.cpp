@@ -7,20 +7,17 @@
 #include <QtWidgets/QTextEdit>
 
 
-/**
- * \brief \n получим адрес папки плагина и добавим к нему имя фаила для сохранения записеи блокнота ...\n
- */
+
+/// \brief \n получим адрес папки плагина и добавим к нему имя фаила для сохранения записеи блокнота ...\n
 const QString filename = QProcessEnvironment::systemEnvironment().value("IDA76_PLUGIN_DIR").append("\\BlaBlaBla.txt");
 
 
-/**
- * \brief \n последняя строка в тексте ... \n
- */
+
+/// \brief \n последняя строка в тексте ... \n
 QString end_line;
 
-/**
- * \brief \n строка которую будем добавлять в начало новой строки ...\n
- */
+
+/// \brief \n строка которую будем добавлять в начало новой строки ...\n
 QString start_string = "\n";
 QString tmp_string = "\n";
 
@@ -211,36 +208,32 @@ void NotepadWindow::create_notepad_file(const QString& filename)
 }
 
 
-/**
- * \brief \n  обработка нажатия клавиши в блокноте \n
- */
+
+/// \brief \n  обработка нажатия клавиши в блокноте \n
 void NotepadWindow::add_tab()
 {
 	//msg(" tab plus \n");
 	start_string = start_string.append("\t");
 }
 
-/**
- * \brief \n обработка нажатия клавиши в блокноте \n
- */
+
+/// \brief \n обработка нажатия клавиши в блокноте \n
 void NotepadWindow::add_space()
 {
 	//msg("I see space signal !!!\n");
 }
 
 
-/**
- * \brief \n обработка нажатия клавиши в блокноте \n
- */
+
+/// \brief \n обработка нажатия клавиши в блокноте \n
 void NotepadWindow::add_enter()
 {
 	//msg(" enter - all clear \n");
 	start_string = "\n";
 }
 
-/**
-* \brief \n обработка нажатия клавиши в блокноте \n
-*/
+
+/// \brief \n обработка нажатия клавиши в блокноте \n
 void NotepadWindow::add_ctrl_enter()
 {
 	//msg(" ctrl_enter \n");
@@ -249,9 +242,8 @@ void NotepadWindow::add_ctrl_enter()
 
 }
 
-/**
-* \brief \n обработка нажатия клавиши в блокноте \n
-*/
+
+/// \brief \n обработка нажатия клавиши в блокноте \n
 void NotepadWindow::add_simbol()
 {
 	//msg("I see simbol signal !!!\n");

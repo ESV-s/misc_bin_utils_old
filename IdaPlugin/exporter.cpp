@@ -18,9 +18,6 @@
 
 using boost::replace_all;
 
-
-
-// реализуем конструктор инициализируем структуры ...
 Exporter::Exporter()
 {
 	TRACE_FN();
@@ -29,32 +26,17 @@ Exporter::Exporter()
 	pe_segment = {};
 }
 
-
-/**
-* \brief \n добавляет адреса локальных функций в мап local_func_address_ \n
-*           локальная функция - любая функция в файле за исключением импортированных ...\n
-* \param start_address		адрес начала функции
-* \param end_address		адрес окончания функции
-*/
 void Exporter::AddLocalFuncAddress(const ea_t start_address, const ea_t end_address)
 {
 	local_func_address[start_address] = end_address;
 }
 
-/**
-* \brief \n добавляет адреса импортируемых функций в мап import_func_address_ \n
-*           локальная функция - любая функция в файле за исключением импортированных ...\n
-* \param start_address		адрес начала функции
-* \param source				цель вызова
-*/
 void Exporter::AddImportFuncAddress(const ea_t start_address, const std::string source)
 {
 	import_func_address[start_address] = source;
 }
 
-/**
-* \brief \n Вывести на печать функции из мап local_func_address_
-*/
+
 void Exporter::PrintLocalFuncMap() const
 {
 	msg("                Print  exporter::local_func_address_  Start ##################################################### \n");
@@ -65,9 +47,7 @@ void Exporter::PrintLocalFuncMap() const
 	msg("                Print  exporter::local_func_address_  Finish ##################################################### \n");
 }
 
-/**
-* \brief \n Вывести на печать функции из мап import_func_address
-*/
+
 void Exporter::PrintImportFuncMap() const
 {
 	msg("                Print  exporter::import_func_address_  Start ##################################################### \n");
@@ -79,24 +59,19 @@ void Exporter::PrintImportFuncMap() const
 }
 
 
-/**
-* \brief \n Добавить необходимое количество символов пробела к строке ...
-* \param str	входная строка
-* \param count сколько символов
-* \return
-*/
+
+/// \brief \n Добавить необходимое количество символов пробела к строке ... \n
+/// функция на данный момент ничего не изменяет ...
+/// \n
+/// \param str входная строка
+/// \param count сколько символов
+/// \return - не реализовано пока что
 std::string AddEmptySymbol(std::string str, int count)
 {
-
-
 	return str;
 }
 
 
-/**
-* \brief \n Вывести на печать функции из vector<PeFunc> function_data \n
-* в данном векторе содержатся все функции рассматриваемого файла
-*/
 void Exporter::PrintFunctionData() const
 {
 	TRACE_FN();
@@ -159,9 +134,6 @@ void Exporter::PrintFunctionData() const
 }
 
 
-/**
-* \brief \n Вывод информации полученной плагином ...
-*/
 void Exporter::PrintInformation() const
 {
 	TRACE_FN();
@@ -241,11 +213,6 @@ void Exporter::PrintInformation() const
 
 }
 
-/**
-* \brief \n Поиск функции в векторе по адресу
-* \param addr искомый адрес (start_ea функции )
-* \return true в случае успеха, иначе false
-*/
 
 bool Exporter::SearchFunctionAddress(const ea_t addr) const
 {
@@ -270,11 +237,6 @@ bool Exporter::SearchFunctionAddress(const ea_t addr) const
 	return res;
 }
 
-
-/**
-* \brief      Вернуть количество функций в карте ...
-* \return     exporter->local_func_address_.size() ...
-*/
 int Exporter::GetLocalFuncCount() const
 {
 	TRACE_FN();
@@ -602,11 +564,6 @@ int Exporter::FunctionInstructionCount(const ea_t start_address, const ea_t end_
 	return instr_counter;
 }
 
-/**
-* \brief \n Найти все вызовы (call) из функции ...
-* \param start_address
-* \param end_address
-*/
 void Exporter::FunctionCalls(const ea_t start_address, const ea_t end_address) const
 {
 	auto flags = SEARCH_DOWN | SEARCH_NEXT;
@@ -630,11 +587,7 @@ void Exporter::FunctionCalls(const ea_t start_address, const ea_t end_address) c
 	}
 }
 
-/**
-* \brief \n Найти ссылки на функцию ...
-* \param start_address
-* \param end_address
-*/
+
 void Exporter::FunctionReference(const ea_t start_address, const ea_t end_address) const
 {
 	auto flags = SEARCH_DOWN | SEARCH_NEXT;
@@ -757,16 +710,7 @@ void Exporter::ParceFunctionFrame(ea_t start_address) const
 	//}
 }
 
-/**
-* \brief Разбор кадровой структуры (frame) функции.
-* \details Безопасно берёт frame только у головного чанка (head), т.к. у tail-чunks
-*          собственного фрейма не существует. Также добавлены проверки на nullptr.
-*
-* \param start_address Адрес внутри функции/чанка, по которому вызывается разбор.
-* \return Ничего не возвращает; печатает информацию в msg().
-*
-* \note Требует function_utils.h (ClassifyFunction), т.к. используется классификация head/tail.
-*/
+
 void Exporter::ParceFunctionFrameTwo(ea_t start_address) const
 {
 	// [PATCH] -------- Шаг 1: Классифицируем адрес и получаем голову (head) --------
@@ -808,7 +752,7 @@ void Exporter::ParceFunctionFrameTwo(ea_t start_address) const
 	// msg() и вспомогательные переменные
 	auto prev_idx = -1;                  ///< Индекс предыдущего найденного члена (для расчёта delta).
 	msg("frame size = %d \n", sz);
-	qstring prev;                        ///< Имя предыдущего найденного члена для печати.
+	qstring prev;							///< Имя предыдущего найденного члена для печати.
 
 										 // Адрес «до eip» (сумма смещений локальных + сохранённых регистров)
 										 // Эти API требуют НЕ-const func_t*, поэтому используем 'head'.
@@ -874,20 +818,12 @@ void Exporter::ParceFunctionFrameTwo(ea_t start_address) const
 }
 
 
-/**
-* \brief      Вернуть количество функций в карте ...
-* \return     exporter->import_func_address_.size() ...
-*/
 int Exporter::GetImportFuncCount() const
 {
 	return import_func_address.size();
 }
 
 
-/**
-* \brief	\n Установить тип функции  - экспортируемая или локальная
-* \param pe_func_index индекс данных в векторе
-*/
 std::string Exporter::GetFunctionType(const int pe_func_index) const
 {
 	std::string  func_type = "";
@@ -907,10 +843,7 @@ std::string Exporter::GetFunctionType(const int pe_func_index) const
 	return func_type;
 }
 
-/**
-* \brief	определяет флаги , которые нужно установить для функции
-* \param func_flag  значение func_t::flags
-*/
+
 void Exporter::SetFunctionFlags(const ulonglong func_flag)
 {
 	pe_func.func_flag = func_flag;
@@ -1074,14 +1007,6 @@ void Exporter::SetFunctionType(const ea_t start_address)
 }
 
 
-
-/**
-* \brief \n Установим хвосты функции \n
-* https://stackoverflow.com/questions/5290089/how-to-convert-a-number-to-string-and-vice-versa-in-c \n
-* преобразуем число в строку \n
-* добавим адрес хвоста функции в строку через разделитель '|'  \n
-* \param start_address
-*/
 void Exporter::SetFunctionTailes(const ea_t start_address)
 {
 	// [PATCH] -------- Собираем хвосты строго через head --------
@@ -1196,10 +1121,6 @@ void Exporter::CommandFunctionParse(std::vector<std::string>& command) const
 }
 
 
-/**
-* \brief	устанавливает (добавляет) флаги в параметр func_flags , указанные функцией ::SetFunctionFlags()
-* \param value
-*/
 void Exporter::AddFlagToField(const std::string& value)
 {
 	if (pe_func.func_flags.empty())
@@ -1213,15 +1134,6 @@ void Exporter::AddFlagToField(const std::string& value)
 }
 
 
-/**
-* \brief \n BinExport проводит анализ типов функций Ida, и как у них написано : \n
-*  - "глупый шаг пост обработки, но IDA иногда выдаёт ломаные ребра (направленные в никуда)" \n\n
-* поэтому мы доверимся BinExport и изменим флаги функции на указанные ими после их обработки данных \n
-* \param start_address адрес начала функции
-* \param func_flag		флаг BinExport , установленный для данной функции
-*						на основании которого мы изменим наш флаг , \n	        полученный ранее в
-*						ExportIdbAdditional функции файла start_window.cpp
-*/
 void Exporter::ChangeFunctionFlags(const ea_t start_address, const ulonglong func_flag)
 {
 	const auto i = function_index.find(start_address);
@@ -1474,11 +1386,6 @@ int Exporter::GetFunctionIndex(const ea_t start_address) const
 }
 
 
-
-
-/**
-* \brief Сброс статистики Exporter::stats_.
-*/
 void Exporter::ResetStats()
 {
 	TRACE_FN();
@@ -1491,10 +1398,7 @@ void Exporter::ResetStats()
 	stats_.seen_heads.clear();
 }
 
-/**
-* \brief Регистрация классификации чанка/функции.
-* \param fc Структура FuncClassify, полученная через ClassifyFunction(ea).
-*/
+
 void Exporter::RegisterFunctionClassify(const FuncClassify &fc)
 {
 	// [if] Если вообще нет информации — не инкрементируем.
@@ -1546,10 +1450,7 @@ void Exporter::RegisterFunctionClassify(const FuncClassify &fc)
 	}
 }
 
-/**
-* \brief Печать сводной статистики в msg().
-* \details Формат вывода аккуратный и одноразовый: heads/tails/thunks/total chunks.
-*/
+
 void Exporter::PrintStats() const
 {
 
@@ -1563,7 +1464,7 @@ void Exporter::PrintStats() const
 	msg("========================================================\n\n");
 
 	
-	// \brief Печать размеров стека из PE OptionalHeader, разобранного в pe_heders.cpp.
+	// \brief \n Печать размеров стека из PE OptionalHeader, разобранного в pe_heders.cpp. \n
 	// [STACK] --- begin ---
 	// [STACK] печать из кэша Exporter::pe_image_info_
 	{
@@ -1584,7 +1485,7 @@ void Exporter::PrintStats() const
 	// [STACK] --- end ---
 
 	// [INSTR-SUMMARY] --- begin ---
-	// \brief Сводка по инструкциям (stack/global/alloc/sp-delta), чтобы проверить заполнение флагов.
+	// \brief \n Сводка по инструкциям (stack/global/alloc/sp-delta), чтобы проверить заполнение флагов. \n
 	{
 		unsigned long long total_insn = static_cast<unsigned long long>(vector_pe_instructions.size());
 		unsigned long long cnt_reads_stack = 0;
@@ -1605,7 +1506,7 @@ void Exporter::PrintStats() const
 			if (pi.writes_global) ++cnt_writes_global;
 			if (pi.is_alloc_call) ++cnt_alloc_calls;
 
-			// \brief аккумулируем sp_delta и отслеживаем min/max
+			// \brief \n аккумулируем sp_delta и отслеживаем min/max \n
 			sp_delta_sum += static_cast<long long>(pi.sp_delta);
 			if (!sp_delta_inited) {
 				sp_delta_min = sp_delta_max = pi.sp_delta;
@@ -1629,7 +1530,7 @@ void Exporter::PrintStats() const
 	// [INSTR-SUMMARY] --- end ---
 
 	// [EFFECTS-SUMMARY] --- begin ---
-	// \brief Сводка агрегатов побочных эффектов по функциям.
+	// \brief \n Сводка агрегатов побочных эффектов по функциям. \n
 
 	// 1) Общая сумма по всем функциям
 	unsigned long long F_total = 0, F_instr = 0;
@@ -1717,7 +1618,7 @@ void Exporter::PrintStats() const
 		for (size_t i = 0; i < N; ++i) {
 			const auto &r = rows[i];
 			qstring name = get_fn_name(r.fva);
-			// \brief показываем alloc/free, чтобы видеть «симметрию» в пределах функции
+			// \brief \n показываем alloc/free, чтобы видеть «симметрию» в пределах функции \n
 			msg("   %2zu) %s  @%llX  alloc=%llu  free=%llu  heap=%llu  first=%llu  use=%u%%  nofirst=%llu  bal=%lld  ins=%llu\n",
 				i + 1,
 				name.c_str(),
@@ -1912,9 +1813,7 @@ void Exporter::PrintStats() const
 
 }
 
-/**
-* \brief Перечитать OptionalHeader.SizeOfStackReserve/Commit .
-*/
+
 bool Exporter::RefreshPeImageInfo()
 {
 	TRACE_FN();

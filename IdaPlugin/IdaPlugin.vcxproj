@@ -1098,12 +1098,25 @@
     <None Include="third_party\absl\time\internal\zoneinfo.inc" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="BinexportDebugLib.txt" />
-    <Text Include="BinexportBuildLib.txt" />
-    <Text Include="BinexportReleaseLib.txt" />
-    <Text Include="stream_вывод_текстовик.txt" />
+    <Text Include="BinexportDebugLib.txt">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">true</ExcludedFromBuild>
+    </Text>
+    <Text Include="BinexportBuildLib.txt">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">true</ExcludedFromBuild>
+    </Text>
+    <Text Include="BinexportReleaseLib.txt">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">true</ExcludedFromBuild>
+    </Text>
+    <Text Include="stream_вывод_текстовик.txt">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">true</ExcludedFromBuild>
+    </Text>
     <Text Include="Где заголовки от этих файлов.txt" />
-    <Text Include="Порядок  writer_ida_db.txt" />
+    <Text Include="Документирование кода.txt">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">true</ExcludedFromBuild>
+    </Text>
+    <Text Include="Порядок  writer_ida_db.txt">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">true</ExcludedFromBuild>
+    </Text>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

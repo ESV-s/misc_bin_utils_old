@@ -7,13 +7,12 @@
 
 
 
-/**
- *  \brief \n
- * Класс для обработки нажатия клавиш в editText блокнота.\n
- * Обрабатывает нажатия клавиш Tab Space Enter и Control,\n
- * Остальные нажатия клавиш пропускает ...\n
- * Взято отсюда https://doc.qt.io/qt-5/qobject.html#installEventFilter \n
- */
+
+///  \brief \n
+/// Класс для обработки нажатия клавиш в editText блокнота.\n
+/// Обрабатывает нажатия клавиш Tab Space Enter и Control,\n
+/// Остальные нажатия клавиш пропускает ...\n
+/// Взято отсюда https://doc.qt.io/qt-5/qobject.html#installEventFilter \n
 class KeyPressNotepad : public QObject {
 	Q_OBJECT
 

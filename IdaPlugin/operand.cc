@@ -23,10 +23,10 @@ Expressions Operand::expressions_;
 Operand::OperandCache Operand::operand_cache_;
 uint32_t Operand::global_id_ = 0;
 
-/**
- * \brief \n Удалить из кэша операнды без ссылок и перемаркировать оставшиеся,\n
- * \param ids_to_keep absl::flat_hash_set<int>& ids_to_keep
- */
+
+/// \brief \n РЈРґР°Р»РёС‚СЊ РёР· РєСЌС€Р° РѕРїРµСЂР°РЅРґС‹ Р±РµР· СЃСЃС‹Р»РѕРє Рё РїРµСЂРµРјР°СЂРєРёСЂРѕРІР°С‚СЊ РѕСЃС‚Р°РІС€РёРµСЃСЏ,\n
+/// \n
+/// \param ids_to_keep absl::flat_hash_set<int>& ids_to_keep
 void Operand::PurgeCache(const absl::flat_hash_set<int>& ids_to_keep) {
 	int new_id = 0;
 	for (auto it = operand_cache_.begin(), end = operand_cache_.end();
@@ -62,7 +62,7 @@ Operand* Operand::CreateOperand(const Expressions& expressions) {
 	}
 
 	Operand operand(expressions);
-	// Просто подсчитайте, сколько объектов уже находится в кэше.
+	// РџСЂРѕСЃС‚Рѕ РїРѕРґСЃС‡РёС‚Р°Р№С‚Рµ, СЃРєРѕР»СЊРєРѕ РѕР±СЉРµРєС‚РѕРІ СѓР¶Рµ РЅР°С…РѕРґРёС‚СЃСЏ РІ РєСЌС€Рµ.
 	operand.id_ = ++global_id_;
 	return &operand_cache_.emplace(signature, operand).first->second;
 }

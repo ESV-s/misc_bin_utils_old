@@ -189,10 +189,9 @@ void BinExportClass::text_export()
 	const std::string name = ReplaceFileExtension(
 		security::binexport::GetModuleName(),
 		extension);
-	/**
-	 * \brief \n имя текстового файла в который сохраняются данные в текстовом виде ...
-	 * 
-	 */
+
+/// \brief \n имя текстового файла в который сохраняются данные в текстовом виде ...
+///
 	const char* filename = ask_file(
 		/*for_saving=*/true, name.c_str(), "%s",
 		"FILTER Text files|*.txt\nExport to Text");

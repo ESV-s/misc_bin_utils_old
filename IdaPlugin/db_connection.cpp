@@ -9,10 +9,10 @@
 // срабатывал сигнал emit send_to_object(false) при событии закрытия формы ...
 bool sql_connection_state = false;
 
-/**
- * \brief \n Покажем окно для указания имени экземпляра SQL server
- * \param parent QWidget
- */
+
+/// \brief \n Покажем окно для указания имени экземпляра SQL server
+/// \n
+/// \param parent QWidget
 DBConnection::DBConnection(QWidget * parent) : QWidget(parent) {
 	ui.setupUi(this);
 }
@@ -438,10 +438,9 @@ COMPLETED:
 	return res;
 }
 
-/**
- * \brief \n Выведем в панель вывода сообщения о том , как пользоваться
- * и настроить доступ с помощью ODBC драйвера к SQL базе данных ...
- */
+
+/// \brief \n Выведем в панель вывода сообщения о том , как пользоваться
+/// и настроить доступ с помощью ODBC драйвера к SQL базе данных ...
 void DBConnection::FormSetHelp() const
 {
 	msg("\n\n");

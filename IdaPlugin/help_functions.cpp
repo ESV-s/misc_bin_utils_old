@@ -24,7 +24,7 @@ QString get_end_line(const QString & file_name)
 		while (!in.atEnd())
 		{
 			line = in.readLine();
-			// здесь обрабатываем строку 
+			// Р·РґРµСЃСЊ РѕР±СЂР°Р±Р°С‚С‹РІР°РµРј СЃС‚СЂРѕРєСѓ 
 		}
 		inputFile.close();
 	}

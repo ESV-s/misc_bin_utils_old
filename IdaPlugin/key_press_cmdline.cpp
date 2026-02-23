@@ -16,7 +16,7 @@ bool KeyPressCMDLine::eventFilter(QObject * obj, QEvent * event)
 		{
 			const auto keyEvent = dynamic_cast <QKeyEvent *>(event);
 
-			/// åñëè õîòèì ïîñëàòü ñèãíàë enter 
+			/// ÐµÑÐ»Ð¸ Ñ…Ð¾Ñ‚Ð¸Ð¼ Ð¿Ð¾ÑÐ»Ð°Ñ‚ÑŒ ÑÐ¸Ð³Ð½Ð°Ð» enter 
 			if ((keyEvent->key() == Qt::Key_Enter) || (keyEvent->key() == Qt::Key_Return))
 			{
 				emit press_enter();

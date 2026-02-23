@@ -31,8 +31,8 @@ int LibraryManager::AddKnownLibrary(const std::string& library_name,
 void LibraryManager::AddKnownFunction(const std::string& module_name,
 	const std::string& function_name,
 	int library_index, Address address) {
-	// Чтобы поведение было совместимо с тем, что сделал ранее Detego, мы должны использовать
-	// оператор [], а не emplace() для добавления нового элемента.
+	// вЂћС‚РѕР±С‹ РїРѕРІРµРґРµРЅРёРµ Р±С‹Р»Рѕ СЃРѕРІРјРµСЃС‚РёРјРѕ СЃ С‚РµРј, С‡С‚Рѕ СЃРґРµР»Р°Р» СЂР°РЅРµРµ Detego, РјС‹ РґРѕР»Р¶РЅС‹ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ
+	// РѕРїРµСЂР°С‚РѕСЂ [], Р° РЅРµ emplace() РґР»В¤ РґРѕР±Р°РІР»РµРЅРёВ¤ РЅРѕРІРѕРіРѕ СЌР»РµРјРµРЅС‚Р°.
 	known_functions_[address] =
 		FunctionInfo(module_name, function_name, library_index);
 }
@@ -70,11 +70,11 @@ void LibraryManager::UpdateUsedLibraries() {
 	}
 }
 
-/**
- * \brief \n Находит индекс библиотеки для заданного адреса,
- * \param address Address address
- * \return index or -1
- */
+
+/// \brief \n РЊР°С…РѕРґРёС‚ РёРЅРґРµРєСЃ Р±РёР±Р»РёРѕС‚РµРєРё РґР»В¤ Р·Р°РґР°РЅРЅРѕРіРѕ Р°РґСЂРµСЃР°,
+/// \n
+/// \param address Address address
+/// \return index or -1
 int LibraryManager::GetLibraryIndex(Address address) const {
 	auto it = used_functions_.find(address);
 	if (it != used_functions_.end()) {

@@ -266,9 +266,8 @@ bool IsDirectory(absl::string_view path) {
 absl::Status GetDirectoryEntries(absl::string_view path,
 	std::vector<std::string>* result) {
 #ifdef _WIN32
-	/**
-	 * \brief \n Ïðåäïîëîæèì, ÷òî path ÿâëÿåòñÿ êàòàëîãîì
-	 */
+
+/// \brief \n ÐŸÑ€ÐµÐ´Ð¿Ð¾Ð»Ð¾Ð¶Ð¸Ð¼, Ñ‡Ñ‚Ð¾ path ÑÐ²Ð»ÑÐµÑ‚ÑÑ ÐºÐ°Ñ‚Ð°Ð»Ð¾Ð³Ð¾Ð¼
 	std::string path_copy(JoinPath(path, "*"));
 	WIN32_FIND_DATA entry;
 	HANDLE directory = FindFirstFile(path_copy.c_str(), &entry);
@@ -311,8 +310,8 @@ absl::Status GetDirectoryEntries(absl::string_view path,
 absl::Status RemoveAll(absl::string_view path) {
 	std::string path_copy(path);
 #ifdef _WIN32
-	// Ñâÿçûâàíèå ñ ôàéëîâîé ñèñòåìîé çàòðóäíåíî â Linux è macOS' XCode åãî íå èìååò.
-	// Â ñòàíäàðòíóþ áèáëèîòåêó Visual Studio îíà âñòðîåíà.
+	// Ð¡Ð²ÑÐ·Ñ‹Ð²Ð°Ð½Ð¸Ðµ Ñ Ñ„Ð°Ð¹Ð»Ð¾Ð²Ð¾Ð¹ ÑÐ¸ÑÑ‚ÐµÐ¼Ð¾Ð¹ Ð·Ð°Ñ‚Ñ€ÑƒÐ´Ð½ÐµÐ½Ð¾ Ð² Linux Ð¸ macOS' XCode ÐµÐ³Ð¾ Ð½Ðµ Ð¸Ð¼ÐµÐµÑ‚.
+	// Ð’ ÑÑ‚Ð°Ð½Ð´Ð°Ñ€Ñ‚Ð½ÑƒÑŽ Ð±Ð¸Ð±Ð»Ð¸Ð¾Ñ‚ÐµÐºÑƒ Visual Studio Ð¾Ð½Ð° Ð²ÑÑ‚Ñ€Ð¾ÐµÐ½Ð°.
 	// TODO(cblichmann): Use filesystem once libstdc++ is >= 8.3 everywhere.
 	namespace fs = std::experimental::filesystem;
 	std::error_code ec;

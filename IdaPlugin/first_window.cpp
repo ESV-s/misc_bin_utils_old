@@ -126,10 +126,10 @@ void FirstWindow::showEvent(QShowEvent * event)
 	CheckSettings();
 }
 
-/**
- * \brief \n Проверяет переменные пользовательских настроек ...
- * \param settings
- */
+
+/// \brief \n Проверяет переменные пользовательских настроек ...
+/// \n
+/// \param settings
 void FirstWindow::CheckSettings() const
 {
 	TRACE_FN();
