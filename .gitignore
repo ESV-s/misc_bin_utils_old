@@ -18,6 +18,8 @@ GeneratedFiles/
 HtmlDoc/
 AdefFolder/
 MyAddingFiles/
+DoxyWorkFiles/
+ApiMonitorDoc/
 
 # Объектные и прочие временные файлы
 *.obj
