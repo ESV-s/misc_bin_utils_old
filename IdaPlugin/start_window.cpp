@@ -53,8 +53,8 @@ bool noreturn_heuristic_ = false; // x86_noreturn_heuristic_
 
 
 
-/// \brief \n Получает и выводит информацию о использовании приложением памяти \n
-/// \return Количество используемой памяти в килобайтах
+								  /// \brief \n Получает и выводит информацию о использовании приложением памяти \n
+								  /// \return Количество используемой памяти в килобайтах
 size_t print_memory_usage()
 {
 	TRACE_FN();
@@ -63,7 +63,7 @@ size_t print_memory_usage()
 	GetProcessMemoryInfo(GetCurrentProcess(), &info, sizeof(info));
 	result = info.WorkingSetSize;
 
-	msg("\nmemory usage = %d kb\n", result / 1024); // в килобайтах !!!
+	msg("\nmemory usage = %d kb\n", result / 1024); // в килобайках !!!
 	return result;                                  // в байтах !!!
 }
 
@@ -87,8 +87,8 @@ void ExportIdbAdditional(SB::DumpWriter* writer) // ИЗМЕНЕНО было SB
 
 	auto func_chunk_size = get_fchunk_qty(); // получим размер - количество элементов ...
 
-	// теперь рассчитаем какого размера нам нужен вектор ,
-	// чтобы проинициализировать его добавлять в него элементы по индексу !!!
+											 // теперь рассчитаем какого размера нам нужен вектор ,
+											 // чтобы проинициализировать его добавлять в него элементы по индексу !!!
 	vector_need_size = static_cast<size_t>(modules_size) + func_chunk_size;
 	exporter.vector_need_size = vector_need_size;
 
@@ -315,7 +315,27 @@ void StartWindow::ApplyApiMonComments_Imports(const apimon::DataBinDb& db)
 	apimon_ida::ApplyStats st;
 	apimon_ida::ApplyApiMonCommentsToImports(db, &st, /*overwriteExisting=*/false);
 
-	msg("[ApiMon] UI: done. matched=%d, added=%d, skippedExisting=%d\n",
+	msg("[ApiMon] UI: imports done. matched=%d, added=%d, skippedExisting=%d\n",
+		st.matched, st.commentsAdded, st.skippedExisting);
+}
+
+/// \brief Внутренний вызов: применить комменты к экспортам (entry points) по уже загруженному db.
+void StartWindow::ApplyApiMonComments_Exports(const apimon::DataBinDb& db)
+{
+	apimon_ida::ApplyStats st;
+	apimon_ida::ApplyApiMonCommentsToExports(db, &st, /*overwriteExisting=*/false);
+
+	msg("[ApiMon] UI: exports done. matched=%d, added=%d, skippedExisting=%d\n",
+		st.matched, st.commentsAdded, st.skippedExisting);
+}
+
+/// \brief Внутренний вызов: применить комменты к call-сайтам на импорты по уже загруженному db.
+void StartWindow::ApplyApiMonComments_ImportCalls(const apimon::DataBinDb& db)
+{
+	apimon_ida::ApplyStats st;
+	apimon_ida::ApplyApiMonCommentsToImportCalls(db, &st, /*overwriteExisting=*/false);
+
+	msg("[ApiMon] UI: calls done. matched=%d, added=%d, skippedExisting=%d\n",
 		st.matched, st.commentsAdded, st.skippedExisting);
 }
 
@@ -351,10 +371,44 @@ void StartWindow::ApplyApiMonComments_Imports_FromLoadedDb()
 	ApplyApiMonComments_Imports(db);
 }
 
+/// \brief Загрузить apimon_data.bin и применить всё (imports/exports/calls).
+void StartWindow::ApplyApiMonComments_All_FromLoadedDb()
+{
+	apimon::Settings s;
+
+	// Папка плагинов (где лежит apimon_data.bin / apimon_cache.bin)
+	QString pluginDir = static_cast<QString>(PLUGIN_CURRENT_DIRECTORY.c_str());
+	s.idaPluginsDir = pluginDir;
+
+	// XML путь (на будущее; для применения не обязателен, но Settings пусть будет заполнен)
+	const std::string API_MONITOR_FOLDER = "\\ApiMonitorDoc";
+	QString apiFolder = static_cast<QString>(API_MONITOR_FOLDER.c_str());
+	s.apiMonitorRootDir = pluginDir + apiFolder;
+
+	// Логи/статистика
+	s.outputDir = "D:/Documents/Visual Studio 2015/Projects/IdaPlugin - VS2015/ApiMonitorDoc/NewParsing";
+
+	apimon::DataBinDb db;
+	if (!apimon::ReadDataBin(s, db))
+	{
+		msg("[ApiMon] UI: ReadDataBin FAILED (apimon_data.bin not found?)\n");
+		return;
+	}
+
+	msg("[ApiMon] UI: data loaded. types=%d, apis=%d, sha=%s\n",
+		(int)db.types.size(),
+		(int)db.apis.size(),
+		db.combinedSha1Hex.toUtf8().constData());
+
+	ApplyApiMonComments_Imports(db);
+	ApplyApiMonComments_Exports(db);
+	// ApplyApiMonComments_ImportCalls(db); // <-- отключили call-сайты (иначе может подвисать)
+}
+
 /// \brief Slot-заглушка (может не использоваться).
 void StartWindow::OnApplyApiMonImports()
 {
-	ApplyApiMonComments_Imports_FromLoadedDb();
+	ApplyApiMonComments_All_FromLoadedDb();
 }
 // --- [ApiMonitorDoc] end ---
 
@@ -392,9 +446,9 @@ StartWindow::StartWindow(QWidget* parent)
 	// секция для регулярки lineEdit_CMDLine конец
 	ReadIdaDB(); // выполняем при открытии формы ...
 
-	// --- [ApiMonitorDoc] begin ---
-	msg("[ApiMon] UI: Apply comments to Imports...\n");
-	ApplyApiMonComments_Imports_FromLoadedDb();
+				 // --- [ApiMonitorDoc] begin ---
+	msg("[ApiMon] UI: Apply comments (Imports/Exports/Calls)...\n");
+	ApplyApiMonComments_All_FromLoadedDb();
 	// --- [ApiMonitorDoc] end ---
 }
 
