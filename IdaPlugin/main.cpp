@@ -40,13 +40,14 @@
 #include <graph.hpp>
 
 #include "exporter.h"
+#include "api_monitor.h"
 
 /// \addtogroup PLUGINS_W
 	///@{
 	/// \name Описание Действий пунктов меню
 	/// используется в см. \ref ui_callback в свиче ui_populating_widget_popup для регистрации пунктов меню \n
 	/// и в \ref plugin_ctx_t::plugin_ctx_t для регистрации деиствий выполняемых пунктом меню 
-	    ///@{
+		///@{
 #define ABOUT_ALL_FUNCTIONS_VIEW_A "Ida View A: Get Info about All Function"		///< Выполняется для получения информации о всех функциях из View A
 #define ABOUT_THIS_FUNCTION_VIEW_A "Ida View A: Get Info about This Function"		///< Выполняется для получения информации о текущей функции из View A
 #define ACTION3_NAME "Part 3"														///< назначить деиствие и переименовать согласно деиствию
@@ -171,37 +172,37 @@ static ssize_t idaapi ui_callback(void* ud, int notification_code, va_list va)
 	switch (notification_code)
 	{
 	case ui_populating_widget_popup:
+	{
+		TWidget*   widget = va_arg(va, TWidget *);
+		const auto v_type = get_widget_type(widget);
+
+		// выполняем динамическое добавление пунктов в выпадающее меню для выбранного view программы
+
+		if (v_type == BWN_DISASM) // если это ида вью А
 		{
-			TWidget*   widget = va_arg(va, TWidget *);
-			const auto v_type = get_widget_type(widget);
+			TPopupMenu* p = va_arg(va, TPopupMenu *);
+			auto*       plgmod = static_cast<plugin_ctx_t*>(ud);
+			plgmod->desc_notification("view_popup", widget);
 
-			// выполняем динамическое добавление пунктов в выпадающее меню для выбранного view программы
-
-			if (v_type == BWN_DISASM) // если это ида вью А
-			{
-				TPopupMenu* p = va_arg(va, TPopupMenu *);
-				auto*       plgmod = static_cast<plugin_ctx_t*>(ud);
-				plgmod->desc_notification("view_popup", widget);
-
-				attach_action_to_popup(widget, p, "-"); // ← разделитель
-				attach_action_to_popup(widget, p, ABOUT_ALL_FUNCTIONS_VIEW_A, "BB Actions/");
-				attach_action_to_popup(widget, p, ABOUT_THIS_FUNCTION_VIEW_A, "BB Actions/");
-				attach_action_to_popup(widget, p, "-"); // ← разделитель
-			}
-
-			if (v_type == BWN_OUTPUT) // если это окно вывода
-			{
-				TPopupMenu* p = va_arg(va, TPopupMenu *);
-				auto*       plgmod = static_cast<plugin_ctx_t*>(ud);
-				plgmod->desc_notification("view_popup", widget);
-
-				attach_action_to_popup(widget, p, "-"); // ← разделитель
-				attach_action_to_popup(widget, p, ACTION3_NAME, "BB Actions/");
-				attach_action_to_popup(widget, p, ACTION4_NAME, "BB Actions/");
-				attach_action_to_popup(widget, p, "-"); // ← разделитель
-			}
-			break;
+			attach_action_to_popup(widget, p, "-"); // ← разделитель
+			attach_action_to_popup(widget, p, ABOUT_ALL_FUNCTIONS_VIEW_A, "BB Actions/");
+			attach_action_to_popup(widget, p, ABOUT_THIS_FUNCTION_VIEW_A, "BB Actions/");
+			attach_action_to_popup(widget, p, "-"); // ← разделитель
 		}
+
+		if (v_type == BWN_OUTPUT) // если это окно вывода
+		{
+			TPopupMenu* p = va_arg(va, TPopupMenu *);
+			auto*       plgmod = static_cast<plugin_ctx_t*>(ud);
+			plgmod->desc_notification("view_popup", widget);
+
+			attach_action_to_popup(widget, p, "-"); // ← разделитель
+			attach_action_to_popup(widget, p, ACTION3_NAME, "BB Actions/");
+			attach_action_to_popup(widget, p, ACTION4_NAME, "BB Actions/");
+			attach_action_to_popup(widget, p, "-"); // ← разделитель
+		}
+		break;
+	}
 	}
 
 	return 0;
@@ -295,7 +296,7 @@ ssize_t idaapi plugin_ctx_t::on_event(ssize_t code, va_list va)
 			HMODULE hm = nullptr;
 
 			if (GetModuleHandleEx(GET_MODULE_HANDLE_EX_FLAG_FROM_ADDRESS |
-			                      GET_MODULE_HANDLE_EX_FLAG_UNCHANGED_REFCOUNT, "", &hm) == 0)
+				GET_MODULE_HANDLE_EX_FLAG_UNCHANGED_REFCOUNT, "", &hm) == 0)
 			{
 				return false;
 			}
@@ -474,6 +475,166 @@ static plugmod_t*idaapi init()
 	const std::string API_MONITOR_FOLDER = "\\ApiMonitorDoc";
 	get_collection_api_files(PLUGIN_CURRENT_DIRECTORY + API_MONITOR_FOLDER);
 
+// --- [API_MONITOR NAMER] begin ---
+{
+    apimon::Settings s;
+
+    // ВАЖНО: у тебя это уже проверено и работает без падения.
+    QString pluginDir = static_cast<QString>(PLUGIN_CURRENT_DIRECTORY.c_str());
+    QString apiFolder = static_cast<QString>(API_MONITOR_FOLDER.c_str());
+
+    s.apiMonitorRootDir = pluginDir + apiFolder;   // XML: PLUGIN_CURRENT_DIRECTORY\ApiMonitorDoc
+    s.idaPluginsDir     = pluginDir;               // BIN рядом с плагином
+    s.outputDir         = "D:/Documents/Visual Studio 2015/Projects/IdaPlugin - VS2015/ApiMonitorDoc/NewParsing"; // логи
+
+    // 0) Проверка папки XML
+    QDir xmlDir(s.apiMonitorRootDir);
+    if (!xmlDir.exists())
+    {
+        msg("\n[ApiMon] ApiMonitorDoc folder not found — skipped\n");
+    }
+    else
+    {
+        // 1) Сигнатура входных XML
+        apimon::InputSignatureResult sig;
+        if (!apimon::BuildInputSignature(s, sig))
+        {
+            msg("\n[ApiMon] signature: build FAILED\n");
+        }
+        else
+        {
+            apimon::WriteInputSignatureLog(s, sig);
+
+            // 2) Проверяем кеш-заголовок
+            apimon::CacheHeader chDisk;
+            const bool cacheReadOk = apimon::ReadCacheHeaderBin(s, chDisk);
+
+            const bool cacheActual = cacheReadOk && apimon::IsCacheHeaderValidForSignature(chDisk, sig);
+
+            // 3) Если кеш актуален — пробуем читать data.bin
+            bool dataOk = false;
+            apimon::DataBinDb db;
+
+            if (cacheActual)
+            {
+                if (apimon::ReadDataBin(s, db))
+                {
+                    // Доп. страховка: data.bin должен быть собран под тот же SHA1
+                    if (db.combinedSha1Hex.trimmed().compare(sig.combinedSha1Hex.trimmed(), Qt::CaseInsensitive) == 0)
+                    {
+                        dataOk = true;
+                        msg("\n[ApiMon] cache: OK (actual)\n");
+                        msg("[ApiMon] data:  OK (loaded)\n");
+                        msg("[ApiMon] data:  types=%d, apis=%d\n", (int)db.types.size(), (int)db.apis.size());
+                    }
+                    else
+                    {
+                        msg("\n[ApiMon] data:  SHA mismatch → rebuilding\n");
+                        dataOk = false;
+                    }
+                }
+                else
+                {
+                    msg("\n[ApiMon] data:  not found/read failed → rebuilding\n");
+                }
+            }
+            else
+            {
+                if (!cacheReadOk)
+                    msg("\n[ApiMon] cache: not found/read failed → rebuilding\n");
+                else
+                    msg("\n[ApiMon] cache: STALE → rebuilding\n");
+            }
+
+            // 4) Пересборка, если надо
+            if (!dataOk)
+            {
+                // --- Pass A ---
+                apimon::PassAResult rA;
+                if (apimon::BuildPassA(s, rA))
+                {
+                    apimon::WritePassALog(s, rA);
+                    msg("\n[ApiMon] PassA: OK\n");
+                }
+                else
+                {
+                    msg("\n[ApiMon] PassA: FAILED\n");
+                }
+
+                // --- Pass B1 ---
+                apimon::PassB1Result b1;
+                if (apimon::BuildPassB1(s, b1))
+                {
+                    apimon::WritePassB1Log(s, b1);
+                    msg("[ApiMon] PassB1: OK (types=%d)\n", (int)b1.types.size());
+                }
+                else
+                {
+                    msg("[ApiMon] PassB1: FAILED\n");
+                }
+
+                // --- Pass B2 (статистика) ---
+                apimon::PassB2Result b2;
+                if (apimon::BuildPassB2(s, b2))
+                {
+                    apimon::WritePassB2Log(s, b2);
+                    msg("[ApiMon] PassB2: OK\n");
+                }
+                else
+                {
+                    msg("[ApiMon] PassB2: FAILED\n");
+                }
+
+                // --- Pass F1 (functions) ---
+                apimon::PassF1Result f1;
+                if (apimon::BuildPassF1(s, f1))
+                {
+                    apimon::WritePassF1Log(s, f1);
+                    msg("[ApiMon] PassF1: OK (apis=%d)\n", (int)f1.apis.size());
+                }
+                else
+                {
+                    msg("[ApiMon] PassF1: FAILED\n");
+                }
+
+                // 5) Пишем кеш
+                apimon::CacheHeader chNew;
+                if (apimon::BuildCacheHeaderFromSignature(sig, chNew) && apimon::WriteCacheHeaderBin(s, chNew))
+                {
+                    msg("[ApiMon] cache: written\n");
+                }
+                else
+                {
+                    msg("[ApiMon] cache: write FAILED\n");
+                }
+
+                // 6) Пишем data.bin (типы + функции + links)
+                if (apimon::WriteDataBin(s, sig, b1, f1))
+                {
+                    msg("[ApiMon] data:  written (apimon_data.bin)\n");
+
+                    // 7) Контрольное чтение (по желанию, но полезно для уверенности)
+                    apimon::DataBinDb db2;
+                    if (apimon::ReadDataBin(s, db2))
+                    {
+                        msg("[ApiMon] data:  reload OK (types=%d, apis=%d)\n", (int)db2.types.size(), (int)db2.apis.size());
+                    }
+                    else
+                    {
+                        msg("[ApiMon] data:  reload FAILED\n");
+                    }
+                }
+                else
+                {
+                    msg("[ApiMon] data:  write FAILED\n");
+                }
+            }
+        }
+    }
+}
+// --- [API_MONITOR] end ---
+
+
 	auto sql_instance_name = Settings::getMSSQLInstance();
 	if (!sql_instance_name.isEmpty())
 	{
@@ -482,9 +643,9 @@ static plugmod_t*idaapi init()
 	}
 
 	msg("\n\n\n\************************************************\n\n\n"
-	    "When the BlaBlaBla plugin is called, depending on the size of the file being examined,\n"
-	    "it may take some time for it to read the Ida database ..."
-	    "\n\n\n\************************************************\n\n\n");
+		"When the BlaBlaBla plugin is called, depending on the size of the file being examined,\n"
+		"it may take some time for it to read the Ida database ..."
+		"\n\n\n\************************************************\n\n\n");
 
 	return new plugin_ctx_t;
 }
@@ -492,7 +653,7 @@ static plugmod_t*idaapi init()
 //--------------------------------------------------------------------------
 static const char comment[] = "This is a BlaBlaBla plugin.";
 static const char help[] =
-	"A BlaBlaBla plugin module\n";
+"A BlaBlaBla plugin module\n";
 
 //--------------------------------------------------------------------------
 // This is the preferred name of the plugin module in the menu system

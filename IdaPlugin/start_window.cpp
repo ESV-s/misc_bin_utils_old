@@ -1,6 +1,13 @@
 ﻿#pragma once
 
 #include "start_window.hpp"
+
+// --- [ApiMonitorDoc] begin ---
+#include "api_monitor.h"
+#include "apimon_ida_apply.h"
+#include <QtCore/QDir>
+// --- [ApiMonitorDoc] end ---
+
 // Определения для использования функций binexport начало
 #include <base/logging.h>
 #include "digest.h"
@@ -116,11 +123,6 @@ void ExportIdbAdditional(SB::DumpWriter* writer) // ИЗМЕНЕНО было SB
 			auto ord = get_entry_ordinal(e);
 			auto addr = get_entry(ord);
 
-			// get_ea_name(&name, addr); // даёт имя для ВСЕХ функции экспорта
-			// get_entry_name(&name, addr) в отличие от get_ea_name(&name, addr) дает
-			// в dll файле - имя только для TlsCallback или точки входа DllEntryPoint,
-			// для exe файла - точка называется -> start 
-
 			// добавим экспортируемые функции в мапу
 			exporter.export_func_address[addr] = ord;
 		}
@@ -155,61 +157,43 @@ void ExportIdbAdditional(SB::DumpWriter* writer) // ИЗМЕНЕНО было SB
 				// поэтому все дальнейшие операции (фрейм, разбор) выполняем по head.
 				const func_t* head = fc.head ? fc.head : ida_func;
 
-				// Оригинальная логика добавления источника EntryPoint оставляем без изменений:
 				entry_point_adder.Add(
-				                      ida_func->start_ea,
-				                      (ida_func->flags & FUNC_TAIL)
-					                      ? EntryPoint::Source::FUNCTION_CHUNK
-					                      : EntryPoint::Source::FUNCTION_PROLOGUE);
+					ida_func->start_ea,
+					(ida_func->flags & FUNC_TAIL)
+					? EntryPoint::Source::FUNCTION_CHUNK
+					: EntryPoint::Source::FUNCTION_PROLOGUE);
 
 				msg("    func %llx \n", ida_func->start_ea);
 
-				// [PATCH] Разбор фрейма и прочая аналитика — ТОЛЬКО по адресу head->start_ea,
-				// чтобы не трогать хвост (у хвоста нет собственного frame/arglist).
 				exporter.ParceFunctionFrame(head->start_ea);
 				exporter.ParceFunctionFrameTwo(head->start_ea);
 
-
-				// начало функции
 				auto func_start_ea = ida_func->start_ea;
 
-				// сохраним значения в мапе local_func_address[start_address] = end_address;
 				exporter.AddLocalFuncAddress(func_start_ea, ida_func->end_ea);
 
-				// получим имя функции ...
 				get_ea_name(&name, func_start_ea);
 				naming = static_cast<std::string>(name.c_str());
 
-				// добавим данные в мапы 
 				exporter.function_index[func_start_ea] = i;
 				exporter.function_naming[func_start_ea] = naming;
 
-				// теперь будем заполнять структуру pe_func и добавлять ее в вектор по индексу
 				exporter.pe_func.address = func_start_ea;
 				exporter.pe_func.name = naming;
 
-				// так же сразу заполним мангленное имя  = имя
-				// в последующем если они не совпадают - мы его (dem_name) изменим 
 				exporter.pe_func.dem_name = naming;
 
-
-				// сохраним в структуре флаги функции 
 				exporter.SetFunctionFlags(ida_func->flags);
 
-				// теперь установим тип функции - локальная (внутренняя) она или экспортируется ...
 				exporter.SetFunctionType(func_start_ea);
 
-
-				// проверим функцию на хвосты 
 				auto tq = ida_func->tailqty;
 				if (tq)
 				{
 					exporter.pe_func.function_tailqty = true;
 					exporter.SetFunctionTailes(func_start_ea);
-					// если это хвост - значит у него есть владелец ...
 					exporter.pe_func.function_owner = ida_func->owner;
 
-					// тут уже ничего не выводит о владельце хвоста ... 
 					func_t* func = getn_fchunk(static_cast<size_t>(ida_func->owner));
 					if (func != nullptr)
 					{
@@ -218,40 +202,28 @@ void ExportIdbAdditional(SB::DumpWriter* writer) // ИЗМЕНЕНО было SB
 					}
 				}
 
-				// получим количество ссылающихся на данную функцию
 				exporter.pe_func.func_refqty = ida_func->refqty;
-
-				// и массив с адресами ссылающихся
 				exporter.pe_func.func_referers = ida_func->referers;
 
-				// сохраним данные о фрейме функции 
 				exporter.pe_func.function_frame = ida_func->frame;
 
-				// сохраним размер регистров, сохраняемых во фрейме 
 				exporter.pe_func.func_frregs = ida_func->frregs;
 
-				// размер части локальных переменных фреима в байтах.
 				exporter.pe_func.func_frsize = ida_func->frsize;
 
-				// добавим данные о функции в вектор 
 				exporter.function_data.insert(exporter.function_data.begin() + i, exporter.pe_func);
 
-				// так как структуру сохранили - очистим ее экземпляр (инициализируем по новой) 
 				exporter.pe_func = {};
 			}
-			// сохраним индекс для последующего использования далее 
 			index = i + 1;
 		}
 	}
-	// сбросим имя после предыдущего блока для использования его следующим блоком ... 
 	name = "";
 
 
 	{
 		EntryPointManager entry_point_adder(&entry_points, "calls");
 
-		// Добавьте импортированные функции (чтобы мы не пропустили импортированные,
-		// но на которые нет ссылок).
 		for (const auto& module : modules)
 		{
 			const auto address = module.first;
@@ -260,14 +232,11 @@ void ExportIdbAdditional(SB::DumpWriter* writer) // ИЗМЕНЕНО было SB
 
 			entry_point_adder.Add(address, EntryPoint::Source::CALL_TARGET);
 
-			// так же сохраним данные об импортированных функциях в мапе import_func_address
 			exporter.AddImportFuncAddress(address, naming);
 
-			// добавим данные в мапы 
 			exporter.function_index[address] = index;
 			exporter.function_naming[address] = naming;
 
-			// теперь будем заполнять структуру pe_func и добавлять ее в вектор по индексу
 			exporter.pe_func.address = address;
 			exporter.pe_func.name = naming;
 			exporter.pe_func.function_imported = true;
@@ -278,42 +247,25 @@ void ExportIdbAdditional(SB::DumpWriter* writer) // ИЗМЕНЕНО было SB
 	}
 
 
-	// контейнеры и классы для хранения данных начало **********************
 	Instructions instructions;
 	FlowGraph    flow_graph;
 	CallGraph    call_graph;
 
-	// контейнеры и классы для хранения данных конец **********************
-
-
-	// начинаем анализ !!! здесь изменил AnalyzeFlowIda на AnalyzeFlowIdaAdditional=========================================
-	// если все будет работать  - то можем уже в AnalyzeFlowIdaAdditional изменить параметры передаваемые
-	// и попробовать туда добавить или изменить что то !!!
-	// НАЧАЛИ ИЗМЕНЕНИЯ ЗДЕСЬ ***********************************************************************
-	// ************************ ЗДЕСЬ В ЭТОЙ ФУНКЦИИ (и ее переходах к другим функциям) ВЫПОЛНЯЕТСЯ ВЕСЬ АНАЛИЗ ************
-
-
 	AnalyzeFlowIdaAdditional(&entry_points, modules, writer, &instructions, &flow_graph,
-	                         &call_graph,
-	                         noreturn_heuristic_
-		                         ? FlowGraph::NoReturnHeuristic::kNopsAfterCall
-		                         : FlowGraph::NoReturnHeuristic::kNone,
-	                         &exporter);
-
-
-	//BM->	закончили анализ !!!
-	// закончили анализ !!!==================================================================================================
-
+		&call_graph,
+		noreturn_heuristic_
+		? FlowGraph::NoReturnHeuristic::kNopsAfterCall
+		: FlowGraph::NoReturnHeuristic::kNone,
+		&exporter);
 
 	exporter.flow_graph_func_count = flow_graph.GetFunctions().size();
 	msg("%s : exported %d  functions with %d  instructions in %s \n",
-	    SB::GetModuleName().c_str(),
-	    exporter.flow_graph_func_count, /* было ранее flow_graph.GetFunctions().size() , заменено мною на func_count */
-	    instructions.size(),
-	    SB::HumanReadableDuration(timer.elapsed()).c_str());
+		SB::GetModuleName().c_str(),
+		exporter.flow_graph_func_count,
+		instructions.size(),
+		SB::HumanReadableDuration(timer.elapsed()).c_str());
 
-	// выведем сообщения  - если установлен флаг PRINT_INFO
-	exporter.FinalizeFunctionEffects(); // ← финализация после всех проходов анализа
+	exporter.FinalizeFunctionEffects();
 	exporter.PrintInformation();
 }
 
@@ -338,7 +290,7 @@ int StartWindow::ReadIdaDB()
 	try
 	{
 		std::ofstream  file(filename);
-		SB::DumpWriter writer{file};
+		SB::DumpWriter writer{ file };
 		ExportIdbAdditional(&writer);
 	}
 	catch (const std::exception& error)
@@ -354,6 +306,58 @@ int StartWindow::ReadIdaDB()
 
 	return eOk;
 }
+
+
+// --- [ApiMonitorDoc] begin ---
+/// \brief Внутренний вызов: применить комменты к импортам по уже загруженному db.
+void StartWindow::ApplyApiMonComments_Imports(const apimon::DataBinDb& db)
+{
+	apimon_ida::ApplyStats st;
+	apimon_ida::ApplyApiMonCommentsToImports(db, &st, /*overwriteExisting=*/false);
+
+	msg("[ApiMon] UI: done. matched=%d, added=%d, skippedExisting=%d\n",
+		st.matched, st.commentsAdded, st.skippedExisting);
+}
+
+/// \brief Загрузить apimon_data.bin и применить комменты к импортам.
+void StartWindow::ApplyApiMonComments_Imports_FromLoadedDb()
+{
+	apimon::Settings s;
+
+	// Папка плагинов (где лежит apimon_data.bin / apimon_cache.bin)
+	QString pluginDir = static_cast<QString>(PLUGIN_CURRENT_DIRECTORY.c_str());
+	s.idaPluginsDir = pluginDir;
+
+	// XML путь (на будущее; для применения imports он не обязателен, но Settings пусть будет заполнен)
+	const std::string API_MONITOR_FOLDER = "\\ApiMonitorDoc";
+	QString apiFolder = static_cast<QString>(API_MONITOR_FOLDER.c_str());
+	s.apiMonitorRootDir = pluginDir + apiFolder;
+
+	// Логи/статистика
+	s.outputDir = "D:/Documents/Visual Studio 2015/Projects/IdaPlugin - VS2015/ApiMonitorDoc/NewParsing";
+
+	apimon::DataBinDb db;
+	if (!apimon::ReadDataBin(s, db))
+	{
+		msg("[ApiMon] UI: ReadDataBin FAILED (apimon_data.bin not found?)\n");
+		return;
+	}
+
+	msg("[ApiMon] UI: data loaded. types=%d, apis=%d, sha=%s\n",
+		(int)db.types.size(),
+		(int)db.apis.size(),
+		db.combinedSha1Hex.toUtf8().constData());
+
+	ApplyApiMonComments_Imports(db);
+}
+
+/// \brief Slot-заглушка (может не использоваться).
+void StartWindow::OnApplyApiMonImports()
+{
+	ApplyApiMonComments_Imports_FromLoadedDb();
+}
+// --- [ApiMonitorDoc] end ---
+
 
 StartWindow::StartWindow(QWidget* parent)
 	: QWidget(parent)
@@ -382,12 +386,16 @@ StartWindow::StartWindow(QWidget* parent)
 
 	if (mdbg) // в режиме отладки ввод символов в поле CMD вызывает падение IDA ...
 	{
-		// ui.lineEdit_CMDLine->setEnabled(false);
 		ui.lineEdit_CMDLine->setEnabled(false);
 	}
 
-	// секция для регулярки lineEdit_CMDLine конец 
+	// секция для регулярки lineEdit_CMDLine конец
 	ReadIdaDB(); // выполняем при открытии формы ...
+
+	// --- [ApiMonitorDoc] begin ---
+	msg("[ApiMon] UI: Apply comments to Imports...\n");
+	ApplyApiMonComments_Imports_FromLoadedDb();
+	// --- [ApiMonitorDoc] end ---
 }
 
 void ClearDataConteiners()
@@ -410,9 +418,7 @@ void ClearDataConteiners()
 StartWindow::~StartWindow()
 {
 	if (notepad_form.isVisible()) { notepad_form.close(); } // иначе будет сохранять даже если окно закрыто
-	// и текст будет все время обнуляться, тк нет открытого едита и текст = ""
 	ClearDataConteiners();
-
 
 	if (Settings::getPrintInfoEnabled())
 	{
@@ -428,31 +434,6 @@ StartWindow::~StartWindow()
 		msg("\n\n\n");
 	}
 }
-
-///**
-// * \brief \n Следим за клавишами ввода
-// * \param event событие нажатия клавиши энтер рядом с буквами и ентер на числовой клавиатуре
-// */
-//void StartWindow::keyPressEvent(QKeyEvent * event)
-//{
-//	auto key = event->key();//event->key() - целочисленный код клавиши
-//	//auto cmd_command = ui.lineEdit_CMDLine->text().toStdString();
-//	auto cmd_command = ui_CMDLine->text().toStdString();
-//	boost::trim(cmd_command);
-//
-//	if (!cmd_command.empty())
-//	{
-//		if ((event->key() == Qt::Key_Enter) || (event->key() == Qt::Key_Return))
-//		{
-//			//msg("        Text fo parsing = %s \n", cmd_command.c_str());
-//			// ui.lineEdit_CMDLine->clear();
-//			ui_CMDLine->clear();
-//			exporter.ParseCMD(cmd_command);
-//		}
-//	}
-//
-//}
-
 
 void StartWindow::notepad_form_show()
 {
@@ -474,13 +455,10 @@ void StartWindow::PressEnter()
 
 	if (!cmd_command.empty())
 	{
-		//msg("        Text fo parsing = %s \n", cmd_command.c_str());
-		// ui.lineEdit_CMDLine->clear();
 		ui.lineEdit_CMDLine->clear();
 		exporter.ParseCMD(cmd_command);
 	}
 }
-
 
 void StartWindow::setting_form_show()
 {

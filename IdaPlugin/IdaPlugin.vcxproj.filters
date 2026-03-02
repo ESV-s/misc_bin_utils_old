@@ -342,6 +342,12 @@
     <ClCompile Include="stack_utils.cpp">
       <Filter>Файлы исходного кода\ida_plugin</Filter>
     </ClCompile>
+    <ClCompile Include="api_monitor.cpp">
+      <Filter>Файлы исходного кода\ida_plugin</Filter>
+    </ClCompile>
+    <ClCompile Include="apimon_ida_apply.cpp">
+      <Filter>Файлы исходного кода\ida_plugin</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="start_window.ui">
@@ -1412,6 +1418,12 @@
       <Filter>Заголовочные файлы\ida_plugin</Filter>
     </ClInclude>
     <ClInclude Include="debug_log.h">
+      <Filter>Заголовочные файлы\ida_plugin</Filter>
+    </ClInclude>
+    <ClInclude Include="api_monitor.h">
+      <Filter>Заголовочные файлы\ida_plugin</Filter>
+    </ClInclude>
+    <ClInclude Include="apimon_ida_apply.h">
       <Filter>Заголовочные файлы\ida_plugin</Filter>
     </ClInclude>
   </ItemGroup>

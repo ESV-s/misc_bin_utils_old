@@ -17,6 +17,7 @@ x64/
 GeneratedFiles/
 HtmlDoc/
 AdefFolder/
+MyAddingFiles/
 
 # Объектные и прочие временные файлы
 *.obj
@@ -28,7 +29,6 @@ AdefFolder/
 *.log
 *.tmp
 *.windows
-
 
 *.zip
 *.7z

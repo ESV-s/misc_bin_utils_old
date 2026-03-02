@@ -226,6 +226,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="address_references.cc" />
+    <ClCompile Include="apimon_ida_apply.cpp" />
+    <ClCompile Include="api_monitor.cpp" />
     <ClCompile Include="arm.cc" />
     <ClCompile Include="base_types.cc" />
     <ClCompile Include="basic_block.cc" />
@@ -526,6 +528,8 @@
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
     </CustomBuild>
+    <ClInclude Include="apimon_ida_apply.h" />
+    <ClInclude Include="api_monitor.h" />
     <ClInclude Include="debug_log.h" />
     <ClInclude Include="exporter.h" />
     <ClInclude Include="function_utils.h" />

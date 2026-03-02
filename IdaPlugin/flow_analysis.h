@@ -49,7 +49,7 @@ void AnalyzeFlowIdaAdditional(EntryPoints* entry_points, const ModuleMap& module
 	DumpWriter* writer, detego::Instructions* instructions,
 	FlowGraph* flow_graph, CallGraph* call_graph,
 	FlowGraph::NoReturnHeuristic noreturn_heuristic,
-	Exporter* exporter);  // »«ћ≈Ќ≈Ќќ было Writer* writer стало DumpWriter* writer
+	Exporter* exporter);  // ранее было Writer* writer стало DumpWriter* writer
 
 }  // namespace security::binexport
 
