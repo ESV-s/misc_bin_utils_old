@@ -625,6 +625,7 @@ static bool ParseOneXml_PassB1(const QT::QString& filePath, PassB1Result& out)
 
         bool insideModule = false;
         QT::QString currentModuleLower;
+		QT::QString currentModuleConvention; ///< Default calling convention from <Module ... CallingConvention="...">.
 
         bool insideApi = false;
         ApiFunctionRecord curApi;
@@ -639,8 +640,13 @@ static bool ParseOneXml_PassB1(const QT::QString& filePath, PassB1Result& out)
 
                 if (name == QLatin1String("Module"))
                 {
-                    const QT::QString moduleName = xr.attributes().value(QLatin1String("Name")).toString();
+					const QXmlStreamAttributes ma = xr.attributes();
+					const QT::QString moduleName = ma.value(QLatin1String("Name")).toString();
                     currentModuleLower = NormalizeModuleNameLower(moduleName);
+
+					                  // В ApiMonitorDoc calling convention может быть задан на уровне <Module ... CallingConvention="STDCALL" ...>.
+						                   // Тогда отдельные <Api ...> часто не имеют собственного атрибута Convention/CallConv.
+						currentModuleConvention = AttrFirstNonEmpty(ma, "CallingConvention", "Convention", "CallConv");
 
                     insideModule = !currentModuleLower.isEmpty();
                 }
@@ -657,6 +663,9 @@ static bool ParseOneXml_PassB1(const QT::QString& filePath, PassB1Result& out)
                         curApi.name = a.value(QLatin1String("Name")).toString().trimmed();
                         curApi.dll = AttrFirstNonEmpty(a, "Dll", "Module", "Library");
                         curApi.convention = AttrFirstNonEmpty(a, "Convention", "CallConv", "CallingConvention");
+
+						if (curApi.convention.isEmpty() && !currentModuleConvention.isEmpty())
+							curApi.convention = currentModuleConvention;
 
                         // Возврат может быть задан разными способами (атрибутом или отдельным элементом <Return .../>).
                         curApi.retType = AttrFirstNonEmpty(a, "Return", "Ret", "Type");
@@ -714,6 +723,7 @@ static bool ParseOneXml_PassB1(const QT::QString& filePath, PassB1Result& out)
                 {
                     insideModule = false;
                     currentModuleLower.clear();
+					currentModuleConvention.clear();
                 }
             }
         }

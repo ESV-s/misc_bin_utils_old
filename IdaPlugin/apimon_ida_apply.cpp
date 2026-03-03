@@ -57,6 +57,32 @@ namespace apimon_ida
 		return apimon::NormalizeModuleNameLower(QT::QString::fromLatin1(root));
 	}
 
+
+
+	/// \brief
+	/// Преобразовать calling convention из ApiMonitorDoc к привычному для C/C++ представлению.
+	/// \details
+	/// ApiMonitorDoc обычно хранит значения как CDECL/STDCALL/FASTCALL/THISCALL/WINAPI.
+	/// Мы приводим к "__cdecl" и т.п., чтобы сигнатура в комменте читалась однозначно.
+	static QT::QString ConvToCDeclStyle(const QT::QString& convention)
+	{
+		const QT::QString cc = convention.trimmed().toUpper();
+
+		if (cc == QLatin1String("CDECL"))
+			return QLatin1String("__cdecl");
+		if (cc == QLatin1String("STDCALL"))
+			return QLatin1String("__stdcall");
+		if (cc == QLatin1String("FASTCALL"))
+			return QLatin1String("__fastcall");
+		if (cc == QLatin1String("THISCALL"))
+			return QLatin1String("__thiscall");
+		if (cc == QLatin1String("WINAPI"))
+			return QLatin1String("WINAPI");
+
+		// неизвестное/нестандартное значение — вернём как есть
+		return convention.trimmed();
+	}
+
 	/**
 	* @brief Построить одну строку сигнатуры: "RET Name(type p1, type p2)".
 	*/
@@ -68,6 +94,12 @@ namespace apimon_ida
 			out += a.retType + QLatin1String(" ");
 		else
 			out += QLatin1String("void ");
+
+		if (!a.convention.isEmpty())
+			{
+			out += ConvToCDeclStyle(a.convention);
+			out += QLatin1String(" ");
+			}
 
 		out += a.name;
 		out += QLatin1String("(");
@@ -95,6 +127,9 @@ namespace apimon_ida
 		return out;
 	}
 
+
+
+
 	/**
 	* @brief Сформировать текст repeatable comment.
 	* @details Делаем коротко и с маркером [ApiMon], чтобы потом отличать "наши" комменты.
@@ -109,6 +144,12 @@ namespace apimon_ida
 
 		c += QLatin1String("\n[ApiMon] ");
 		c += BuildApiSignatureLine(a);
+
+		if (!a.convention.isEmpty())
+			{
+			c += QLatin1String("\n[ApiMon] CC: ");
+			c += a.convention.trimmed();
+			}
 
 		return c;
 	}
